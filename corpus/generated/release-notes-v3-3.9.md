@@ -1,25 +1,25 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 version: v3
 section: Release notes
 ---
 
-# Kestrel 3.9 release notes
+# Ironclad 3.9 release notes
 
-Released 5 October 2026.
+Released 15 October 2026.
 
 ## Changes
 
-- **Backup retention**: now set with `KESTREL_BACKUP_RETENTION`; default changed from 496 to 518 requests per minute. The version 2 setting `backup_retention` is warned.
-- **Token lifetime**: now set with `KESTREL_TOKEN_LIFETIME`; default changed from 788 to 836 days. The version 2 setting `token_lifetime` is rejected.
-- **Concurrent session limit**: now set with `KESTREL_CONCURRENT_SESSION_LIMIT`; default changed from 26 to 16 percent. The version 2 setting `concurrent_session_limit_per` is ignored.
-- **Batch commit size**: now set with `KESTREL_BATCH_COMMIT_SIZE`; default changed from 1045 to 378 requests per minute. The version 2 setting `batch_commit_size` is warned.
-- Search result limit: the error `E1693: KESTREL_SEARCH_RESULT_LIMIT out of range` now names the accepted range (28 to 1693 megabytes).
-- Batch commit size: the error `E1520: KESTREL_BATCH_COMMIT_SIZE out of range` now names the accepted range (53 to 5795 requests per minute).
-- Transform memory limit: the error `E1915: KESTREL_TRANSFORM_MEMORY_LIMIT out of range` now names the accepted range (10 to 400 connections).
+- **API rate limit**: now set with `IRONCLAD_API_RATE_LIMIT`; default changed from 373 to 173 megabytes. The version 2 setting `api_rate_limit` is rejected.
+- **Token lifetime**: now set with `IRONCLAD_TOKEN_LIFETIME`; default changed from 1517 to 271 items. The version 2 setting `token_lifetime_ite` is rejected.
+- **DNS cache lifetime**: now set with `IRONCLAD_DNS_CACHE_LIFETIME`; default changed from 144 to 60 connections. The version 2 setting `dns_cache_lifetime_con` is ignored.
+- Export batch size: the error `E1124: IRONCLAD_EXPORT_BATCH_SIZE out of range` now names the accepted range (65 to 5106 requests per minute).
+- Maintenance window length: the error `E1754: IRONCLAD_MAINTENANCE_WINDOW_LENGTH out of range` now names the accepted range (3 to 183 minutes).
+- Report page size: the error `E1600: IRONCLAD_REPORT_PAGE_SIZE out of range` now names the accepted range (2 to 97 percent).
 
 ## Fixes
 
-- Fixed a case where connection pool size was not applied to the first job after a restart.
-- Fixed a case where health check interval was not applied to the first job after a restart.
-- Fixed a case where metrics flush interval was not applied to the first job after a restart.
+- Fixed a case where metrics flush interval was not applied to the first job after a backup restore.
+- Fixed a case where concurrent session limit was not applied to the first job after a failover.
+- Fixed a case where notification digest interval was not applied to the first job after a configuration reload.
+- Fixed a case where attachment size limit was not applied to the first job after a configuration reload.

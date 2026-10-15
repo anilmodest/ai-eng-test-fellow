@@ -1,7 +1,7 @@
 # INVOICE WG-1187
 
-**From:** Woodgrove Office Supplies, Unit 9, Trafford Park, Manchester M17 1AB
-**To:** Contoso Pharmaceuticals, 88 Science Park, Cambridge CB4 0WS
+**From:** Meridian Insurance Office Supplies, Unit 9, Trafford Park, Manchester M17 1AB
+**To:** Harbour Health Pharmaceuticals, 88 Science Park, Cambridge CB4 0WS
 **Date issued:** 14 August 2026
 **Due:** 13 September 2026 (net 30)
 

@@ -1,35 +1,35 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 version: v3
 section: Troubleshooting
 ---
 
-# Troubleshooting: purge delay (Kestrel v3)
+# Troubleshooting: purge delay (Ironclad v3)
 
 Problems with the purge delay are almost always configuration, not defects. Work through the checks below before opening a ticket.
 
 ## Symptoms
 
 - The service uses a different purge delay from the one you set.
-- The log shows `E1623: KESTREL_PURGE_DELAY out of range`.
+- The log shows `E1295: IRONCLAD_PURGE_DELAY out of range`.
 - The value changed in configuration, but behaviour did not change.
 
 ## Check 1: is the value in range?
 
-The accepted range is 128 to 8289 items. Out of range, the value is rejected with `E1623: KESTREL_PURGE_DELAY out of range` and the previous value stays in force. Run `kestrelctl config show KESTREL_PURGE_DELAY` to see the value in use.
+The accepted range is 41 to 2031 megabytes. Out of range, the value is rejected with `E1295: IRONCLAD_PURGE_DELAY out of range` and the previous value stays in force. Run `ironcladctl config show IRONCLAD_PURGE_DELAY` to see the value in use.
 
 ## Check 2: has it taken effect?
 
-The value is reloaded within a few seconds of being changed. No restart is needed, and work already in progress picks up the new value on its next step.
+A change applies from the next job onwards. Jobs already running finish with the value they started with.
 
 ## Check 3: is the old setting still there?
 
-Installations upgraded from version 2 often still carry `purge_delay_ite`. In version 3 it is rejected. The setting that counts is `KESTREL_PURGE_DELAY`, and its default is 2444 items.
+Installations upgraded from version 2 often still carry `purge_delay`. In version 3 it is ignored. The setting that counts is `IRONCLAD_PURGE_DELAY`, and its default is 284 megabytes.
 
 ## What the metrics show
 
-Watch `kestrel_purge_delay_current` on the operations dashboard. If it sits at the configured value for long periods, the setting is the bottleneck, and raising it is reasonable. If it never comes near, the value can safely stay where it is.
+The service exports the metric `ironclad_purge_delay_limit_hits_total`. A steady rise means the limit is doing its job; a sudden jump after a change means the new value is too tight. Alert on the rate, not on the total.
 
 ## If none of these explains it
 
-Collect the output of `kestrelctl config show --all` and the last hour of the service log, and open a ticket with the support desk. Say which version you run.
+Collect the output of `ironcladctl config show --all` and the last hour of the service log, and open a ticket with the support desk. Say which version you run.

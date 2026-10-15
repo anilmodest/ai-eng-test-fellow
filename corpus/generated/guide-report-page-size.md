@@ -1,33 +1,33 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 section: Operations
 ---
 
 # Operating the report page size
 
-Kestrel Data Runner is a data runner that moves records between business systems. The report page size setting controls how the service behaves when that limit is reached, and it is one of the settings most often changed by administrators after go-live.
+In Ironclad Endpoint Manager, the report page size is a single value measured in percent. It applies to the whole installation rather than to one customer account, which is why it lives in system configuration and not in account settings.
 
 ## How it works
 
-Every request carries the report page size that applied when it started. If the value changes while a request is in progress, that request keeps its original limit, and only new requests see the new one. This keeps behaviour predictable during a change, at the cost of a short period in which old and new limits are both in force.
+Internally, the service checks the report page size every time the limit could apply, not on a timer. When the limit is reached the service finishes the step it is on, records an event in the activity log, and only then applies the limit. A value of 29 percent therefore means 'at least 29', never 'exactly', and on a heavily loaded installation the difference can be noticeable. The activity log entry names the setting, so an administrator can always tell which limit was hit.
 
 ## Choosing a value
 
-There is no single right value. Small installations rarely need more than the default of 157 connections. Large ones usually settle between the default and twice the default. Values near the minimum of 10 are meant for testing and make failures more frequent, not less. Whatever you choose, set it in one place only: two conflicting values are the cause of most surprises.
+Start from the default of 29 percent and change it only with a reason you can write down. Raising the report page size trades resilience for capacity: more work is accepted, but a failure takes longer to notice. Lowering it does the opposite. Change it in steps of no more than a quarter, watch for a week, and record what you saw. Installations that jumped straight to the maximum of 97 are the most common source of tickets about this setting.
 
 ## Monitoring
 
-Watch `kestrel_report_page_size_current` on the operations dashboard. If it sits at the configured value for long periods, the setting is the bottleneck, and raising it is reasonable. If it never comes near, the value can safely stay where it is.
+Watch `ironclad_report_page_size_current` on the operations dashboard. If it sits at the configured value for long periods, the setting is the bottleneck, and raising it is reasonable. If it never comes near, the value can safely stay where it is.
 
 ## Version differences in one table
 
 | | Version 2 | Version 3 |
 | --- | --- | --- |
-| Setting | `report_page_size` | `KESTREL_REPORT_PAGE_SIZE` |
-| Default | 65 connections | 157 connections |
-| Range | 5–499 | 10–499 |
-| Takes effect | next job | next job |
+| Setting | `report_page_size` | `IRONCLAD_REPORT_PAGE_SIZE` |
+| Default | 5 percent | 29 percent |
+| Range | 2–89 | 2–97 |
+| Takes effect | restart | next job |
 
 ## A worked change
 
-A customer with 400 seats saw the limit hit every afternoon. They raised the report page size by a quarter, watched the limit-hit metric for a week, saw it fall by two thirds, and stopped there. They wrote the reason into their change log, which is what made the next upgrade painless.
+An administrator lowered the report page size to the minimum while testing and forgot to restore it. Failures tripled overnight. The activity log named the setting on every failure, which is how support found it in minutes rather than days.

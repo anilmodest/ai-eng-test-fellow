@@ -5,52 +5,52 @@
     {
       "customer_id": "C-1001",
       "account": "desk-emea",
-      "name": "Fabrikam Logistics",
+      "name": "Kingsway Transport Logistics",
       "version": "v3",
       "plan": "enterprise",
       "region": "EMEA",
       "seats": 240,
-      "contact": "ops@fabrikam.example"
+      "contact": "ops@kingsway-transport.example"
     },
     {
       "customer_id": "C-1002",
       "account": "desk-emea",
-      "name": "Tailspin Freight",
+      "name": "Larkspur Hotels Freight",
       "version": "v2",
       "plan": "business",
       "region": "EMEA",
       "seats": 55,
-      "contact": "it@tailspin.example"
+      "contact": "it@larkspur-hotels.example"
     },
     {
       "customer_id": "C-1003",
       "account": "desk-emea",
-      "name": "Northwind Traders",
+      "name": "Juniper Schools Traders",
       "version": "v2",
       "plan": "enterprise",
       "region": "EMEA",
       "seats": 1200,
-      "contact": "platform@northwind.example"
+      "contact": "platform@juniper-schools.example"
     },
     {
       "customer_id": "C-1004",
       "account": "desk-emea",
-      "name": "Contoso Manufacturing",
+      "name": "Harbour Health Manufacturing",
       "version": "v3",
       "plan": "business",
       "region": "EMEA",
       "seats": 310,
-      "contact": "support@contoso.example"
+      "contact": "support@harbour-health.example"
     },
     {
       "customer_id": "C-1005",
       "account": "desk-emea",
-      "name": "Woodgrove Bank",
+      "name": "Meridian Insurance Bank",
       "version": "v3",
       "plan": "enterprise",
       "region": "EMEA",
       "seats": 90,
-      "contact": "integration@woodgrove.example"
+      "contact": "integration@meridian-insurance.example"
     },
     {
       "customer_id": "C-1006",
@@ -105,22 +105,22 @@
     {
       "customer_id": "C-2001",
       "account": "desk-amer",
-      "name": "Litware Retail",
+      "name": "Northgate Councils Retail",
       "version": "v2",
       "plan": "enterprise",
       "region": "AMER",
       "seats": 480,
-      "contact": "ops@litware.example"
+      "contact": "ops@northgate-councils.example"
     },
     {
       "customer_id": "C-2002",
       "account": "desk-amer",
-      "name": "Proseware Health",
+      "name": "Oakridge Manufacturing Health",
       "version": "v3",
       "plan": "business",
       "region": "AMER",
       "seats": 75,
-      "contact": "it@proseware.example"
+      "contact": "it@oakridge-manufacturing.example"
     },
     {
       "customer_id": "C-3001",

@@ -1,61 +1,96 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 version: v3
 section: Configuration
 ---
 
-# Configuration guide (Kestrel v3)
+# Configuration guide (Ironclad v3)
 
-This guide covers every configuration setting in version 3 of Kestrel Data Runner. Read it before changing more than one setting at once: several interact.
+This guide covers every configuration setting in version 3 of Ironclad Endpoint Manager. Read it before changing more than one setting at once: several interact.
 
 | Setting | Name | Default | Range | Takes effect |
 | --- | --- | --- | --- | --- |
-| Import file size limit | `KESTREL_IMPORT_FILE_SIZE_LIMIT` | 74 days | 24–3495 | next job |
-| Backup schedule interval | `KESTREL_BACKUP_SCHEDULE_INTERVAL` | 45 minutes | 1–194 | restart |
-| Two-factor grace period | `KESTREL_TWO_FACTOR_GRACE_PERIOD` | 122 connections | 8–466 | restart |
-| Health check interval | `KESTREL_HEALTH_CHECK_INTERVAL` | 141 days | 66–2915 | immediately |
-| Archive threshold | `KESTREL_ARCHIVE_THRESHOLD` | 21 minutes | 5–235 | next job |
-| Concurrent session limit | `KESTREL_CONCURRENT_SESSION_LIMIT` | 16 percent | 1–90 | immediately |
-| Field length limit | `KESTREL_FIELD_LENGTH_LIMIT` | 22 percent | 1–79 | restart |
+| Session timeout | `IRONCLAD_SESSION_TIMEOUT` | 34 minutes | 3–209 | next job |
+| Export batch size | `IRONCLAD_EXPORT_BATCH_SIZE` | 343 requests per minute | 65–5106 | next job |
+| Search result limit | `IRONCLAD_SEARCH_RESULT_LIMIT` | 17 percent | 2–80 | restart |
+| Report page size | `IRONCLAD_REPORT_PAGE_SIZE` | 29 percent | 2–97 | next job |
+| Upload chunk size | `IRONCLAD_UPLOAD_CHUNK_SIZE` | 36 seconds | 1–563 | immediately |
+| Metrics flush interval | `IRONCLAD_METRICS_FLUSH_INTERVAL` | 583 characters | 61–3178 | immediately |
+| Attachment size limit | `IRONCLAD_ATTACHMENT_SIZE_LIMIT` | 469 days | 28–2779 | restart |
+| Purge delay | `IRONCLAD_PURGE_DELAY` | 284 megabytes | 41–2031 | next job |
+| Maintenance window length | `IRONCLAD_MAINTENANCE_WINDOW_LENGTH` | 20 minutes | 3–183 | restart |
+| TLS handshake timeout | `IRONCLAD_TLS_HANDSHAKE_TIMEOUT` | 63 seconds | 12–572 | immediately |
+| Batch commit size | `IRONCLAD_BATCH_COMMIT_SIZE` | 1382 requests per minute | 71–5674 | next job |
+| Remote wipe delay | `IRONCLAD_REMOTE_WIPE_DELAY` | 126 connections | 5–477 | restart |
 
-## Import file size limit
+## Session timeout
 
-In Kestrel Data Runner, the import file size limit is a single value measured in days. It applies to the whole installation rather than to one customer account, which is why it lives in system configuration and not in account settings.
+This page describes the session timeout setting in Ironclad Endpoint Manager, a device-management product that enrols, updates and locks company devices. Most installations never change it; the ones that do usually change it after their first busy period, when the default turns out to be too tight or too loose.
 
 A change applies from the next job onwards. Jobs already running finish with the value they started with.
 
-## Backup schedule interval
+## Export batch size
 
-This page describes the backup schedule interval setting in Kestrel Data Runner, a data runner that moves records between business systems. Most installations never change it; the ones that do usually change it after their first busy period, when the default turns out to be too tight or too loose.
+Ironclad Endpoint Manager is a device-management product that enrols, updates and locks company devices. The export batch size setting controls how the service behaves when that limit is reached, and it is one of the settings most often changed by administrators after go-live.
 
-The value is read when the service starts. Changing it has no effect on a running service; restart it with `kestrelctl restart` for the new value to be used.
+A change applies from the next job onwards. Jobs already running finish with the value they started with.
 
-## Two-factor grace period
+## Search result limit
 
-Kestrel Data Runner is a data runner that moves records between business systems. The two-factor grace period setting controls how the service behaves when that limit is reached, and it is one of the settings most often changed by administrators after go-live.
+This page describes the search result limit setting in Ironclad Endpoint Manager, a device-management product that enrols, updates and locks company devices. Most installations never change it; the ones that do usually change it after their first busy period, when the default turns out to be too tight or too loose.
 
-The value is read once, at startup. A running service keeps the old value until it is restarted with `kestrelctl restart`.
+The value is read when the service starts. Changing it has no effect on a running service; restart it with `ironcladctl restart` for the new value to be used.
 
-## Health check interval
+## Report page size
 
-This page describes the health check interval setting in Kestrel Data Runner, a data runner that moves records between business systems. Most installations never change it; the ones that do usually change it after their first busy period, when the default turns out to be too tight or too loose.
+Ironclad Endpoint Manager is a device-management product that enrols, updates and locks company devices. The report page size setting controls how the service behaves when that limit is reached, and it is one of the settings most often changed by administrators after go-live.
 
-Changes take effect immediately: the service watches the setting and reloads it without a restart.
+A change applies from the next job onwards. Jobs already running finish with the value they started with.
 
-## Archive threshold
+## Upload chunk size
 
-In Kestrel Data Runner, the archive threshold is a single value measured in minutes. It applies to the whole installation rather than to one customer account, which is why it lives in system configuration and not in account settings.
+Ironclad Endpoint Manager is a device-management product that enrols, updates and locks company devices. The upload chunk size setting controls how the service behaves when that limit is reached, and it is one of the settings most often changed by administrators after go-live.
 
-The value is read at the start of each job. A job that is already running keeps the value it started with; the next job uses the new one. No restart is needed.
+The value is reloaded within a few seconds of being changed. No restart is needed, and work already in progress picks up the new value on its next step.
 
-## Concurrent session limit
+## Metrics flush interval
 
-In Kestrel Data Runner, the concurrent session limit is a single value measured in percent. It applies to the whole installation rather than to one customer account, which is why it lives in system configuration and not in account settings.
+This page describes the metrics flush interval setting in Ironclad Endpoint Manager, a device-management product that enrols, updates and locks company devices. Most installations never change it; the ones that do usually change it after their first busy period, when the default turns out to be too tight or too loose.
 
-Changes take effect immediately: the service watches the setting and reloads it without a restart.
+The value is reloaded within a few seconds of being changed. No restart is needed, and work already in progress picks up the new value on its next step.
 
-## Field length limit
+## Attachment size limit
 
-In Kestrel Data Runner, the field length limit is a single value measured in percent. It applies to the whole installation rather than to one customer account, which is why it lives in system configuration and not in account settings.
+Ironclad Endpoint Manager is a device-management product that enrols, updates and locks company devices. The attachment size limit setting controls how the service behaves when that limit is reached, and it is one of the settings most often changed by administrators after go-live.
 
-The value is read when the service starts. Changing it has no effect on a running service; restart it with `kestrelctl restart` for the new value to be used.
+The value is read when the service starts. Changing it has no effect on a running service; restart it with `ironcladctl restart` for the new value to be used.
+
+## Purge delay
+
+Ironclad Endpoint Manager is a device-management product that enrols, updates and locks company devices. The purge delay setting controls how the service behaves when that limit is reached, and it is one of the settings most often changed by administrators after go-live.
+
+A change applies from the next job onwards. Jobs already running finish with the value they started with.
+
+## Maintenance window length
+
+Ironclad Endpoint Manager is a device-management product that enrols, updates and locks company devices. The maintenance window length setting controls how the service behaves when that limit is reached, and it is one of the settings most often changed by administrators after go-live.
+
+The value is read when the service starts. Changing it has no effect on a running service; restart it with `ironcladctl restart` for the new value to be used.
+
+## TLS handshake timeout
+
+In Ironclad Endpoint Manager, the tls handshake timeout is a single value measured in seconds. It applies to the whole installation rather than to one customer account, which is why it lives in system configuration and not in account settings.
+
+The value is reloaded within a few seconds of being changed. No restart is needed, and work already in progress picks up the new value on its next step.
+
+## Batch commit size
+
+In Ironclad Endpoint Manager, the batch commit size is a single value measured in requests per minute. It applies to the whole installation rather than to one customer account, which is why it lives in system configuration and not in account settings.
+
+A change applies from the next job onwards. Jobs already running finish with the value they started with.
+
+## Remote wipe delay
+
+In Ironclad Endpoint Manager, the remote wipe delay is a single value measured in connections. It applies to the whole installation rather than to one customer account, which is why it lives in system configuration and not in account settings.
+
+The value is read once, at startup. A running service keeps the old value until it is restarted with `ironcladctl restart`.

@@ -1,35 +1,35 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 version: v2
 section: Troubleshooting
 ---
 
-# Troubleshooting: notification digest interval (Kestrel v2)
+# Troubleshooting: notification digest interval (Ironclad v2)
 
-Start here when the notification digest interval does not behave as configured. Most reports turn out to be one of three causes, listed in the order to check them.
+Problems with the notification digest interval are almost always configuration, not defects. Work through the checks below before opening a ticket.
 
 ## Symptoms
 
 - The service uses a different notification digest interval from the one you set.
-- The log shows `E1664: notification_digest_interval out of range`.
+- The log shows `E1535: notification_digest_interval out of range`.
 - The value changed in configuration, but behaviour did not change.
 
 ## Check 1: is the value in range?
 
-The accepted range is 59 to 3094 characters. Out of range, the value is rejected with `E1664: notification_digest_interval out of range` and the previous value stays in force. Run `kestrelctl config show notification_digest_interval` to see the value in use.
+The accepted range is 5 to 463 seconds. Out of range, the value is rejected with `E1535: notification_digest_interval out of range` and the previous value stays in force. Run `ironcladctl config show notification_digest_interval` to see the value in use.
 
 ## Check 2: has it taken effect?
 
-The value is read once, at startup. A running service keeps the old value until it is restarted with `kestrelctl restart`.
+The value is read when the service starts. Changing it has no effect on a running service; restart it with `ironcladctl restart` for the new value to be used.
 
 ## Check 3: is it set in the right place?
 
-In version 2 the setting lives in `kestrel.conf`, in the `[server]` block. A value set anywhere else is not read.
+In version 2 the setting lives in `ironclad.conf`, in the `[storage]` block. A value set anywhere else is not read.
 
 ## What the metrics show
 
-The service exports the metric `kestrel_notification_digest_interval_limit_hits_total`. A steady rise means the limit is doing its job; a sudden jump after a change means the new value is too tight. Alert on the rate, not on the total.
+The service exports the metric `ironclad_notification_digest_interval_limit_hits_total`. A steady rise means the limit is doing its job; a sudden jump after a change means the new value is too tight. Alert on the rate, not on the total.
 
 ## If none of these explains it
 
-Collect the output of `kestrelctl config show --all` and the last hour of the service log, and open a ticket with the support desk. Say which version you run.
+Collect the output of `ironcladctl config show --all` and the last hour of the service log, and open a ticket with the support desk. Say which version you run.

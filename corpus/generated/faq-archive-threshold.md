@@ -1,5 +1,5 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 section: FAQ
 ---
 
@@ -9,19 +9,19 @@ The questions below come from real tickets, lightly edited. Check which version 
 
 **What is the default archive threshold?**
 
-In version 2 it is 32 minutes; in version 3 it is 21 minutes.
+In version 2 it is 41 connections; in version 3 it is 27 connections.
 
 **Do I need to restart after changing it?**
 
-Version 2: yes. Version 3: no.
+Version 2: no. Version 3: yes.
 
 **What happens if I set it too high?**
 
-The value is rejected and the previous one stays in force. The maximum is 234 in version 2 and 235 in version 3.
+The value is rejected and the previous one stays in force. The maximum is 383 in version 2 and 466 in version 3.
 
 **We upgraded and the setting seems to have reset. Why?**
 
-Version 3 changed the setting's name from `archive_threshold` to `KESTREL_ARCHIVE_THRESHOLD` in release 3.6. See the known issue for this setting.
+Version 3 changed the setting's name from `archive_threshold` to `IRONCLAD_ARCHIVE_THRESHOLD` in release 3.4. See the known issue for this setting.
 
 **Can it be set per customer account?**
 

@@ -1,47 +1,47 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 version: v3
 section: Data
 ---
 
-# Data guide (Kestrel v3)
+# Data guide (Ironclad v3)
 
-This guide covers every data setting in version 3 of Kestrel Data Runner. Read it before changing more than one setting at once: several interact.
+This guide covers every data setting in version 3 of Ironclad Endpoint Manager. Read it before changing more than one setting at once: several interact.
 
 | Setting | Name | Default | Range | Takes effect |
 | --- | --- | --- | --- | --- |
-| Request timeout | `KESTREL_REQUEST_TIMEOUT` | 7 hours | 2–139 | restart |
-| Audit log retention | `KESTREL_AUDIT_LOG_RETENTION` | 129 connections | 2–458 | restart |
-| Metrics flush interval | `KESTREL_METRICS_FLUSH_INTERVAL` | 2 hours | 1–156 | immediately |
-| Source poll interval | `KESTREL_SOURCE_POLL_INTERVAL` | 29 minutes | 5–193 | next job |
-| Dead-letter retention | `KESTREL_DEAD_LETTER_RETENTION` | 149 seconds | 12–580 | next job |
+| Backup schedule interval | `IRONCLAD_BACKUP_SCHEDULE_INTERVAL` | 562 megabytes | 2–1738 | next job |
+| Trace sampling rate | `IRONCLAD_TRACE_SAMPLING_RATE` | 87 seconds | 1–496 | restart |
+| Bulk update limit | `IRONCLAD_BULK_UPDATE_LIMIT` | 817 items | 34–8156 | restart |
+| Pagination cursor lifetime | `IRONCLAD_PAGINATION_CURSOR_LIFETIME` | 10 percent | 1–93 | next job |
+| Temporary file lifetime | `IRONCLAD_TEMPORARY_FILE_LIFETIME` | 2623 items | 111–8772 | immediately |
 
-## Request timeout
+## Backup schedule interval
 
-This page describes the request timeout setting in Kestrel Data Runner, a data runner that moves records between business systems. Most installations never change it; the ones that do usually change it after their first busy period, when the default turns out to be too tight or too loose.
-
-The value is read once, at startup. A running service keeps the old value until it is restarted with `kestrelctl restart`.
-
-## Audit log retention
-
-This page describes the audit log retention setting in Kestrel Data Runner, a data runner that moves records between business systems. Most installations never change it; the ones that do usually change it after their first busy period, when the default turns out to be too tight or too loose.
-
-The value is read once, at startup. A running service keeps the old value until it is restarted with `kestrelctl restart`.
-
-## Metrics flush interval
-
-This page describes the metrics flush interval setting in Kestrel Data Runner, a data runner that moves records between business systems. Most installations never change it; the ones that do usually change it after their first busy period, when the default turns out to be too tight or too loose.
-
-Changes take effect immediately: the service watches the setting and reloads it without a restart.
-
-## Source poll interval
-
-In Kestrel Data Runner, the source poll interval is a single value measured in minutes. It applies to the whole installation rather than to one customer account, which is why it lives in system configuration and not in account settings.
+This page describes the backup schedule interval setting in Ironclad Endpoint Manager, a device-management product that enrols, updates and locks company devices. Most installations never change it; the ones that do usually change it after their first busy period, when the default turns out to be too tight or too loose.
 
 The value is read at the start of each job. A job that is already running keeps the value it started with; the next job uses the new one. No restart is needed.
 
-## Dead-letter retention
+## Trace sampling rate
 
-In Kestrel Data Runner, the dead-letter retention is a single value measured in seconds. It applies to the whole installation rather than to one customer account, which is why it lives in system configuration and not in account settings.
+This page describes the trace sampling rate setting in Ironclad Endpoint Manager, a device-management product that enrols, updates and locks company devices. Most installations never change it; the ones that do usually change it after their first busy period, when the default turns out to be too tight or too loose.
 
-A change applies from the next job onwards. Jobs already running finish with the value they started with.
+The value is read once, at startup. A running service keeps the old value until it is restarted with `ironcladctl restart`.
+
+## Bulk update limit
+
+In Ironclad Endpoint Manager, the bulk update limit is a single value measured in items. It applies to the whole installation rather than to one customer account, which is why it lives in system configuration and not in account settings.
+
+The value is read once, at startup. A running service keeps the old value until it is restarted with `ironcladctl restart`.
+
+## Pagination cursor lifetime
+
+In Ironclad Endpoint Manager, the pagination cursor lifetime is a single value measured in percent. It applies to the whole installation rather than to one customer account, which is why it lives in system configuration and not in account settings.
+
+The value is read at the start of each job. A job that is already running keeps the value it started with; the next job uses the new one. No restart is needed.
+
+## Temporary file lifetime
+
+This page describes the temporary file lifetime setting in Ironclad Endpoint Manager, a device-management product that enrols, updates and locks company devices. Most installations never change it; the ones that do usually change it after their first busy period, when the default turns out to be too tight or too loose.
+
+The value is reloaded within a few seconds of being changed. No restart is needed, and work already in progress picks up the new value on its next step.

@@ -1,4 +1,4 @@
-# Contoso Pharmaceuticals - Travel and expenses policy (v4, effective 1 July 2026)
+# Harbour Health Pharmaceuticals - Travel and expenses policy (v4, effective 1 July 2026)
 
 ## Principles
 

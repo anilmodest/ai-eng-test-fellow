@@ -1,32 +1,32 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 section: Operations
 ---
 
 # Operating the upload chunk size
 
-In Kestrel Data Runner, the upload chunk size is a single value measured in seconds. It applies to the whole installation rather than to one customer account, which is why it lives in system configuration and not in account settings.
+In Ironclad Endpoint Manager, the upload chunk size is a single value measured in seconds. It applies to the whole installation rather than to one customer account, which is why it lives in system configuration and not in account settings.
 
 ## How it works
 
-Internally, the service checks the upload chunk size every time the limit could apply, not on a timer. When the limit is reached the service finishes the step it is on, records an event in the activity log, and only then applies the limit. A value of 97 seconds therefore means 'at least 97', never 'exactly', and on a heavily loaded installation the difference can be noticeable. The activity log entry names the setting, so an administrator can always tell which limit was hit.
+Every request carries the upload chunk size that applied when it started. If the value changes while a request is in progress, that request keeps its original limit, and only new requests see the new one. This keeps behaviour predictable during a change, at the cost of a short period in which old and new limits are both in force.
 
 ## Choosing a value
 
-There is no single right value. Small installations rarely need more than the default of 97 seconds. Large ones usually settle between the default and twice the default. Values near the minimum of 11 are meant for testing and make failures more frequent, not less. Whatever you choose, set it in one place only: two conflicting values are the cause of most surprises.
+Start from the default of 36 seconds and change it only with a reason you can write down. Raising the upload chunk size trades resilience for capacity: more work is accepted, but a failure takes longer to notice. Lowering it does the opposite. Change it in steps of no more than a quarter, watch for a week, and record what you saw. Installations that jumped straight to the maximum of 563 are the most common source of tickets about this setting.
 
 ## Monitoring
 
-The service exports the metric `kestrel_upload_chunk_size_limit_hits_total`. A steady rise means the limit is doing its job; a sudden jump after a change means the new value is too tight. Alert on the rate, not on the total.
+Watch `ironclad_upload_chunk_size_current` on the operations dashboard. If it sits at the configured value for long periods, the setting is the bottleneck, and raising it is reasonable. If it never comes near, the value can safely stay where it is.
 
 ## Version differences in one table
 
 | | Version 2 | Version 3 |
 | --- | --- | --- |
-| Setting | `upload_chunk_size` | `KESTREL_UPLOAD_CHUNK_SIZE` |
-| Default | 104 seconds | 97 seconds |
-| Range | 8–586 | 11–507 |
-| Takes effect | restart | next job |
+| Setting | `upload_chunk_size` | `IRONCLAD_UPLOAD_CHUNK_SIZE` |
+| Default | 145 seconds | 36 seconds |
+| Range | 6–583 | 1–563 |
+| Takes effect | restart | immediately |
 
 ## A worked change
 

@@ -1,55 +1,55 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 version: v2
-section: Configuration
+section: Integrations
 ---
 
-# Field length limit (Kestrel v2)
+# Field length limit (Ironclad v2)
 
-Kestrel Data Runner is a data runner that moves records between business systems. The field length limit setting controls how the service behaves when that limit is reached, and it is one of the settings most often changed by administrators after go-live.
+In Ironclad Endpoint Manager, the field length limit is a single value measured in seconds. It applies to the whole installation rather than to one customer account, which is why it lives in system configuration and not in account settings.
 
 ## Where the setting lives
 
-The setting is `field_length_limit`, in `kestrel.conf`, in the `[storage]` block. It takes a whole number of percent. The default is **3 percent**.
+The setting is `field_length_limit`, in `ironclad.conf`, in the `[server]` block. It takes a whole number of seconds. The default is **123 seconds**.
 
 ```
-field_length_limit = 3
+field_length_limit = 123
 ```
 
 ## How it works
 
-Internally, the service checks the field length limit every time the limit could apply, not on a timer. When the limit is reached the service finishes the step it is on, records an event in the activity log, and only then applies the limit. A value of 3 percent therefore means 'at least 3', never 'exactly', and on a heavily loaded installation the difference can be noticeable. The activity log entry names the setting, so an administrator can always tell which limit was hit.
+Every request carries the field length limit that applied when it started. If the value changes while a request is in progress, that request keeps its original limit, and only new requests see the new one. This keeps behaviour predictable during a change, at the cost of a short period in which old and new limits are both in force.
 
 ## When it takes effect
 
-A change applies from the next job onwards. Jobs already running finish with the value they started with.
+The value is read once, at startup. A running service keeps the old value until it is restarted with `ironcladctl restart`.
 
 ## Choosing a value
 
-Start from the default of 3 percent and change it only with a reason you can write down. Raising the field length limit trades resilience for capacity: more work is accepted, but a failure takes longer to notice. Lowering it does the opposite. Change it in steps of no more than a quarter, watch for a week, and record what you saw. Installations that jumped straight to the maximum of 100 are the most common source of tickets about this setting.
+Start from the default of 123 seconds and change it only with a reason you can write down. Raising the field length limit trades resilience for capacity: more work is accepted, but a failure takes longer to notice. Lowering it does the opposite. Change it in steps of no more than a quarter, watch for a week, and record what you saw. Installations that jumped straight to the maximum of 479 are the most common source of tickets about this setting.
 
 ## Monitoring
 
-Watch `kestrel_field_length_limit_current` on the operations dashboard. If it sits at the configured value for long periods, the setting is the bottleneck, and raising it is reasonable. If it never comes near, the value can safely stay where it is.
+The service exports the metric `ironclad_field_length_limit_limit_hits_total`. A steady rise means the limit is doing its job; a sudden jump after a change means the new value is too tight. Alert on the rate, not on the total.
 
 ## Limits
 
-The lowest accepted value is 2. The highest accepted value is 100. A value outside that range is rejected and the previous value stays in force, with `E1807: field_length_limit out of range` in the log.
+The lowest accepted value is 9. The highest accepted value is 479. A value outside that range is rejected and the previous value stays in force, with `E1954: field_length_limit out of range` in the log.
 
 ## Examples
 
-| Value (percent) | When to use it |
+| Value (seconds) | When to use it |
 | --- | --- |
-| 2 | small installations, or testing |
-| 3 | the default; right for most installations |
-| 6 | busy installations with spare capacity |
-| 100 | the maximum; only with a reason written down |
+| 9 | small installations, or testing |
+| 123 | the default; right for most installations |
+| 246 | busy installations with spare capacity |
+| 479 | the maximum; only with a reason written down |
 
 ## Interactions
 
-The field length limit is often changed together with the import file size limit (`import_file_size_limit_day`, default 66 days in version 2). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
+The field length limit is often changed together with the connection pool size (`connection_pool_size_req`, default 161 requests per minute in version 2). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
 
-The field length limit is often changed together with the backup schedule interval (`backup_schedule_interval`, default 66 minutes in version 2). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
+The field length limit is often changed together with the request timeout (`request_timeout`, default 21 minutes in version 2). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
 
 ## Version history
 
@@ -57,5 +57,5 @@ Introduced in version 2.0 as `field_length_limit`. Unchanged through the 2.x rel
 
 ## Related
 
-- Import file size limit: see the Import file size limit page for version 2.
-- Backup schedule interval: see the Backup schedule interval page for version 2.
+- Connection pool size: see the Connection pool size page for version 2.
+- Request timeout: see the Request timeout page for version 2.

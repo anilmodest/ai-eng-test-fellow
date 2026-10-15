@@ -1,5 +1,5 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 section: Upgrading
 ---
 
@@ -9,8 +9,8 @@ Every setting below changed name, place or default between the versions. The las
 
 | Setting | Version 2 | Version 3 | Default v2 → v3 | Old setting in v3 |
 | --- | --- | --- | --- | --- |
-| Request timeout | `request_timeout` | `KESTREL_REQUEST_TIMEOUT` | 2 → 7 hours | ignored |
-| Audit log retention | `audit_log_retention` | `KESTREL_AUDIT_LOG_RETENTION` | 22 → 129 connections | warned |
-| Metrics flush interval | `metrics_flush_interval` | `KESTREL_METRICS_FLUSH_INTERVAL` | 52 → 2 hours | ignored |
-| Source poll interval | `source_poll_interval` | `KESTREL_SOURCE_POLL_INTERVAL` | 44 → 29 minutes | ignored |
-| Dead-letter retention | `dead_letter_retention` | `KESTREL_DEAD_LETTER_RETENTION` | 119 → 149 seconds | ignored |
+| Backup schedule interval | `backup_schedule_interval` | `IRONCLAD_BACKUP_SCHEDULE_INTERVAL` | 67 → 562 megabytes | rejected |
+| Trace sampling rate | `trace_sampling_rate` | `IRONCLAD_TRACE_SAMPLING_RATE` | 134 → 87 seconds | ignored |
+| Bulk update limit | `bulk_update_limit` | `IRONCLAD_BULK_UPDATE_LIMIT` | 2897 → 817 items | rejected |
+| Pagination cursor lifetime | `pagination_cursor_lifetime` | `IRONCLAD_PAGINATION_CURSOR_LIFETIME` | 8 → 10 percent | ignored |
+| Temporary file lifetime | `temporary_file_lifetime` | `IRONCLAD_TEMPORARY_FILE_LIFETIME` | 622 → 2623 items | warned |

@@ -1,33 +1,33 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 section: Operations
 ---
 
 # Operating the trace sampling rate
 
-This page describes the trace sampling rate setting in Kestrel Data Runner, a data runner that moves records between business systems. Most installations never change it; the ones that do usually change it after their first busy period, when the default turns out to be too tight or too loose.
+In Ironclad Endpoint Manager, the trace sampling rate is a single value measured in seconds. It applies to the whole installation rather than to one customer account, which is why it lives in system configuration and not in account settings.
 
 ## How it works
 
-Every request carries the trace sampling rate that applied when it started. If the value changes while a request is in progress, that request keeps its original limit, and only new requests see the new one. This keeps behaviour predictable during a change, at the cost of a short period in which old and new limits are both in force.
+The trace sampling rate is enforced by the component that does the work, not by a central scheduler. Each worker reads the value it was given and applies it independently, which is why two workers can briefly disagree after a change. For most installations this never matters; where it does, the troubleshooting page for this setting explains how to confirm that every worker has picked up the new value.
 
 ## Choosing a value
 
-There is no single right value. Small installations rarely need more than the default of 30 minutes. Large ones usually settle between the default and twice the default. Values near the minimum of 1 are meant for testing and make failures more frequent, not less. Whatever you choose, set it in one place only: two conflicting values are the cause of most surprises.
+Start from the default of 87 seconds and change it only with a reason you can write down. Raising the trace sampling rate trades resilience for capacity: more work is accepted, but a failure takes longer to notice. Lowering it does the opposite. Change it in steps of no more than a quarter, watch for a week, and record what you saw. Installations that jumped straight to the maximum of 496 are the most common source of tickets about this setting.
 
 ## Monitoring
 
-The service exports the metric `kestrel_trace_sampling_rate_limit_hits_total`. A steady rise means the limit is doing its job; a sudden jump after a change means the new value is too tight. Alert on the rate, not on the total.
+The service exports the metric `ironclad_trace_sampling_rate_limit_hits_total`. A steady rise means the limit is doing its job; a sudden jump after a change means the new value is too tight. Alert on the rate, not on the total.
 
 ## Version differences in one table
 
 | | Version 2 | Version 3 |
 | --- | --- | --- |
-| Setting | `trace_sampling_rate_min` | `KESTREL_TRACE_SAMPLING_RATE` |
-| Default | 10 minutes | 30 minutes |
-| Range | 5–219 | 1–224 |
-| Takes effect | restart | restart |
+| Setting | `trace_sampling_rate` | `IRONCLAD_TRACE_SAMPLING_RATE` |
+| Default | 134 seconds | 87 seconds |
+| Range | 3–513 | 1–496 |
+| Takes effect | next job | restart |
 
 ## A worked change
 
-An administrator lowered the trace sampling rate to the minimum while testing and forgot to restore it. Failures tripled overnight. The activity log named the setting on every failure, which is how support found it in minutes rather than days.
+A customer with 400 seats saw the limit hit every afternoon. They raised the trace sampling rate by a quarter, watched the limit-hit metric for a week, saw it fall by two thirds, and stopped there. They wrote the reason into their change log, which is what made the next upgrade painless.

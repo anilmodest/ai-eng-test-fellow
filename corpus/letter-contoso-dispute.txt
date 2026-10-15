@@ -1,10 +1,10 @@
-Contoso Pharmaceuticals
+Harbour Health Pharmaceuticals
 88 Science Park
 Cambridge CB4 0WS
 
 18 September 2026
 
-Woodgrove Office Supplies
+Meridian Insurance Office Supplies
 Unit 9, Trafford Park
 Manchester M17 1AB
 
@@ -20,7 +20,7 @@ the 45.00 GBP pending your confirmation.
 Separately, two of the six HP 59X toner cartridges arrived with damaged seals. Our facilities
 team has photographs and would like replacements rather than a credit.
 
-Please reply to accounts.payable@contoso.example quoting PO-7781.
+Please reply to accounts.payable@harbour-health.example quoting PO-7781.
 
 Yours faithfully,
 

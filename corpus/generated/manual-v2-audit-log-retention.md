@@ -1,55 +1,55 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 version: v2
-section: Data
+section: Operations
 ---
 
-# Audit log retention (Kestrel v2)
+# Audit log retention (Ironclad v2)
 
-Kestrel Data Runner is a data runner that moves records between business systems. The audit log retention setting controls how the service behaves when that limit is reached, and it is one of the settings most often changed by administrators after go-live.
+This page describes the audit log retention setting in Ironclad Endpoint Manager, a device-management product that enrols, updates and locks company devices. Most installations never change it; the ones that do usually change it after their first busy period, when the default turns out to be too tight or too loose.
 
 ## Where the setting lives
 
-The setting is `audit_log_retention`, in `kestrel.conf`, in the `[source]` block. It takes a whole number of connections. The default is **22 connections**.
+The setting is `audit_log_retention`, in `ironclad.conf`, in the `[security]` block. It takes a whole number of days. The default is **391 days**.
 
 ```
-audit_log_retention = 22
+audit_log_retention = 391
 ```
 
 ## How it works
 
-Every request carries the audit log retention that applied when it started. If the value changes while a request is in progress, that request keeps its original limit, and only new requests see the new one. This keeps behaviour predictable during a change, at the cost of a short period in which old and new limits are both in force.
+The audit log retention is enforced by the component that does the work, not by a central scheduler. Each worker reads the value it was given and applies it independently, which is why two workers can briefly disagree after a change. For most installations this never matters; where it does, the troubleshooting page for this setting explains how to confirm that every worker has picked up the new value.
 
 ## When it takes effect
 
-The value is read when the service starts. Changing it has no effect on a running service; restart it with `kestrelctl restart` for the new value to be used.
+The value is read once, at startup. A running service keeps the old value until it is restarted with `ironcladctl restart`.
 
 ## Choosing a value
 
-There is no single right value. Small installations rarely need more than the default of 22 connections. Large ones usually settle between the default and twice the default. Values near the minimum of 7 are meant for testing and make failures more frequent, not less. Whatever you choose, set it in one place only: two conflicting values are the cause of most surprises.
+Start from the default of 391 days and change it only with a reason you can write down. Raising the audit log retention trades resilience for capacity: more work is accepted, but a failure takes longer to notice. Lowering it does the opposite. Change it in steps of no more than a quarter, watch for a week, and record what you saw. Installations that jumped straight to the maximum of 3452 are the most common source of tickets about this setting.
 
 ## Monitoring
 
-The service exports the metric `kestrel_audit_log_retention_limit_hits_total`. A steady rise means the limit is doing its job; a sudden jump after a change means the new value is too tight. Alert on the rate, not on the total.
+Watch `ironclad_audit_log_retention_current` on the operations dashboard. If it sits at the configured value for long periods, the setting is the bottleneck, and raising it is reasonable. If it never comes near, the value can safely stay where it is.
 
 ## Limits
 
-The lowest accepted value is 7. The highest accepted value is 406. A value outside that range is rejected and the previous value stays in force, with `E1710: audit_log_retention out of range` in the log.
+The lowest accepted value is 29. The highest accepted value is 3452. A value outside that range is rejected and the previous value stays in force, with `E1829: audit_log_retention out of range` in the log.
 
 ## Examples
 
-| Value (connections) | When to use it |
+| Value (days) | When to use it |
 | --- | --- |
-| 7 | small installations, or testing |
-| 22 | the default; right for most installations |
-| 44 | busy installations with spare capacity |
-| 406 | the maximum; only with a reason written down |
+| 29 | small installations, or testing |
+| 391 | the default; right for most installations |
+| 782 | busy installations with spare capacity |
+| 3452 | the maximum; only with a reason written down |
 
 ## Interactions
 
-The audit log retention is often changed together with the request timeout (`request_timeout`, default 2 hours in version 2). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
+The audit log retention is often changed together with the webhook retry count (`webhook_retry_count`, default 1558 items in version 2). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
 
-The audit log retention is often changed together with the metrics flush interval (`metrics_flush_interval`, default 52 hours in version 2). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
+The audit log retention is often changed together with the notification digest interval (`notification_digest_interval`, default 87 seconds in version 2). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
 
 ## Version history
 
@@ -57,5 +57,5 @@ Introduced in version 2.0 as `audit_log_retention`. Unchanged through the 2.x re
 
 ## Related
 
-- Request timeout: see the Request timeout page for version 2.
-- Metrics flush interval: see the Metrics flush interval page for version 2.
+- Webhook retry count: see the Webhook retry count page for version 2.
+- Notification digest interval: see the Notification digest interval page for version 2.

@@ -1,61 +1,61 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 version: v2
-section: Operations
+section: Security
 ---
 
-# Webhook delivery timeout (Kestrel v2)
+# Webhook delivery timeout (Ironclad v2)
 
-In Kestrel Data Runner, the webhook delivery timeout is a single value measured in percent. It applies to the whole installation rather than to one customer account, which is why it lives in system configuration and not in account settings.
+Ironclad Endpoint Manager is a device-management product that enrols, updates and locks company devices. The webhook delivery timeout setting controls how the service behaves when that limit is reached, and it is one of the settings most often changed by administrators after go-live.
 
 ## Where the setting lives
 
-The setting is `webhook_delivery_timeout_per`, in `kestrel.conf`, in the `[jobs]` block. It takes a whole number of percent. The default is **25 percent**.
+The setting is `webhook_delivery_timeout`, in `ironclad.conf`, in the `[server]` block. It takes a whole number of megabytes. The default is **435 megabytes**.
 
 ```
-webhook_delivery_timeout_per = 25
+webhook_delivery_timeout = 435
 ```
 
 ## How it works
 
-Every request carries the webhook delivery timeout that applied when it started. If the value changes while a request is in progress, that request keeps its original limit, and only new requests see the new one. This keeps behaviour predictable during a change, at the cost of a short period in which old and new limits are both in force.
+Internally, the service checks the webhook delivery timeout every time the limit could apply, not on a timer. When the limit is reached the service finishes the step it is on, records an event in the activity log, and only then applies the limit. A value of 435 megabytes therefore means 'at least 435', never 'exactly', and on a heavily loaded installation the difference can be noticeable. The activity log entry names the setting, so an administrator can always tell which limit was hit.
 
 ## When it takes effect
 
-The value is read when the service starts. Changing it has no effect on a running service; restart it with `kestrelctl restart` for the new value to be used.
+The value is read once, at startup. A running service keeps the old value until it is restarted with `ironcladctl restart`.
 
 ## Choosing a value
 
-There is no single right value. Small installations rarely need more than the default of 25 percent. Large ones usually settle between the default and twice the default. Values near the minimum of 1 are meant for testing and make failures more frequent, not less. Whatever you choose, set it in one place only: two conflicting values are the cause of most surprises.
+There is no single right value. Small installations rarely need more than the default of 435 megabytes. Large ones usually settle between the default and twice the default. Values near the minimum of 36 are meant for testing and make failures more frequent, not less. Whatever you choose, set it in one place only: two conflicting values are the cause of most surprises.
 
 ## Monitoring
 
-Watch `kestrel_webhook_delivery_timeout_current` on the operations dashboard. If it sits at the configured value for long periods, the setting is the bottleneck, and raising it is reasonable. If it never comes near, the value can safely stay where it is.
+The service exports the metric `ironclad_webhook_delivery_timeout_limit_hits_total`. A steady rise means the limit is doing its job; a sudden jump after a change means the new value is too tight. Alert on the rate, not on the total.
 
 ## Limits
 
-The lowest accepted value is 1. The highest accepted value is 93. A value outside that range is rejected and the previous value stays in force, with `E1220: webhook_delivery_timeout_per out of range` in the log.
+The lowest accepted value is 36. The highest accepted value is 1769. A value outside that range is rejected and the previous value stays in force, with `E1253: webhook_delivery_timeout out of range` in the log.
 
 ## Examples
 
-| Value (percent) | When to use it |
+| Value (megabytes) | When to use it |
 | --- | --- |
-| 1 | small installations, or testing |
-| 25 | the default; right for most installations |
-| 50 | busy installations with spare capacity |
-| 93 | the maximum; only with a reason written down |
+| 36 | small installations, or testing |
+| 435 | the default; right for most installations |
+| 870 | busy installations with spare capacity |
+| 1769 | the maximum; only with a reason written down |
 
 ## Interactions
 
-The webhook delivery timeout is often changed together with the export batch size (`export_batch_size_sec`, default 146 seconds in version 2). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
+The webhook delivery timeout is often changed together with the backup retention (`backup_retention`, default 809 characters in version 2). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
 
-The webhook delivery timeout is often changed together with the api rate limit (`api_rate_limit`, default 161 items in version 2). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
+The webhook delivery timeout is often changed together with the password expiry (`password_expiry_con`, default 92 connections in version 2). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
 
 ## Version history
 
-Introduced in version 2.0 as `webhook_delivery_timeout_per`. Unchanged through the 2.x releases apart from clearer error messages.
+Introduced in version 2.0 as `webhook_delivery_timeout`. Unchanged through the 2.x releases apart from clearer error messages.
 
 ## Related
 
-- Export batch size: see the Export batch size page for version 2.
-- API rate limit: see the API rate limit page for version 2.
+- Backup retention: see the Backup retention page for version 2.
+- Password expiry: see the Password expiry page for version 2.

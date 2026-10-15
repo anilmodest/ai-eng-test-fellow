@@ -1,33 +1,33 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 section: Operations
 ---
 
 # Operating the two-factor grace period
 
-In Kestrel Data Runner, the two-factor grace period is a single value measured in connections. It applies to the whole installation rather than to one customer account, which is why it lives in system configuration and not in account settings.
+Ironclad Endpoint Manager is a device-management product that enrols, updates and locks company devices. The two-factor grace period setting controls how the service behaves when that limit is reached, and it is one of the settings most often changed by administrators after go-live.
 
 ## How it works
 
-The two-factor grace period is enforced by the component that does the work, not by a central scheduler. Each worker reads the value it was given and applies it independently, which is why two workers can briefly disagree after a change. For most installations this never matters; where it does, the troubleshooting page for this setting explains how to confirm that every worker has picked up the new value.
+Every request carries the two-factor grace period that applied when it started. If the value changes while a request is in progress, that request keeps its original limit, and only new requests see the new one. This keeps behaviour predictable during a change, at the cost of a short period in which old and new limits are both in force.
 
 ## Choosing a value
 
-Start from the default of 122 connections and change it only with a reason you can write down. Raising the two-factor grace period trades resilience for capacity: more work is accepted, but a failure takes longer to notice. Lowering it does the opposite. Change it in steps of no more than a quarter, watch for a week, and record what you saw. Installations that jumped straight to the maximum of 466 are the most common source of tickets about this setting.
+There is no single right value. Small installations rarely need more than the default of 129 connections. Large ones usually settle between the default and twice the default. Values near the minimum of 3 are meant for testing and make failures more frequent, not less. Whatever you choose, set it in one place only: two conflicting values are the cause of most surprises.
 
 ## Monitoring
 
-Watch `kestrel_two_factor_grace_period_current` on the operations dashboard. If it sits at the configured value for long periods, the setting is the bottleneck, and raising it is reasonable. If it never comes near, the value can safely stay where it is.
+Watch `ironclad_two_factor_grace_period_current` on the operations dashboard. If it sits at the configured value for long periods, the setting is the bottleneck, and raising it is reasonable. If it never comes near, the value can safely stay where it is.
 
 ## Version differences in one table
 
 | | Version 2 | Version 3 |
 | --- | --- | --- |
-| Setting | `two_factor_grace_period` | `KESTREL_TWO_FACTOR_GRACE_PERIOD` |
-| Default | 68 connections | 122 connections |
-| Range | 1–404 | 8–466 |
-| Takes effect | restart | restart |
+| Setting | `two_factor_grace_period_con` | `IRONCLAD_TWO_FACTOR_GRACE_PERIOD` |
+| Default | 100 connections | 129 connections |
+| Range | 7–382 | 3–464 |
+| Takes effect | next job | immediately |
 
 ## A worked change
 
-An administrator lowered the two-factor grace period to the minimum while testing and forgot to restore it. Failures tripled overnight. The activity log named the setting on every failure, which is how support found it in minutes rather than days.
+A customer with 400 seats saw the limit hit every afternoon. They raised the two-factor grace period by a quarter, watched the limit-hit metric for a week, saw it fall by two thirds, and stopped there. They wrote the reason into their change log, which is what made the next upgrade painless.

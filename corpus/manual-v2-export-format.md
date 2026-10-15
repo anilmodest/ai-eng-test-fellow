@@ -1,10 +1,10 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 version: v2
 section: Data
 ---
 
-# Export format (Kestrel v2)
+# Export format (Ironclad v2)
 
 An export writes the result of a run to a file.
 

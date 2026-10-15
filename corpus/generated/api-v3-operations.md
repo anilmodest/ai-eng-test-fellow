@@ -1,5 +1,5 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 version: v3
 section: API reference
 ---
@@ -8,62 +8,38 @@ section: API reference
 
 Read or change a setting over HTTP. All calls need an administrator token. Base path `/api/v3/settings`.
 
-## Export batch size
+## Audit log retention
 
-`GET /api/v3/settings/KESTREL_EXPORT_BATCH_SIZE` returns `{"value": 57}` on a new installation. `PUT` with a value outside 7–571 returns 422 and the message `E1622: KESTREL_EXPORT_BATCH_SIZE out of range`.
-
-## API rate limit
-
-`GET /api/v3/settings/KESTREL_API_RATE_LIMIT` returns `{"value": 1542}` on a new installation. `PUT` with a value outside 152–7962 returns 422 and the message `E1585: KESTREL_API_RATE_LIMIT out of range`.
-
-## Webhook delivery timeout
-
-`GET /api/v3/settings/KESTREL_WEBHOOK_DELIVERY_TIMEOUT` returns `{"value": 3}` on a new installation. `PUT` with a value outside 2–94 returns 422 and the message `E1220: KESTREL_WEBHOOK_DELIVERY_TIMEOUT out of range`.
+`GET /api/v3/settings/IRONCLAD_AUDIT_LOG_RETENTION` returns `{"value": 1060}` on a new installation. `PUT` with a value outside 1–3336 returns 422 and the message `E1829: IRONCLAD_AUDIT_LOG_RETENTION out of range`.
 
 ## Webhook retry count
 
-`GET /api/v3/settings/KESTREL_WEBHOOK_RETRY_COUNT` returns `{"value": 18}` on a new installation. `PUT` with a value outside 2–86 returns 422 and the message `E1725: KESTREL_WEBHOOK_RETRY_COUNT out of range`.
+`GET /api/v3/settings/IRONCLAD_WEBHOOK_RETRY_COUNT` returns `{"value": 2365}` on a new installation. `PUT` with a value outside 87–9276 returns 422 and the message `E1811: IRONCLAD_WEBHOOK_RETRY_COUNT out of range`.
 
-## Failed login lockout
+## Notification digest interval
 
-`GET /api/v3/settings/KESTREL_FAILED_LOGIN_LOCKOUT` returns `{"value": 127}` on a new installation. `PUT` with a value outside 6–485 returns 422 and the message `E1618: KESTREL_FAILED_LOGIN_LOCKOUT out of range`.
-
-## Job queue depth
-
-`GET /api/v3/settings/KESTREL_JOB_QUEUE_DEPTH` returns `{"value": 79}` on a new installation. `PUT` with a value outside 2–239 returns 422 and the message `E1867: KESTREL_JOB_QUEUE_DEPTH out of range`.
-
-## Token lifetime
-
-`GET /api/v3/settings/KESTREL_TOKEN_LIFETIME` returns `{"value": 836}` on a new installation. `PUT` with a value outside 52–2768 returns 422 and the message `E1804: KESTREL_TOKEN_LIFETIME out of range`.
+`GET /api/v3/settings/IRONCLAD_NOTIFICATION_DIGEST_INTERVAL` returns `{"value": 40}` on a new installation. `PUT` with a value outside 7–512 returns 422 and the message `E1535: IRONCLAD_NOTIFICATION_DIGEST_INTERVAL out of range`.
 
 ## Refresh token lifetime
 
-`GET /api/v3/settings/KESTREL_REFRESH_TOKEN_LIFETIME` returns `{"value": 15}` on a new installation. `PUT` with a value outside 2–83 returns 422 and the message `E1709: KESTREL_REFRESH_TOKEN_LIFETIME out of range`.
+`GET /api/v3/settings/IRONCLAD_REFRESH_TOKEN_LIFETIME` returns `{"value": 102}` on a new installation. `PUT` with a value outside 3–566 returns 422 and the message `E1624: IRONCLAD_REFRESH_TOKEN_LIFETIME out of range`.
 
-## Bulk update limit
+## Idle disconnect
 
-`GET /api/v3/settings/KESTREL_BULK_UPDATE_LIMIT` returns `{"value": 9}` on a new installation. `PUT` with a value outside 4–128 returns 422 and the message `E1816: KESTREL_BULK_UPDATE_LIMIT out of range`.
+`GET /api/v3/settings/IRONCLAD_IDLE_DISCONNECT` returns `{"value": 21}` on a new installation. `PUT` with a value outside 1–98 returns 422 and the message `E1570: IRONCLAD_IDLE_DISCONNECT out of range`.
 
-## Attachment size limit
+## Archive threshold
 
-`GET /api/v3/settings/KESTREL_ATTACHMENT_SIZE_LIMIT` returns `{"value": 499}` on a new installation. `PUT` with a value outside 46–3628 returns 422 and the message `E1894: KESTREL_ATTACHMENT_SIZE_LIMIT out of range`.
+`GET /api/v3/settings/IRONCLAD_ARCHIVE_THRESHOLD` returns `{"value": 27}` on a new installation. `PUT` with a value outside 4–466 returns 422 and the message `E1797: IRONCLAD_ARCHIVE_THRESHOLD out of range`.
 
 ## Sync interval
 
-`GET /api/v3/settings/KESTREL_SYNC_INTERVAL` returns `{"value": 383}` on a new installation. `PUT` with a value outside 31–1577 returns 422 and the message `E1584: KESTREL_SYNC_INTERVAL out of range`.
+`GET /api/v3/settings/IRONCLAD_SYNC_INTERVAL` returns `{"value": 38}` on a new installation. `PUT` with a value outside 6–453 returns 422 and the message `E1114: IRONCLAD_SYNC_INTERVAL out of range`.
 
-## Pagination cursor lifetime
+## Lock wait timeout
 
-`GET /api/v3/settings/KESTREL_PAGINATION_CURSOR_LIFETIME` returns `{"value": 23}` on a new installation. `PUT` with a value outside 1–87 returns 422 and the message `E1872: KESTREL_PAGINATION_CURSOR_LIFETIME out of range`.
+`GET /api/v3/settings/IRONCLAD_LOCK_WAIT_TIMEOUT` returns `{"value": 33}` on a new installation. `PUT` with a value outside 1–210 returns 422 and the message `E1350: IRONCLAD_LOCK_WAIT_TIMEOUT out of range`.
 
-## Maintenance window length
+## Compliance grace period
 
-`GET /api/v3/settings/KESTREL_MAINTENANCE_WINDOW_LENGTH` returns `{"value": 87}` on a new installation. `PUT` with a value outside 1–482 returns 422 and the message `E1129: KESTREL_MAINTENANCE_WINDOW_LENGTH out of range`.
-
-## Temporary file lifetime
-
-`GET /api/v3/settings/KESTREL_TEMPORARY_FILE_LIFETIME` returns `{"value": 162}` on a new installation. `PUT` with a value outside 8–566 returns 422 and the message `E1489: KESTREL_TEMPORARY_FILE_LIFETIME out of range`.
-
-## Transform memory limit
-
-`GET /api/v3/settings/KESTREL_TRANSFORM_MEMORY_LIMIT` returns `{"value": 19}` on a new installation. `PUT` with a value outside 10–400 returns 422 and the message `E1915: KESTREL_TRANSFORM_MEMORY_LIMIT out of range`.
+`GET /api/v3/settings/IRONCLAD_COMPLIANCE_GRACE_PERIOD` returns `{"value": 7}` on a new installation. `PUT` with a value outside 2–96 returns 422 and the message `E1501: IRONCLAD_COMPLIANCE_GRACE_PERIOD out of range`.

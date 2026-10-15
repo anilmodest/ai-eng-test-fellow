@@ -1,19 +1,19 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 version: v2
-section: Security
+section: Configuration
 ---
 
-# Session timeout (Kestrel v2)
+# Session timeout (Ironclad v2)
 
-This page describes the session timeout setting in Kestrel Data Runner, a data runner that moves records between business systems. Most installations never change it; the ones that do usually change it after their first busy period, when the default turns out to be too tight or too loose.
+In Ironclad Endpoint Manager, the session timeout is a single value measured in minutes. It applies to the whole installation rather than to one customer account, which is why it lives in system configuration and not in account settings.
 
 ## Where the setting lives
 
-The setting is `session_timeout_cha`, in `kestrel.conf`, in the `[storage]` block. It takes a whole number of characters. The default is **925 characters**.
+The setting is `session_timeout_min`, in `ironclad.conf`, in the `[security]` block. It takes a whole number of minutes. The default is **42 minutes**.
 
 ```
-session_timeout_cha = 925
+session_timeout_min = 42
 ```
 
 ## How it works
@@ -22,40 +22,40 @@ Every request carries the session timeout that applied when it started. If the v
 
 ## When it takes effect
 
-The value is read at the start of each job. A job that is already running keeps the value it started with; the next job uses the new one. No restart is needed.
+The value is read when the service starts. Changing it has no effect on a running service; restart it with `ironcladctl restart` for the new value to be used.
 
 ## Choosing a value
 
-There is no single right value. Small installations rarely need more than the default of 925 characters. Large ones usually settle between the default and twice the default. Values near the minimum of 60 are meant for testing and make failures more frequent, not less. Whatever you choose, set it in one place only: two conflicting values are the cause of most surprises.
+There is no single right value. Small installations rarely need more than the default of 42 minutes. Large ones usually settle between the default and twice the default. Values near the minimum of 2 are meant for testing and make failures more frequent, not less. Whatever you choose, set it in one place only: two conflicting values are the cause of most surprises.
 
 ## Monitoring
 
-The service exports the metric `kestrel_session_timeout_limit_hits_total`. A steady rise means the limit is doing its job; a sudden jump after a change means the new value is too tight. Alert on the rate, not on the total.
+Watch `ironclad_session_timeout_current` on the operations dashboard. If it sits at the configured value for long periods, the setting is the bottleneck, and raising it is reasonable. If it never comes near, the value can safely stay where it is.
 
 ## Limits
 
-The lowest accepted value is 60. The highest accepted value is 3908. A value outside that range is rejected and the previous value stays in force, with `E1321: session_timeout_cha out of range` in the log.
+The lowest accepted value is 2. The highest accepted value is 188. A value outside that range is rejected and the previous value stays in force, with `E1851: session_timeout_min out of range` in the log.
 
 ## Examples
 
-| Value (characters) | When to use it |
+| Value (minutes) | When to use it |
 | --- | --- |
-| 60 | small installations, or testing |
-| 925 | the default; right for most installations |
-| 1850 | busy installations with spare capacity |
-| 3908 | the maximum; only with a reason written down |
+| 2 | small installations, or testing |
+| 42 | the default; right for most installations |
+| 84 | busy installations with spare capacity |
+| 188 | the maximum; only with a reason written down |
 
 ## Interactions
 
-The session timeout is often changed together with the password minimum length (`password_minimum_length_req`, default 1990 requests per minute in version 2). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
+The session timeout is often changed together with the export batch size (`export_batch_size`, default 1036 requests per minute in version 2). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
 
-The session timeout is often changed together with the cache expiry (`cache_expiry`, default 596 days in version 2). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
+The session timeout is often changed together with the search result limit (`search_result_limit`, default 27 percent in version 2). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
 
 ## Version history
 
-Introduced in version 2.0 as `session_timeout_cha`. Unchanged through the 2.x releases apart from clearer error messages.
+Introduced in version 2.0 as `session_timeout_min`. Unchanged through the 2.x releases apart from clearer error messages.
 
 ## Related
 
-- Password minimum length: see the Password minimum length page for version 2.
-- Cache expiry: see the Cache expiry page for version 2.
+- Export batch size: see the Export batch size page for version 2.
+- Search result limit: see the Search result limit page for version 2.

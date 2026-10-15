@@ -1,22 +1,23 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 version: v2
 section: Release notes
 ---
 
-# Kestrel 2.2 release notes
+# Ironclad 2.2 release notes
 
-Released 7 March 2023.
+Released 16 March 2023.
 
 ## Changes
 
-- Trace sampling rate: the error `E1262: trace_sampling_rate_min out of range` now names the accepted range (5 to 219 minutes).
-- Refresh token lifetime: the error `E1709: refresh_token_lifetime out of range` now names the accepted range (2 to 83 percent).
-- Webhook retry count: the error `E1725: webhook_retry_count out of range` now names the accepted range (1 to 97 percent).
+- Batch commit size: the error `E1704: batch_commit_size out of range` now names the accepted range (112 to 4676 requests per minute).
+- Report page size: the error `E1600: report_page_size out of range` now names the accepted range (2 to 89 percent).
+- Import file size limit: the error `E1436: import_file_size_limit out of range` now names the accepted range (9 to 1621 megabytes).
 
 ## Fixes
 
-- Fixed a case where connection pool size was not applied to the first job after a failover.
-- Fixed a case where notification digest interval was not applied to the first job after a failover.
-- Fixed a case where concurrent session limit was not applied to the first job after a failover.
-- Fixed a case where password expiry was not applied to the first job after a restart.
+- Fixed a case where audit log retention was not applied to the first job after a restart.
+- Fixed a case where job queue depth was not applied to the first job after a restart.
+- Fixed a case where report page size was not applied to the first job after a configuration reload.
+- Fixed a case where webhook delivery timeout was not applied to the first job after a failover.
+- Fixed a case where failed login lockout was not applied to the first job after a restart.

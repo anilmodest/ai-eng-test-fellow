@@ -1,55 +1,55 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 version: v2
-section: Security
+section: Configuration
 ---
 
-# Batch commit size (Kestrel v2)
+# Batch commit size (Ironclad v2)
 
-In Kestrel Data Runner, the batch commit size is a single value measured in requests per minute. It applies to the whole installation rather than to one customer account, which is why it lives in system configuration and not in account settings.
+This page describes the batch commit size setting in Ironclad Endpoint Manager, a device-management product that enrols, updates and locks company devices. Most installations never change it; the ones that do usually change it after their first busy period, when the default turns out to be too tight or too loose.
 
 ## Where the setting lives
 
-The setting is `batch_commit_size`, in `kestrel.conf`, in the `[storage]` block. It takes a whole number of requests per minute. The default is **1045 requests per minute**.
+The setting is `batch_commit_size`, in `ironclad.conf`, in the `[network]` block. It takes a whole number of requests per minute. The default is **669 requests per minute**.
 
 ```
-batch_commit_size = 1045
+batch_commit_size = 669
 ```
 
 ## How it works
 
-Every request carries the batch commit size that applied when it started. If the value changes while a request is in progress, that request keeps its original limit, and only new requests see the new one. This keeps behaviour predictable during a change, at the cost of a short period in which old and new limits are both in force.
+The batch commit size is enforced by the component that does the work, not by a central scheduler. Each worker reads the value it was given and applies it independently, which is why two workers can briefly disagree after a change. For most installations this never matters; where it does, the troubleshooting page for this setting explains how to confirm that every worker has picked up the new value.
 
 ## When it takes effect
 
-The value is read once, at startup. A running service keeps the old value until it is restarted with `kestrelctl restart`.
+The value is read once, at startup. A running service keeps the old value until it is restarted with `ironcladctl restart`.
 
 ## Choosing a value
 
-Start from the default of 1045 requests per minute and change it only with a reason you can write down. Raising the batch commit size trades resilience for capacity: more work is accepted, but a failure takes longer to notice. Lowering it does the opposite. Change it in steps of no more than a quarter, watch for a week, and record what you saw. Installations that jumped straight to the maximum of 5436 are the most common source of tickets about this setting.
+Start from the default of 669 requests per minute and change it only with a reason you can write down. Raising the batch commit size trades resilience for capacity: more work is accepted, but a failure takes longer to notice. Lowering it does the opposite. Change it in steps of no more than a quarter, watch for a week, and record what you saw. Installations that jumped straight to the maximum of 4676 are the most common source of tickets about this setting.
 
 ## Monitoring
 
-Watch `kestrel_batch_commit_size_current` on the operations dashboard. If it sits at the configured value for long periods, the setting is the bottleneck, and raising it is reasonable. If it never comes near, the value can safely stay where it is.
+The service exports the metric `ironclad_batch_commit_size_limit_hits_total`. A steady rise means the limit is doing its job; a sudden jump after a change means the new value is too tight. Alert on the rate, not on the total.
 
 ## Limits
 
-The lowest accepted value is 31. The highest accepted value is 5436. A value outside that range is rejected and the previous value stays in force, with `E1520: batch_commit_size out of range` in the log.
+The lowest accepted value is 112. The highest accepted value is 4676. A value outside that range is rejected and the previous value stays in force, with `E1704: batch_commit_size out of range` in the log.
 
 ## Examples
 
 | Value (requests per minute) | When to use it |
 | --- | --- |
-| 31 | small installations, or testing |
-| 1045 | the default; right for most installations |
-| 2090 | busy installations with spare capacity |
-| 5436 | the maximum; only with a reason written down |
+| 112 | small installations, or testing |
+| 669 | the default; right for most installations |
+| 1338 | busy installations with spare capacity |
+| 4676 | the maximum; only with a reason written down |
 
 ## Interactions
 
-The batch commit size is often changed together with the session timeout (`session_timeout_cha`, default 925 characters in version 2). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
+The batch commit size is often changed together with the session timeout (`session_timeout_min`, default 42 minutes in version 2). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
 
-The batch commit size is often changed together with the password minimum length (`password_minimum_length_req`, default 1990 requests per minute in version 2). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
+The batch commit size is often changed together with the export batch size (`export_batch_size`, default 1036 requests per minute in version 2). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
 
 ## Version history
 
@@ -58,4 +58,4 @@ Introduced in version 2.0 as `batch_commit_size`. Unchanged through the 2.x rele
 ## Related
 
 - Session timeout: see the Session timeout page for version 2.
-- Password minimum length: see the Password minimum length page for version 2.
+- Export batch size: see the Export batch size page for version 2.

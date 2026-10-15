@@ -1,117 +1,75 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 version: v2
 section: Operations
 ---
 
-# Operations guide (Kestrel v2)
+# Operations guide (Ironclad v2)
 
-This guide covers every operations setting in version 2 of Kestrel Data Runner. Read it before changing more than one setting at once: several interact.
+This guide covers every operations setting in version 2 of Ironclad Endpoint Manager. Read it before changing more than one setting at once: several interact.
 
 | Setting | Name | Default | Range | Takes effect |
 | --- | --- | --- | --- | --- |
-| Export batch size | `export_batch_size_sec` | 146 seconds | 6–470 | restart |
-| API rate limit | `api_rate_limit` | 161 items | 98–7564 | next job |
-| Webhook delivery timeout | `webhook_delivery_timeout_per` | 25 percent | 1–93 | restart |
-| Webhook retry count | `webhook_retry_count` | 12 percent | 1–97 | restart |
-| Failed login lockout | `failed_login_lockout` | 57 connections | 3–419 | restart |
-| Job queue depth | `job_queue_depth` | 4 minutes | 1–213 | restart |
-| Token lifetime | `token_lifetime` | 788 days | 39–3464 | restart |
-| Refresh token lifetime | `refresh_token_lifetime` | 3 percent | 2–83 | next job |
-| Bulk update limit | `bulk_update_limit` | 42 hours | 4–164 | restart |
-| Attachment size limit | `attachment_size_limit` | 508 days | 23–3641 | restart |
-| Sync interval | `sync_interval` | 619 megabytes | 30–1861 | next job |
-| Pagination cursor lifetime | `pagination_cursor_lifetime` | 33 percent | 1–99 | restart |
-| Maintenance window length | `maintenance_window_length_con` | 104 connections | 6–393 | next job |
-| Temporary file lifetime | `temporary_file_lifetime_sec` | 134 seconds | 7–533 | next job |
-| Transform memory limit | `transform_memory_limit` | 7 connections | 6–394 | next job |
+| Audit log retention | `audit_log_retention` | 391 days | 29–3452 | restart |
+| Webhook retry count | `webhook_retry_count` | 1558 items | 52–9567 | restart |
+| Notification digest interval | `notification_digest_interval` | 87 seconds | 5–463 | restart |
+| Refresh token lifetime | `refresh_token_lifetime` | 69 seconds | 9–460 | restart |
+| Idle disconnect | `idle_disconnect` | 22 percent | 2–88 | restart |
+| Archive threshold | `archive_threshold` | 41 connections | 5–383 | next job |
+| Sync interval | `sync_interval` | 48 seconds | 8–539 | restart |
+| Lock wait timeout | `lock_wait_timeout` | 22 minutes | 3–211 | restart |
+| Compliance grace period | `compliance_grace_period_per` | 9 percent | 2–77 | restart |
 
-## Export batch size
+## Audit log retention
 
-This page describes the export batch size setting in Kestrel Data Runner, a data runner that moves records between business systems. Most installations never change it; the ones that do usually change it after their first busy period, when the default turns out to be too tight or too loose.
+This page describes the audit log retention setting in Ironclad Endpoint Manager, a device-management product that enrols, updates and locks company devices. Most installations never change it; the ones that do usually change it after their first busy period, when the default turns out to be too tight or too loose.
 
-The value is read when the service starts. Changing it has no effect on a running service; restart it with `kestrelctl restart` for the new value to be used.
-
-## API rate limit
-
-In Kestrel Data Runner, the api rate limit is a single value measured in items. It applies to the whole installation rather than to one customer account, which is why it lives in system configuration and not in account settings.
-
-The value is read at the start of each job. A job that is already running keeps the value it started with; the next job uses the new one. No restart is needed.
-
-## Webhook delivery timeout
-
-This page describes the webhook delivery timeout setting in Kestrel Data Runner, a data runner that moves records between business systems. Most installations never change it; the ones that do usually change it after their first busy period, when the default turns out to be too tight or too loose.
-
-The value is read once, at startup. A running service keeps the old value until it is restarted with `kestrelctl restart`.
+The value is read once, at startup. A running service keeps the old value until it is restarted with `ironcladctl restart`.
 
 ## Webhook retry count
 
-This page describes the webhook retry count setting in Kestrel Data Runner, a data runner that moves records between business systems. Most installations never change it; the ones that do usually change it after their first busy period, when the default turns out to be too tight or too loose.
+In Ironclad Endpoint Manager, the webhook retry count is a single value measured in items. It applies to the whole installation rather than to one customer account, which is why it lives in system configuration and not in account settings.
 
-The value is read when the service starts. Changing it has no effect on a running service; restart it with `kestrelctl restart` for the new value to be used.
+The value is read when the service starts. Changing it has no effect on a running service; restart it with `ironcladctl restart` for the new value to be used.
 
-## Failed login lockout
+## Notification digest interval
 
-This page describes the failed login lockout setting in Kestrel Data Runner, a data runner that moves records between business systems. Most installations never change it; the ones that do usually change it after their first busy period, when the default turns out to be too tight or too loose.
+Ironclad Endpoint Manager is a device-management product that enrols, updates and locks company devices. The notification digest interval setting controls how the service behaves when that limit is reached, and it is one of the settings most often changed by administrators after go-live.
 
-The value is read once, at startup. A running service keeps the old value until it is restarted with `kestrelctl restart`.
-
-## Job queue depth
-
-This page describes the job queue depth setting in Kestrel Data Runner, a data runner that moves records between business systems. Most installations never change it; the ones that do usually change it after their first busy period, when the default turns out to be too tight or too loose.
-
-The value is read once, at startup. A running service keeps the old value until it is restarted with `kestrelctl restart`.
-
-## Token lifetime
-
-Kestrel Data Runner is a data runner that moves records between business systems. The token lifetime setting controls how the service behaves when that limit is reached, and it is one of the settings most often changed by administrators after go-live.
-
-The value is read when the service starts. Changing it has no effect on a running service; restart it with `kestrelctl restart` for the new value to be used.
+The value is read when the service starts. Changing it has no effect on a running service; restart it with `ironcladctl restart` for the new value to be used.
 
 ## Refresh token lifetime
 
-This page describes the refresh token lifetime setting in Kestrel Data Runner, a data runner that moves records between business systems. Most installations never change it; the ones that do usually change it after their first busy period, when the default turns out to be too tight or too loose.
+In Ironclad Endpoint Manager, the refresh token lifetime is a single value measured in seconds. It applies to the whole installation rather than to one customer account, which is why it lives in system configuration and not in account settings.
 
-A change applies from the next job onwards. Jobs already running finish with the value they started with.
+The value is read once, at startup. A running service keeps the old value until it is restarted with `ironcladctl restart`.
 
-## Bulk update limit
+## Idle disconnect
 
-Kestrel Data Runner is a data runner that moves records between business systems. The bulk update limit setting controls how the service behaves when that limit is reached, and it is one of the settings most often changed by administrators after go-live.
+Ironclad Endpoint Manager is a device-management product that enrols, updates and locks company devices. The idle disconnect setting controls how the service behaves when that limit is reached, and it is one of the settings most often changed by administrators after go-live.
 
-The value is read once, at startup. A running service keeps the old value until it is restarted with `kestrelctl restart`.
+The value is read once, at startup. A running service keeps the old value until it is restarted with `ironcladctl restart`.
 
-## Attachment size limit
+## Archive threshold
 
-This page describes the attachment size limit setting in Kestrel Data Runner, a data runner that moves records between business systems. Most installations never change it; the ones that do usually change it after their first busy period, when the default turns out to be too tight or too loose.
+This page describes the archive threshold setting in Ironclad Endpoint Manager, a device-management product that enrols, updates and locks company devices. Most installations never change it; the ones that do usually change it after their first busy period, when the default turns out to be too tight or too loose.
 
-The value is read once, at startup. A running service keeps the old value until it is restarted with `kestrelctl restart`.
+The value is read at the start of each job. A job that is already running keeps the value it started with; the next job uses the new one. No restart is needed.
 
 ## Sync interval
 
-This page describes the sync interval setting in Kestrel Data Runner, a data runner that moves records between business systems. Most installations never change it; the ones that do usually change it after their first busy period, when the default turns out to be too tight or too loose.
+Ironclad Endpoint Manager is a device-management product that enrols, updates and locks company devices. The sync interval setting controls how the service behaves when that limit is reached, and it is one of the settings most often changed by administrators after go-live.
 
-The value is read at the start of each job. A job that is already running keeps the value it started with; the next job uses the new one. No restart is needed.
+The value is read when the service starts. Changing it has no effect on a running service; restart it with `ironcladctl restart` for the new value to be used.
 
-## Pagination cursor lifetime
+## Lock wait timeout
 
-Kestrel Data Runner is a data runner that moves records between business systems. The pagination cursor lifetime setting controls how the service behaves when that limit is reached, and it is one of the settings most often changed by administrators after go-live.
+In Ironclad Endpoint Manager, the lock wait timeout is a single value measured in minutes. It applies to the whole installation rather than to one customer account, which is why it lives in system configuration and not in account settings.
 
-The value is read when the service starts. Changing it has no effect on a running service; restart it with `kestrelctl restart` for the new value to be used.
+The value is read when the service starts. Changing it has no effect on a running service; restart it with `ironcladctl restart` for the new value to be used.
 
-## Maintenance window length
+## Compliance grace period
 
-This page describes the maintenance window length setting in Kestrel Data Runner, a data runner that moves records between business systems. Most installations never change it; the ones that do usually change it after their first busy period, when the default turns out to be too tight or too loose.
+Ironclad Endpoint Manager is a device-management product that enrols, updates and locks company devices. The compliance grace period setting controls how the service behaves when that limit is reached, and it is one of the settings most often changed by administrators after go-live.
 
-A change applies from the next job onwards. Jobs already running finish with the value they started with.
-
-## Temporary file lifetime
-
-This page describes the temporary file lifetime setting in Kestrel Data Runner, a data runner that moves records between business systems. Most installations never change it; the ones that do usually change it after their first busy period, when the default turns out to be too tight or too loose.
-
-The value is read at the start of each job. A job that is already running keeps the value it started with; the next job uses the new one. No restart is needed.
-
-## Transform memory limit
-
-Kestrel Data Runner is a data runner that moves records between business systems. The transform memory limit setting controls how the service behaves when that limit is reached, and it is one of the settings most often changed by administrators after go-live.
-
-A change applies from the next job onwards. Jobs already running finish with the value they started with.
+The value is read when the service starts. Changing it has no effect on a running service; restart it with `ironcladctl restart` for the new value to be used.

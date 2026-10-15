@@ -1,5 +1,5 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 version: v3
 section: API reference
 ---
@@ -8,22 +8,22 @@ section: API reference
 
 Read or change a setting over HTTP. All calls need an administrator token. Base path `/api/v3/settings`.
 
-## Request timeout
+## Backup schedule interval
 
-`GET /api/v3/settings/KESTREL_REQUEST_TIMEOUT` returns `{"value": 7}` on a new installation. `PUT` with a value outside 2–139 returns 422 and the message `E1164: KESTREL_REQUEST_TIMEOUT out of range`.
+`GET /api/v3/settings/IRONCLAD_BACKUP_SCHEDULE_INTERVAL` returns `{"value": 562}` on a new installation. `PUT` with a value outside 2–1738 returns 422 and the message `E1976: IRONCLAD_BACKUP_SCHEDULE_INTERVAL out of range`.
 
-## Audit log retention
+## Trace sampling rate
 
-`GET /api/v3/settings/KESTREL_AUDIT_LOG_RETENTION` returns `{"value": 129}` on a new installation. `PUT` with a value outside 2–458 returns 422 and the message `E1710: KESTREL_AUDIT_LOG_RETENTION out of range`.
+`GET /api/v3/settings/IRONCLAD_TRACE_SAMPLING_RATE` returns `{"value": 87}` on a new installation. `PUT` with a value outside 1–496 returns 422 and the message `E1533: IRONCLAD_TRACE_SAMPLING_RATE out of range`.
 
-## Metrics flush interval
+## Bulk update limit
 
-`GET /api/v3/settings/KESTREL_METRICS_FLUSH_INTERVAL` returns `{"value": 2}` on a new installation. `PUT` with a value outside 1–156 returns 422 and the message `E1779: KESTREL_METRICS_FLUSH_INTERVAL out of range`.
+`GET /api/v3/settings/IRONCLAD_BULK_UPDATE_LIMIT` returns `{"value": 817}` on a new installation. `PUT` with a value outside 34–8156 returns 422 and the message `E1846: IRONCLAD_BULK_UPDATE_LIMIT out of range`.
 
-## Source poll interval
+## Pagination cursor lifetime
 
-`GET /api/v3/settings/KESTREL_SOURCE_POLL_INTERVAL` returns `{"value": 29}` on a new installation. `PUT` with a value outside 5–193 returns 422 and the message `E1260: KESTREL_SOURCE_POLL_INTERVAL out of range`.
+`GET /api/v3/settings/IRONCLAD_PAGINATION_CURSOR_LIFETIME` returns `{"value": 10}` on a new installation. `PUT` with a value outside 1–93 returns 422 and the message `E1627: IRONCLAD_PAGINATION_CURSOR_LIFETIME out of range`.
 
-## Dead-letter retention
+## Temporary file lifetime
 
-`GET /api/v3/settings/KESTREL_DEAD_LETTER_RETENTION` returns `{"value": 149}` on a new installation. `PUT` with a value outside 12–580 returns 422 and the message `E1260: KESTREL_DEAD_LETTER_RETENTION out of range`.
+`GET /api/v3/settings/IRONCLAD_TEMPORARY_FILE_LIFETIME` returns `{"value": 2623}` on a new installation. `PUT` with a value outside 111–8772 returns 422 and the message `E1196: IRONCLAD_TEMPORARY_FILE_LIFETIME out of range`.

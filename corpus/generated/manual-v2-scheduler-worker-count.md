@@ -1,55 +1,55 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 version: v2
-section: Integrations
+section: Security
 ---
 
-# Scheduler worker count (Kestrel v2)
+# Scheduler worker count (Ironclad v2)
 
-Kestrel Data Runner is a data runner that moves records between business systems. The scheduler worker count setting controls how the service behaves when that limit is reached, and it is one of the settings most often changed by administrators after go-live.
+This page describes the scheduler worker count setting in Ironclad Endpoint Manager, a device-management product that enrols, updates and locks company devices. Most installations never change it; the ones that do usually change it after their first busy period, when the default turns out to be too tight or too loose.
 
 ## Where the setting lives
 
-The setting is `scheduler_worker_count`, in `kestrel.conf`, in the `[network]` block. It takes a whole number of minutes. The default is **18 minutes**.
+The setting is `scheduler_worker_count`, in `ironclad.conf`, in the `[source]` block. It takes a whole number of megabytes. The default is **510 megabytes**.
 
 ```
-scheduler_worker_count = 18
+scheduler_worker_count = 510
 ```
 
 ## How it works
 
-Internally, the service checks the scheduler worker count every time the limit could apply, not on a timer. When the limit is reached the service finishes the step it is on, records an event in the activity log, and only then applies the limit. A value of 18 minutes therefore means 'at least 18', never 'exactly', and on a heavily loaded installation the difference can be noticeable. The activity log entry names the setting, so an administrator can always tell which limit was hit.
+Every request carries the scheduler worker count that applied when it started. If the value changes while a request is in progress, that request keeps its original limit, and only new requests see the new one. This keeps behaviour predictable during a change, at the cost of a short period in which old and new limits are both in force.
 
 ## When it takes effect
 
-The value is read when the service starts. Changing it has no effect on a running service; restart it with `kestrelctl restart` for the new value to be used.
+A change applies from the next job onwards. Jobs already running finish with the value they started with.
 
 ## Choosing a value
 
-There is no single right value. Small installations rarely need more than the default of 18 minutes. Large ones usually settle between the default and twice the default. Values near the minimum of 1 are meant for testing and make failures more frequent, not less. Whatever you choose, set it in one place only: two conflicting values are the cause of most surprises.
+Start from the default of 510 megabytes and change it only with a reason you can write down. Raising the scheduler worker count trades resilience for capacity: more work is accepted, but a failure takes longer to notice. Lowering it does the opposite. Change it in steps of no more than a quarter, watch for a week, and record what you saw. Installations that jumped straight to the maximum of 1742 are the most common source of tickets about this setting.
 
 ## Monitoring
 
-Watch `kestrel_scheduler_worker_count_current` on the operations dashboard. If it sits at the configured value for long periods, the setting is the bottleneck, and raising it is reasonable. If it never comes near, the value can safely stay where it is.
+Watch `ironclad_scheduler_worker_count_current` on the operations dashboard. If it sits at the configured value for long periods, the setting is the bottleneck, and raising it is reasonable. If it never comes near, the value can safely stay where it is.
 
 ## Limits
 
-The lowest accepted value is 1. The highest accepted value is 209. A value outside that range is rejected and the previous value stays in force, with `E1929: scheduler_worker_count out of range` in the log.
+The lowest accepted value is 33. The highest accepted value is 1742. A value outside that range is rejected and the previous value stays in force, with `E1613: scheduler_worker_count out of range` in the log.
 
 ## Examples
 
-| Value (minutes) | When to use it |
+| Value (megabytes) | When to use it |
 | --- | --- |
-| 1 | small installations, or testing |
-| 18 | the default; right for most installations |
-| 36 | busy installations with spare capacity |
-| 209 | the maximum; only with a reason written down |
+| 33 | small installations, or testing |
+| 510 | the default; right for most installations |
+| 1020 | busy installations with spare capacity |
+| 1742 | the maximum; only with a reason written down |
 
 ## Interactions
 
-The scheduler worker count is often changed together with the connection pool size (`connection_pool_size_min`, default 55 minutes in version 2). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
+The scheduler worker count is often changed together with the webhook delivery timeout (`webhook_delivery_timeout`, default 435 megabytes in version 2). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
 
-The scheduler worker count is often changed together with the backup retention (`backup_retention`, default 496 requests per minute in version 2). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
+The scheduler worker count is often changed together with the backup retention (`backup_retention`, default 809 characters in version 2). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
 
 ## Version history
 
@@ -57,5 +57,5 @@ Introduced in version 2.0 as `scheduler_worker_count`. Unchanged through the 2.x
 
 ## Related
 
-- Connection pool size: see the Connection pool size page for version 2.
+- Webhook delivery timeout: see the Webhook delivery timeout page for version 2.
 - Backup retention: see the Backup retention page for version 2.

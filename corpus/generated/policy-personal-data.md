@@ -1,5 +1,5 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 section: Policy
 ---
 
@@ -7,4 +7,4 @@ section: Policy
 
 Tickets often contain names, email addresses and phone numbers. Never copy them into another customer's ticket, and never send them to a third-party service that has not been approved for personal data.
 
-This policy applies to every customer of Kestrel Data Runner, on every plan, unless their contract says otherwise. Where a contract and this page disagree, the contract wins.
+This policy applies to every customer of Ironclad Endpoint Manager, on every plan, unless their contract says otherwise. Where a contract and this page disagree, the contract wins.
