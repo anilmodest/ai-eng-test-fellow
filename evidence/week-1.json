@@ -1,0 +1,643 @@
+{
+  "week": 1,
+  "commit": "6d25bbe8f3d17b29d97d4e6466f9e71aaf111309",
+  "dirty": true,
+  "provider": "fake_a",
+  "model": "fake-1",
+  "at": "2026-10-15T16:52:02+00:00",
+  "route": "start",
+  "variant": "v-e736",
+  "metrics": {
+    "schema_drill": {
+      "provider": "fake_a+fake_b",
+      "model": "fake-1",
+      "plain": {
+        "n": 14,
+        "ok": 14,
+        "not_json": 0,
+        "breaks_schema": 0,
+        "provider_error": 0,
+        "ok_rate": 1.0,
+        "repaired": 0,
+        "tokens": 4618
+      },
+      "enforced": {
+        "n": 14,
+        "ok": 14,
+        "not_json": 0,
+        "breaks_schema": 0,
+        "provider_error": 0,
+        "ok_rate": 1.0,
+        "repaired": 0,
+        "tokens": 6633
+      },
+      "seconds": 0.0
+    },
+    "tool_drill": {
+      "provider": "fake_a+fake_b",
+      "model": "fake-1",
+      "before": {
+        "n": 20,
+        "correct_rate": 0.6,
+        "right_tool_rate": 0.6,
+        "valid_args_rate": 0.65,
+        "invented_tool_rate": 0.0,
+        "errors": 0,
+        "cost_usd": 0.004781,
+        "seconds": 0.0,
+        "calls": [
+          {
+            "request": "Which version of the product is customer C-1004 running?",
+            "expected": "get_customer",
+            "tool": "get_customer",
+            "args": {
+              "customer_id": "C-1004"
+            },
+            "right_tool": true,
+            "valid_args": true,
+            "right_value": true,
+            "invented_tool": false,
+            "correct": true
+          },
+          {
+            "request": "What plan is C-1007 on?",
+            "expected": "get_customer",
+            "tool": "get_customer",
+            "args": {
+              "customer_id": "C-1007"
+            },
+            "right_tool": true,
+            "valid_args": true,
+            "right_value": true,
+            "invented_tool": false,
+            "correct": true
+          },
+          {
+            "request": "Is Larkspur Hotels Freight (C-1002) on version 2 or 3?",
+            "expected": "get_customer",
+            "tool": "get_customer",
+            "args": {
+              "customer_id": "C-1002"
+            },
+            "right_tool": true,
+            "valid_args": true,
+            "right_value": true,
+            "invented_tool": false,
+            "correct": true
+          },
+          {
+            "request": "Before I answer C-1005, I need to know which release they have.",
+            "expected": "get_customer",
+            "tool": "get_customer",
+            "args": {
+              "customer_id": "C-1005"
+            },
+            "right_tool": true,
+            "valid_args": true,
+            "right_value": true,
+            "invented_tool": false,
+            "correct": true
+          },
+          {
+            "request": "Which account does customer C-1009 belong to?",
+            "expected": "get_customer",
+            "tool": "get_customer",
+            "args": {
+              "customer_id": "C-1009"
+            },
+            "right_tool": true,
+            "valid_args": true,
+            "right_value": true,
+            "invented_tool": false,
+            "correct": true
+          },
+          {
+            "request": "c-1003 asked about timeouts; what are they on?",
+            "expected": "get_customer",
+            "tool": "get_customer",
+            "args": {
+              "customer_id": "c-1003"
+            },
+            "right_tool": true,
+            "valid_args": true,
+            "right_value": true,
+            "invented_tool": false,
+            "correct": true
+          },
+          {
+            "request": "Look up the subscription tier for C-1010.",
+            "expected": "get_customer",
+            "tool": "get_customer",
+            "args": {
+              "customer_id": "C-1010"
+            },
+            "right_tool": true,
+            "valid_args": true,
+            "right_value": true,
+            "invented_tool": false,
+            "correct": true
+          },
+          {
+            "request": "Does C-1006 have the enterprise plan?",
+            "expected": "get_customer",
+            "tool": "get_customer",
+            "args": {
+              "customer_id": "C-1006"
+            },
+            "right_tool": true,
+            "valid_args": true,
+            "right_value": true,
+            "invented_tool": false,
+            "correct": true
+          },
+          {
+            "request": "Find out what Ironclad release customer C-1001 uses so I search the right manual.",
+            "expected": "get_customer",
+            "tool": "get_customer",
+            "args": {
+              "customer_id": "C-1001"
+            },
+            "right_tool": true,
+            "valid_args": true,
+            "right_value": true,
+            "invented_tool": false,
+            "correct": true
+          },
+          {
+            "request": "Customer C-1008 wants to know if a feature applies to them. What version do they have?",
+            "expected": "get_customer",
+            "tool": "get_customer",
+            "args": {
+              "customer_id": "C-1008"
+            },
+            "right_tool": true,
+            "valid_args": true,
+            "right_value": true,
+            "invented_tool": false,
+            "correct": true
+          },
+          {
+            "request": "What is the status of ticket T-2010?",
+            "expected": "get_ticket",
+            "tool": "get_ticket",
+            "args": {
+              "ticket_id": "T-2010"
+            },
+            "right_tool": true,
+            "valid_args": true,
+            "right_value": true,
+            "invented_tool": false,
+            "correct": true
+          },
+          {
+            "request": "Summarise T-2033 for me.",
+            "expected": "get_ticket",
+            "tool": "get_customer",
+            "args": {
+              "customer_id": "T-2033"
+            },
+            "right_tool": false,
+            "valid_args": false,
+            "right_value": true,
+            "invented_tool": false,
+            "correct": false
+          },
+          {
+            "request": "How urgent is T-2047?",
+            "expected": "get_ticket",
+            "tool": "get_customer",
+            "args": {
+              "customer_id": "T-2047"
+            },
+            "right_tool": false,
+            "valid_args": false,
+            "right_value": true,
+            "invented_tool": false,
+            "correct": false
+          },
+          {
+            "request": "What did the customer actually write in T-2021?",
+            "expected": "get_ticket",
+            "tool": "get_customer",
+            "args": {
+              "customer_id": "T-2021"
+            },
+            "right_tool": false,
+            "valid_args": false,
+            "right_value": true,
+            "invented_tool": false,
+            "correct": false
+          },
+          {
+            "request": "Is ticket T-2005 still open?",
+            "expected": "get_ticket",
+            "tool": "get_ticket",
+            "args": {
+              "ticket_id": "T-2005"
+            },
+            "right_tool": true,
+            "valid_args": true,
+            "right_value": true,
+            "invented_tool": false,
+            "correct": true
+          },
+          {
+            "request": "Which category was T-2060 filed under?",
+            "expected": "get_ticket",
+            "tool": "get_customer",
+            "args": {
+              "customer_id": "T-2060"
+            },
+            "right_tool": false,
+            "valid_args": false,
+            "right_value": true,
+            "invented_tool": false,
+            "correct": false
+          },
+          {
+            "request": "Customer C-1003 says their ticket T-2014 was raised as urgent. Was it?",
+            "expected": "get_ticket",
+            "tool": "get_customer",
+            "args": {
+              "customer_id": "C-1003"
+            },
+            "right_tool": false,
+            "valid_args": true,
+            "right_value": false,
+            "invented_tool": false,
+            "correct": false
+          },
+          {
+            "request": "Pull up the case T-2038 so I can reply.",
+            "expected": "get_ticket",
+            "tool": "get_customer",
+            "args": {
+              "customer_id": "T-2038"
+            },
+            "right_tool": false,
+            "valid_args": false,
+            "right_value": true,
+            "invented_tool": false,
+            "correct": false
+          },
+          {
+            "request": "When was T-2029 opened?",
+            "expected": "get_ticket",
+            "tool": "get_customer",
+            "args": {
+              "customer_id": "T-2029"
+            },
+            "right_tool": false,
+            "valid_args": false,
+            "right_value": true,
+            "invented_tool": false,
+            "correct": false
+          },
+          {
+            "request": "The issue t-2051: which product version is it about?",
+            "expected": "get_ticket",
+            "tool": "get_customer",
+            "args": {
+              "customer_id": "t-2051"
+            },
+            "right_tool": false,
+            "valid_args": false,
+            "right_value": true,
+            "invented_tool": false,
+            "correct": false
+          }
+        ]
+      },
+      "after": {
+        "n": 20,
+        "correct_rate": 1.0,
+        "right_tool_rate": 1.0,
+        "valid_args_rate": 1.0,
+        "invented_tool_rate": 0.0,
+        "errors": 0,
+        "cost_usd": 0.010105,
+        "seconds": 0.0,
+        "calls": [
+          {
+            "request": "Which version of the product is customer C-1004 running?",
+            "expected": "get_customer",
+            "tool": "get_customer",
+            "args": {
+              "customer_id": "C-1004"
+            },
+            "right_tool": true,
+            "valid_args": true,
+            "right_value": true,
+            "invented_tool": false,
+            "correct": true
+          },
+          {
+            "request": "What plan is C-1007 on?",
+            "expected": "get_customer",
+            "tool": "get_customer",
+            "args": {
+              "customer_id": "C-1007"
+            },
+            "right_tool": true,
+            "valid_args": true,
+            "right_value": true,
+            "invented_tool": false,
+            "correct": true
+          },
+          {
+            "request": "Is Larkspur Hotels Freight (C-1002) on version 2 or 3?",
+            "expected": "get_customer",
+            "tool": "get_customer",
+            "args": {
+              "customer_id": "C-1002"
+            },
+            "right_tool": true,
+            "valid_args": true,
+            "right_value": true,
+            "invented_tool": false,
+            "correct": true
+          },
+          {
+            "request": "Before I answer C-1005, I need to know which release they have.",
+            "expected": "get_customer",
+            "tool": "get_customer",
+            "args": {
+              "customer_id": "C-1005"
+            },
+            "right_tool": true,
+            "valid_args": true,
+            "right_value": true,
+            "invented_tool": false,
+            "correct": true
+          },
+          {
+            "request": "Which account does customer C-1009 belong to?",
+            "expected": "get_customer",
+            "tool": "get_customer",
+            "args": {
+              "customer_id": "C-1009"
+            },
+            "right_tool": true,
+            "valid_args": true,
+            "right_value": true,
+            "invented_tool": false,
+            "correct": true
+          },
+          {
+            "request": "c-1003 asked about timeouts; what are they on?",
+            "expected": "get_customer",
+            "tool": "get_customer",
+            "args": {
+              "customer_id": "c-1003"
+            },
+            "right_tool": true,
+            "valid_args": true,
+            "right_value": true,
+            "invented_tool": false,
+            "correct": true
+          },
+          {
+            "request": "Look up the subscription tier for C-1010.",
+            "expected": "get_customer",
+            "tool": "get_customer",
+            "args": {
+              "customer_id": "C-1010"
+            },
+            "right_tool": true,
+            "valid_args": true,
+            "right_value": true,
+            "invented_tool": false,
+            "correct": true
+          },
+          {
+            "request": "Does C-1006 have the enterprise plan?",
+            "expected": "get_customer",
+            "tool": "get_customer",
+            "args": {
+              "customer_id": "C-1006"
+            },
+            "right_tool": true,
+            "valid_args": true,
+            "right_value": true,
+            "invented_tool": false,
+            "correct": true
+          },
+          {
+            "request": "Find out what Ironclad release customer C-1001 uses so I search the right manual.",
+            "expected": "get_customer",
+            "tool": "get_customer",
+            "args": {
+              "customer_id": "C-1001"
+            },
+            "right_tool": true,
+            "valid_args": true,
+            "right_value": true,
+            "invented_tool": false,
+            "correct": true
+          },
+          {
+            "request": "Customer C-1008 wants to know if a feature applies to them. What version do they have?",
+            "expected": "get_customer",
+            "tool": "get_customer",
+            "args": {
+              "customer_id": "C-1008"
+            },
+            "right_tool": true,
+            "valid_args": true,
+            "right_value": true,
+            "invented_tool": false,
+            "correct": true
+          },
+          {
+            "request": "What is the status of ticket T-2010?",
+            "expected": "get_ticket",
+            "tool": "get_ticket",
+            "args": {
+              "ticket_id": "T-2010"
+            },
+            "right_tool": true,
+            "valid_args": true,
+            "right_value": true,
+            "invented_tool": false,
+            "correct": true
+          },
+          {
+            "request": "Summarise T-2033 for me.",
+            "expected": "get_ticket",
+            "tool": "get_ticket",
+            "args": {
+              "ticket_id": "T-2033"
+            },
+            "right_tool": true,
+            "valid_args": true,
+            "right_value": true,
+            "invented_tool": false,
+            "correct": true
+          },
+          {
+            "request": "How urgent is T-2047?",
+            "expected": "get_ticket",
+            "tool": "get_ticket",
+            "args": {
+              "ticket_id": "T-2047"
+            },
+            "right_tool": true,
+            "valid_args": true,
+            "right_value": true,
+            "invented_tool": false,
+            "correct": true
+          },
+          {
+            "request": "What did the customer actually write in T-2021?",
+            "expected": "get_ticket",
+            "tool": "get_ticket",
+            "args": {
+              "ticket_id": "T-2021"
+            },
+            "right_tool": true,
+            "valid_args": true,
+            "right_value": true,
+            "invented_tool": false,
+            "correct": true
+          },
+          {
+            "request": "Is ticket T-2005 still open?",
+            "expected": "get_ticket",
+            "tool": "get_ticket",
+            "args": {
+              "ticket_id": "T-2005"
+            },
+            "right_tool": true,
+            "valid_args": true,
+            "right_value": true,
+            "invented_tool": false,
+            "correct": true
+          },
+          {
+            "request": "Which category was T-2060 filed under?",
+            "expected": "get_ticket",
+            "tool": "get_ticket",
+            "args": {
+              "ticket_id": "T-2060"
+            },
+            "right_tool": true,
+            "valid_args": true,
+            "right_value": true,
+            "invented_tool": false,
+            "correct": true
+          },
+          {
+            "request": "Customer C-1003 says their ticket T-2014 was raised as urgent. Was it?",
+            "expected": "get_ticket",
+            "tool": "get_ticket",
+            "args": {
+              "ticket_id": "T-2014"
+            },
+            "right_tool": true,
+            "valid_args": true,
+            "right_value": true,
+            "invented_tool": false,
+            "correct": true
+          },
+          {
+            "request": "Pull up the case T-2038 so I can reply.",
+            "expected": "get_ticket",
+            "tool": "get_ticket",
+            "args": {
+              "ticket_id": "T-2038"
+            },
+            "right_tool": true,
+            "valid_args": true,
+            "right_value": true,
+            "invented_tool": false,
+            "correct": true
+          },
+          {
+            "request": "When was T-2029 opened?",
+            "expected": "get_ticket",
+            "tool": "get_ticket",
+            "args": {
+              "ticket_id": "T-2029"
+            },
+            "right_tool": true,
+            "valid_args": true,
+            "right_value": true,
+            "invented_tool": false,
+            "correct": true
+          },
+          {
+            "request": "The issue t-2051: which product version is it about?",
+            "expected": "get_ticket",
+            "tool": "get_ticket",
+            "args": {
+              "ticket_id": "t-2051"
+            },
+            "right_tool": true,
+            "valid_args": true,
+            "right_value": true,
+            "invented_tool": false,
+            "correct": true
+          }
+        ]
+      },
+      "delta_correct_rate": 0.4
+    },
+    "failure_drill": {
+      "policy": {
+        "attempts": 3,
+        "timeout_s": 20.0,
+        "base_delay_s": 0.5
+      },
+      "providers": {
+        "fake_a": {
+          "model": "fake-1",
+          "calls": 8,
+          "ok": 8,
+          "ok_rate": 1.0,
+          "attempts": 8,
+          "retries": 0,
+          "outcomes": {
+            "ok": 8
+          },
+          "attempt_statuses": {
+            "ok": 8
+          },
+          "p50_ms": 0,
+          "p95_ms": 0,
+          "cost_usd": 0.00376,
+          "cost_per_call_usd": 0.00047
+        },
+        "fake_b": {
+          "model": "fake-1",
+          "calls": 8,
+          "ok": 8,
+          "ok_rate": 1.0,
+          "attempts": 8,
+          "retries": 0,
+          "outcomes": {
+            "ok": 8
+          },
+          "attempt_statuses": {
+            "ok": 8
+          },
+          "p50_ms": 0,
+          "p95_ms": 0,
+          "cost_usd": 0.00376,
+          "cost_per_call_usd": 0.00047
+        }
+      },
+      "probes": {
+        "timeout": {
+          "outcome": "ok",
+          "attempts": 1,
+          "ms": 0
+        },
+        "bad_request": {
+          "outcome": "ok",
+          "attempts": 1,
+          "ms": 0
+        }
+      }
+    }
+  }
+}
