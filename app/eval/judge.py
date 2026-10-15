@@ -24,6 +24,11 @@ from typing import Any
 
 from pydantic import BaseModel, Field, model_validator
 
+from app.llm.client import Message
+from app.llm.registry import get_model_client
+from app.llm.structured import complete_structured
+from app.settings import get_settings
+
 PROMPT_VERSION = "judge_v1"
 PROMPT_PATH = Path(__file__).parent.parent / "llm" / "prompts" / f"{PROMPT_VERSION}.md"
 
@@ -49,9 +54,20 @@ class JudgeVerdict(BaseModel):
 
 
 async def judge(question: str, passages: list[str], answer: str) -> JudgeVerdict:
-    # TODO Week 3: read the prompt from PROMPT_PATH; one complete_structured call (app/llm/
-    #   structured.py) with the model client and the retry settings, schema JudgeVerdict.
-    raise NotImplementedError("judge: build me (weeks/3/README.md)")
+    """One structured call: the question, the numbered passages and the answer -> a verdict."""
+    settings = get_settings()
+    prompt = PROMPT_PATH.read_text(encoding="utf-8")
+    numbered = "\n\n".join(f"[{i}] {p}" for i, p in enumerate(passages, 1))
+    user = f"Question: {question}\n\nPassages:\n\n{numbered}\n\nAnswer:\n{answer}"
+    verdict, _ = await complete_structured(
+        get_model_client(),
+        [Message(role="system", content=prompt), Message(role="user", content=user)],
+        JudgeVerdict,
+        attempts=settings.model_retry_attempts,
+        base_delay_s=settings.model_retry_base_delay_s,
+        timeout_s=settings.model_timeout_s,
+    )
+    return verdict
 
 
 async def judge_rows(rows: list[dict[str, Any]]) -> None:

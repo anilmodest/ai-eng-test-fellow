@@ -1,3 +1,100 @@
-{"id": "m001", "kind": "straightforward", "q": "our invoice from juniper-schools says 4800, is that right?", "doc": "invoice-juniper-schools-0042.md", "expect": "4,800"}
+{"id": "m001", "kind": "straightforward", "q": "our invoice from juniper-schools says 4800, is that right?", "doc": "invoice-northwind-0042.md", "expect": "4,800"}
 {"id": "m002", "kind": "no_answer", "q": "can ironclad send a text message when a run fails"}
 {"id": "m003", "kind": "version", "version": "v3", "q": "we upgraded and the timeout we set in the conf file does nothing now", "doc": "manual-v3-connection-timeout.md", "expect": "IRONCLAD_CONNECT_TIMEOUT"}
+{"id": "m004", "kind": "straightforward", "q": "when do we have to pay the juniper schools consulting bill by", "doc": "invoice-northwind-0042.md", "expect": "1 October 2026"}
+{"id": "m005", "kind": "straightforward", "q": "how many consulting hours did juniper bill us for in august", "doc": "invoice-northwind-0042.md", "expect": "24"}
+{"id": "m006", "kind": "straightforward", "q": "what sort code do I use to pay juniper schools", "doc": "invoice-northwind-0042.md", "expect": "40-12-34"}
+{"id": "m007", "kind": "straightforward", "q": "what did the two bristol trips come to on the juniper bill", "doc": "invoice-northwind-0042.md", "expect": "600"}
+{"id": "m008", "kind": "straightforward", "q": "larkspur's september invoice - what's the total?", "doc": "invoice-tailspin-2026-09.md", "expect": "7,700"}
+{"id": "m009", "kind": "straightforward", "q": "is vat already in the larkspur prices or added on top", "doc": "invoice-tailspin-2026-09.md", "expect": "included"}
+{"id": "m010", "kind": "straightforward", "q": "what did larkspur charge for the onboarding workshop", "doc": "invoice-tailspin-2026-09.md", "expect": "1,200"}
+{"id": "m011", "kind": "straightforward", "q": "due date on the larkspur hotels september bill?", "doc": "invoice-tailspin-2026-09.md", "expect": "15 September 2026"}
+{"id": "m012", "kind": "straightforward", "q": "how much is the meridian office supplies invoice for", "doc": "invoice-woodgrove-1187.md", "expect": "1,457"}
+{"id": "m013", "kind": "straightforward", "q": "what do meridian charge us if we pay them late", "doc": "invoice-woodgrove-1187.md", "expect": "8 percent"}
+{"id": "m014", "kind": "straightforward", "q": "which toner model did meridian put on the bill", "doc": "invoice-woodgrove-1187.md", "expect": "59X"}
+{"id": "m015", "kind": "straightforward", "q": "price per box of copier paper from meridian?", "doc": "invoice-woodgrove-1187.md", "expect": "18.50"}
+{"id": "m016", "kind": "straightforward", "q": "what's the hourly rate for a senior consultant from juniper", "doc": "contract-contoso-northwind-msa.txt", "expect": "175"}
+{"id": "m017", "kind": "straightforward", "q": "how many days does harbour health get to pay juniper", "doc": "contract-contoso-northwind-msa.txt", "expect": "30"}
+{"id": "m018", "kind": "straightforward", "q": "how long do we have to dispute a line on a juniper invoice", "doc": "contract-contoso-northwind-msa.txt", "expect": "10"}
+{"id": "m019", "kind": "straightforward", "q": "when does the juniper schools master agreement run out", "doc": "contract-contoso-northwind-msa.txt", "expect": "31 May 2028"}
+{"id": "m020", "kind": "straightforward", "q": "how much professional indemnity cover must juniper carry", "doc": "contract-contoso-northwind-msa.txt", "expect": "2,000,000"}
+{"id": "m021", "kind": "straightforward", "q": "who ends up owning the stuff juniper builds for us", "doc": "contract-contoso-northwind-msa.txt", "expect": "on payment"}
+{"id": "m022", "kind": "straightforward", "q": "for how many years after the msa ends is confidentiality kept", "doc": "contract-contoso-northwind-msa.txt", "expect": "five"}
+{"id": "m023", "kind": "straightforward", "q": "monthly fee kingsway pays larkspur for the classification thing?", "doc": "contract-fabrikam-tailspin.txt", "expect": "6,500"}
+{"id": "m024", "kind": "straightforward", "q": "notice period if kingsway wants out of the larkspur deal", "doc": "contract-fabrikam-tailspin.txt", "expect": "60"}
+{"id": "m025", "kind": "straightforward", "q": "what uptime has larkspur promised kingsway", "doc": "contract-fabrikam-tailspin.txt", "expect": "99.5"}
+{"id": "m026", "kind": "straightforward", "q": "larkspur missed their uptime target, what credit do we get", "doc": "contract-fabrikam-tailspin.txt", "expect": "5 percent"}
+{"id": "m027", "kind": "straightforward", "q": "is larkspur allowed to train models on our freight paperwork", "doc": "contract-fabrikam-tailspin.txt", "expect": "not use"}
+{"id": "m028", "kind": "straightforward", "q": "how much is larkspur liable for at most", "doc": "contract-fabrikam-tailspin.txt", "expect": "six"}
+{"id": "m029", "kind": "straightforward", "q": "which law applies to the kingsway larkspur contract", "doc": "contract-fabrikam-tailspin.txt", "expect": "England and Wales"}
+{"id": "m030", "kind": "straightforward", "q": "what time do I have to book by for a collection tomorrow", "doc": "faq-fabrikam-shipping.md", "expect": "15:00"}
+{"id": "m031", "kind": "straightforward", "q": "how do you work out volumetric weight", "doc": "faq-fabrikam-shipping.md", "expect": "5,000"}
+{"id": "m032", "kind": "straightforward", "q": "how much extra if my port documents are late", "doc": "faq-fabrikam-shipping.md", "expect": "75 GBP"}
+{"id": "m033", "kind": "straightforward", "q": "what's standard liability per kilo if goods get damaged", "doc": "faq-fabrikam-shipping.md", "expect": "1.30"}
+{"id": "m034", "kind": "straightforward", "q": "what number do I text my tracking reference to", "doc": "faq-fabrikam-shipping.md", "expect": "60777"}
+{"id": "m035", "kind": "straightforward", "q": "who do I email about a kingsway invoice", "doc": "faq-fabrikam-shipping.md", "expect": "accounts@kingsway-transport.example"}
+{"id": "m036", "kind": "straightforward", "q": "how much did harbour health actually pay meridian in the end", "doc": "letter-contoso-dispute.txt", "expect": "1,412"}
+{"id": "m037", "kind": "straightforward", "q": "which PO number is harbour health quoting in the toner complaint", "doc": "letter-contoso-dispute.txt", "expect": "PO-7781"}
+{"id": "m038", "kind": "straightforward", "q": "how many toner cartridges turned up with broken seals", "doc": "letter-contoso-dispute.txt", "expect": "two"}
+{"id": "m039", "kind": "straightforward", "q": "do harbour health want money back or new toner", "doc": "letter-contoso-dispute.txt", "expect": "replacements"}
+{"id": "m040", "kind": "straightforward", "q": "when is larkspur moving the classification service", "doc": "letter-tailspin-maintenance.txt", "expect": "4 October"}
+{"id": "m041", "kind": "straightforward", "q": "how long will the service be down for during the move", "doc": "letter-tailspin-maintenance.txt", "expect": "forty minutes"}
+{"id": "m042", "kind": "straightforward", "q": "by when must we tell larkspur the maintenance date doesn't work", "doc": "letter-tailspin-maintenance.txt", "expect": "26 September"}
+{"id": "m043", "kind": "straightforward", "q": "what's the most I can spend on a london hotel a night", "doc": "policy-contoso-expenses.md", "expect": "180"}
+{"id": "m044", "kind": "straightforward", "q": "what do I get per mile driving my own car for work", "doc": "policy-contoso-expenses.md", "expect": "45 pence"}
+{"id": "m045", "kind": "straightforward", "q": "can I put a glass of wine with dinner on expenses", "doc": "policy-contoso-expenses.md", "expect": "not reimbursable"}
+{"id": "m046", "kind": "straightforward", "q": "how long have I got to put in an expense claim", "doc": "policy-contoso-expenses.md", "expect": "30 days"}
+{"id": "m047", "kind": "straightforward", "q": "daily food allowance when I stay away overnight?", "doc": "policy-contoso-expenses.md", "expect": "40 GBP"}
+{"id": "m048", "kind": "straightforward", "q": "do I need receipts for small purchases, what's the cut off", "doc": "policy-contoso-expenses.md", "expect": "10 GBP"}
+{"id": "m049", "kind": "straightforward", "q": "how big is the kingsway fleet now", "doc": "report-fabrikam-fleet-h1.md", "expect": "438"}
+{"id": "m050", "kind": "straightforward", "q": "how many reportable incidents did the fleet have in the first half", "doc": "report-fabrikam-fleet-h1.md", "expect": "14"}
+{"id": "m051", "kind": "straightforward", "q": "which depot is the least busy", "doc": "report-fabrikam-fleet-h1.md", "expect": "Glasgow"}
+{"id": "m052", "kind": "straightforward", "q": "how many chargers does birmingham actually need", "doc": "report-fabrikam-fleet-h1.md", "expect": "30"}
+{"id": "m053", "kind": "straightforward", "q": "when are the volta electric tractors turning up", "doc": "report-fabrikam-fleet-h1.md", "expect": "October 2026"}
+{"id": "m054", "kind": "straightforward", "version": "v3", "q": "how long is an api token good for before I need a new one", "doc": "manual-v3-authentication.md", "expect": "3600"}
+{"id": "m055", "kind": "straightforward", "version": "v3", "q": "what error comes back when my token has run out", "doc": "manual-v3-authentication.md", "expect": "bad_token"}
+{"id": "m056", "kind": "straightforward", "version": "v3", "q": "what's the max I can set the connect timeout to", "doc": "manual-v3-connection-timeout.md", "expect": "120"}
+{"id": "m057", "kind": "straightforward", "version": "v3", "q": "do I need to restart anything after changing the timeout", "doc": "manual-v3-connection-timeout.md", "expect": "restart"}
+{"id": "m058", "kind": "straightforward", "version": "v3", "q": "can I get the export as json lines instead of csv", "doc": "manual-v3-export-format.md", "expect": "NDJSON"}
+{"id": "m059", "kind": "straightforward", "version": "v3", "q": "what happens to old logs once they leave the runner disk", "doc": "manual-v3-log-retention.md", "expect": "365 days"}
+{"id": "m060", "kind": "straightforward", "version": "v3", "q": "can we use semicolons instead of commas in the csv", "doc": "manual-v3-export-format.md", "expect": "cannot be changed"}
+{"id": "m061", "kind": "straightforward", "version": "v3", "q": "how do I pick up a transfer that died halfway", "doc": "manual-v3-retries.md", "expect": "ironcladctl resume"}
+{"id": "m062", "kind": "straightforward", "version": "v3", "q": "a scheduled run is still going when the next one is due, what happens", "doc": "manual-v3-scheduling.md", "expect": "queued"}
+{"id": "m063", "kind": "version", "version": "v2", "q": "default connect timeout on our runner?", "doc": "manual-v2-connection-timeout.md", "expect": "30 seconds"}
+{"id": "m064", "kind": "version", "version": "v3", "q": "how long does the runner wait for a source to connect by default", "doc": "manual-v3-connection-timeout.md", "expect": "15 seconds"}
+{"id": "m065", "kind": "version", "version": "v2", "q": "which header do I put my api key in", "doc": "manual-v2-authentication.md", "expect": "X-Ironclad-Key"}
+{"id": "m066", "kind": "version", "version": "v3", "q": "how do we authenticate our api calls", "doc": "manual-v3-authentication.md", "expect": "bearer"}
+{"id": "m067", "kind": "version", "version": "v2", "q": "do our api keys ever expire", "doc": "manual-v2-authentication.md", "expect": "does not expire"}
+{"id": "m068", "kind": "version", "version": "v2", "q": "how long does it wait between retries", "doc": "manual-v2-retries.md", "expect": "5 seconds"}
+{"id": "m069", "kind": "version", "version": "v3", "q": "how many retries do we get out of the box", "doc": "manual-v3-retries.md", "expect": "6"}
+{"id": "m070", "kind": "version", "version": "v3", "q": "what does the retry backoff start at", "doc": "manual-v3-retries.md", "expect": "2 seconds"}
+{"id": "m071", "kind": "version", "version": "v2", "q": "is the partial output still there when a run gives up", "doc": "manual-v2-retries.md", "expect": "deleted"}
+{"id": "m072", "kind": "version", "version": "v3", "q": "do we keep the partial output after a run fails for good", "doc": "manual-v3-retries.md", "expect": "kept"}
+{"id": "m073", "kind": "version", "version": "v2", "q": "how long are run logs kept on disk if we change nothing", "doc": "manual-v2-log-retention.md", "expect": "14 days"}
+{"id": "m074", "kind": "version", "version": "v3", "q": "default number of days logs stay on the runner", "doc": "manual-v3-log-retention.md", "expect": "7 days"}
+{"id": "m075", "kind": "version", "version": "v2", "q": "what's the longest log retention I can configure", "doc": "manual-v2-log-retention.md", "expect": "90"}
+{"id": "m076", "kind": "version", "version": "v3", "q": "highest log retention value the runner accepts", "doc": "manual-v3-log-retention.md", "expect": "30"}
+{"id": "m077", "kind": "version", "version": "v2", "q": "what timezone do our schedules run in", "doc": "manual-v2-scheduling.md", "expect": "UTC"}
+{"id": "m078", "kind": "version", "version": "v3", "q": "cron is gone, how do I write a schedule now", "doc": "manual-v3-scheduling.md", "expect": "ISO-8601"}
+{"id": "m079", "kind": "version", "version": "v2", "q": "what happens to a scheduled run that overlaps the one before", "doc": "manual-v2-scheduling.md", "expect": "skipped"}
+{"id": "m080", "kind": "version", "version": "v2", "q": "does the csv export come with a BOM", "doc": "manual-v2-export-format.md", "expect": "byte-order mark"}
+{"id": "m081", "kind": "version", "version": "v3", "q": "are all fields quoted in the export now", "doc": "manual-v3-export-format.md", "expect": "every"}
+{"id": "m082", "kind": "no_answer", "q": "what's the phone number for harbour health's finance team"}
+{"id": "m083", "kind": "no_answer", "q": "does ironclad support kafka as a source"}
+{"id": "m084", "kind": "no_answer", "q": "how much does an ironclad enterprise licence cost per year"}
+{"id": "m085", "kind": "no_answer", "q": "can I run the ironclad runner on a raspberry pi"}
+{"id": "m086", "kind": "no_answer", "q": "who is the account manager for kingsway at larkspur"}
+{"id": "m087", "kind": "no_answer", "q": "what was kingsway's total revenue last year"}
+{"id": "m088", "kind": "no_answer", "q": "is there a dark mode in the ironclad console"}
+{"id": "m089", "kind": "no_answer", "q": "what's the parental leave policy at harbour health"}
+{"id": "m090", "kind": "no_answer", "q": "how many employees does juniper schools traders have"}
+{"id": "m091", "kind": "no_answer", "q": "does the travel policy pay for taxis to the airport"}
+{"id": "m092", "kind": "no_answer", "q": "what is the share price of meridian insurance"}
+{"id": "m093", "kind": "no_answer", "q": "can ironclad export straight to parquet"}
+{"id": "m094", "kind": "no_answer", "q": "is there an official python sdk for the ironclad api"}
+{"id": "m095", "kind": "no_answer", "q": "when does the felixstowe depot open on sundays"}
+{"id": "m096", "kind": "no_answer", "q": "what interest does larkspur charge kingsway on late payment"}
+{"id": "m097", "kind": "no_answer", "q": "who won the ironclad customer award this year"}
+{"id": "m098", "kind": "no_answer", "q": "which cloud provider hosts the ironclad api"}
+{"id": "m099", "kind": "no_answer", "q": "what is the wifi password at the cambridge office"}
+{"id": "m100", "kind": "no_answer", "q": "how many parking spaces are at the birmingham cross-dock"}

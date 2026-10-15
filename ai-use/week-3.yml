@@ -1,0 +1,27 @@
+# Test fellow run: this week was done end to end by an AI coding assistant driving the repo.
+hours: 3
+entries:
+  - when: 2026-10-15
+    tool: "Claude Code (Claude Opus 5.5), acting as a test fellow"
+    asked: "Implement POST /ask: retrieval with the version, the threshold gate before any call, the guard hooks, a structured grounded answer, the model's own decline, citations mapped to real chunks, usage and cost"
+    produced: "app/api/ask.py"
+    checked: "Ran the seven /ask tests on fake_a and fake_b; checked that a 400 is a 502 and not a decline, that [7] with five passages is dropped, and that the threshold decline makes zero model calls"
+    kept: yes
+  - when: 2026-10-15
+    tool: "Claude Code (Claude Opus 5.5), acting as a test fellow"
+    asked: "Write the judge prompt and judge(), one structured call"
+    produced: "app/llm/prompts/judge_v1.md and judge() in app/eval/judge.py"
+    checked: "Ran the judge tests; kept the literal words 'Passages:' and 'Answer:' out of the system prompt because the fake model splits on them"
+    kept: yes
+  - when: 2026-10-15
+    tool: "Claude Code (Claude Opus 5.5), acting as a test fellow"
+    asked: "Write a 100-question test set in a user's voice, 20 trajectory tasks, and label 30 judged answers"
+    produced: "eval/my-test-set.jsonl, eval/trajectories.jsonl, eval/judge-labels.jsonl"
+    checked: "The assistant wrote the questions after reading the core corpus, so they are not truly blind to the documents; the gate's 8-gram check passes. Labels: compared each answer with its cited passage and the expected fact; marked false the 10 answers whose passage does not address the question"
+    kept: partly
+  - when: 2026-10-15
+    tool: "Claude Code (Claude Opus 5.5), acting as a test fellow"
+    asked: "Run the week 3 measurements and write the decision"
+    produced: "evidence/week-3.json (fake model), decisions/week-3.md"
+    checked: "Ran records.py --week 3; investigated why the CI evaluation gate fails: eval/golden.jsonl names 30 business documents under filenames that corpus/ does not have (variant v-e736), so their citations can never match"
+    kept: yes
