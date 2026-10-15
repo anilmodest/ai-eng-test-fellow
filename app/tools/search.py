@@ -1,42 +1,88 @@
-"""Week 2: search_docs, the agent's second tool. You design it, as you did get_customer.
+"""Week 2: search_docs, the agent's second tool.
 
 Retrieval becomes a tool the agent calls, with an argument the first tool supplied: get_customer
 says the customer runs v3, so search_docs is called with version "v3" and can only ever return
-version 3 pages and the pages that apply to every version. The version filter you built is what
-makes that true; this tool is how the agent reaches it.
+version 3 pages and the pages that apply to every version. The version filter in
+app/retrieval/versions.py is what makes that true; this tool is how the agent reaches it.
 
-    fixed   the name search_docs; the arguments query, version and k; the search itself,
-            app.retrieval.store.search, with the configured strategy and mode
-    yours   the descriptions (when to call it, why the version matters, where the version comes
-            from), the constraints (an empty query, a version that does not exist, a missing
-            version, k of 500 must all fail validation), and what each result carries back:
-            enough for the model to cite it (the file and the version), and the text
-
-What goes wrong if you skip a part: an optional version means the model leaves it out, and the
-version trap is back; an unbounded k fills the context window with noise.
+The version is required on purpose: an optional version is one the model leaves out, and then
+the version trap is back. k is bounded so a call cannot fill the context window with noise.
 """
 
-from pydantic import BaseModel
+from typing import Literal
 
-from app.tools.base import ToolContext, ToolSpec
+from pydantic import BaseModel, ConfigDict, Field, field_validator
+
+from app.retrieval.embed import get_embedder
+from app.retrieval.store import search
+from app.tools.base import ToolContext, ToolSpec, as_json
 
 
 class SearchDocsArgs(BaseModel):
-    query: str  # TODO: describe and constrain
-    version: str  # TODO: describe and constrain to the versions that exist
-    k: int = 3  # TODO: describe and bound
+    model_config = ConfigDict(extra="forbid")
+
+    query: str = Field(
+        min_length=2,
+        max_length=300,
+        description="What to look up in the product manual, in plain words or an exact setting "
+        "name or error code, for example 'default connection timeout' or 'E1104'.",
+    )
+    version: Literal["v2", "v3"] = Field(
+        description="The product version the customer runs, v2 or v3, taken from get_customer "
+        "(its version field) or from the ticket's product_version. Only that version's pages, "
+        "and pages that apply to every version, come back.",
+    )
+    k: int = Field(
+        default=3,
+        ge=1,
+        le=10,
+        description="How many passages to return, from 1 to 10; 3 is usually enough.",
+    )
+
+    @field_validator("query")
+    @classmethod
+    def query_has_words(cls, v: str) -> str:
+        if not v.strip():
+            raise ValueError("the query is empty; say what to look up")
+        return v.strip()
 
 
 async def search_docs(ctx: ToolContext, args: SearchDocsArgs) -> str:
-    # TODO Week 2: search the manual for this version only (app.retrieval.store.search, with
-    #   ctx.embedder or app.retrieval.embed.get_embedder(), ctx.settings.chunk_strategy and
-    #   ctx.settings.search_mode). No hits is an answer too: say so in words.
-    raise NotImplementedError("search_docs: build me (weeks/2/README.md)")
+    embedder = ctx.embedder or get_embedder()
+    hits = search(
+        ctx.session,
+        embedder,
+        args.query,
+        k=args.k,
+        strategy=ctx.settings.chunk_strategy,
+        version=args.version,
+        mode=ctx.settings.search_mode,
+    )
+    if not hits:
+        return (
+            f"no results: nothing in the {args.version} manual matches {args.query!r}; "
+            "try other words or an exact setting name, or say the manual does not cover it"
+        )
+    results = [
+        {
+            "rank": i,
+            "filename": h.filename,
+            "version": h.version or "all versions",
+            "score": round(h.score, 3),
+            "text": h.text,
+        }
+        for i, h in enumerate(hits, 1)
+    ]
+    return as_json({"query": args.query, "version": args.version, "results": results})
 
 
 SEARCH_DOCS = ToolSpec(
     name="search_docs",
-    description="TODO: when should a model call this, and what does it get back?",
+    description="Search the product manual for passages that answer a question, restricted to "
+    "one product version. Call it when a request asks how a setting works, what a default or "
+    "limit is, or what an error means, after you know the customer's version (get_customer or "
+    "get_ticket). Returns the best passages, each with its filename and version so the answer "
+    "can cite it, or 'no results' in words.",
     args=SearchDocsArgs,
     run=search_docs,
 )

@@ -9,17 +9,24 @@ from dataclasses import dataclass
 
 def precision_at_k(relevant: list[bool], k: int) -> float:
     """Of the first k hits, what fraction were relevant?"""
-    raise NotImplementedError("Week 2: build me (weeks/2/README.md)")
+    if k <= 0:
+        return 0.0
+    return sum(1 for r in relevant[:k] if r) / k
 
 
 def recall_at_k(relevant: list[bool], total_relevant: int, k: int) -> float:
     """Of everything relevant in the corpus, what fraction did the first k hits find?"""
-    raise NotImplementedError("Week 2: build me (weeks/2/README.md)")
+    if total_relevant <= 0 or k <= 0:
+        return 0.0
+    return min(1.0, sum(1 for r in relevant[:k] if r) / total_relevant)
 
 
 def reciprocal_rank(relevant: list[bool]) -> float:
     """1 / rank of the first relevant hit; 0 if none."""
-    raise NotImplementedError("Week 2: build me (weeks/2/README.md)")
+    for rank, r in enumerate(relevant, 1):
+        if r:
+            return 1.0 / rank
+    return 0.0
 
 
 @dataclass(frozen=True)
@@ -37,4 +44,14 @@ def evaluate(per_query: list[tuple[list[bool], int]], k: int) -> RetrievalScores
 
     `per_query` = [(relevance flags in rank order, total_relevant)].
     """
-    raise NotImplementedError("Week 2: build me (weeks/2/README.md)")
+    n = len(per_query)
+    if n == 0:
+        return RetrievalScores(0, k, 0.0, 0.0, 0.0, 0.0)
+    return RetrievalScores(
+        queries=n,
+        k=k,
+        precision_at_k=sum(precision_at_k(f, k) for f, _ in per_query) / n,
+        recall_at_k=sum(recall_at_k(f, t, k) for f, t in per_query) / n,
+        mrr=sum(reciprocal_rank(f[:k]) for f, _ in per_query) / n,
+        hit_rate=sum(1 for f, _ in per_query if any(f[:k])) / n,
+    )
