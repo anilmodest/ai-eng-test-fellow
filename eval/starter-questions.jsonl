@@ -18,13 +18,13 @@
 {"q": "What happens to an overlapping scheduled run in Ironclad v3?", "doc": "manual-v3-scheduling.md", "phrase": "starts when the first finishes", "version": "v3"}
 {"q": "Where are Ironclad v3 logs archived?", "doc": "manual-v3-log-retention.md", "phrase": "logs/<date>/<run-id>.log.gz", "version": "v3"}
 {"q": "Which export formats does Ironclad v3 support?", "doc": "manual-v3-export-format.md", "phrase": "CSV or NDJSON", "version": "v3"}
-{"q": "What is the default hourly rate for a Juniper Schools consultant who is not senior?", "doc": "contract-harbour-health-juniper-schools-msa.txt", "phrase": "120 USD per hour"}
-{"q": "How long does confidentiality last after the Juniper Schools agreement ends?", "doc": "contract-harbour-health-juniper-schools-msa.txt", "phrase": "five (5) years"}
-{"q": "What service credits apply if Larkspur Hotels misses its availability target?", "doc": "contract-kingsway-transport-larkspur-hotels.txt", "phrase": "5 percent of the monthly fee"}
-{"q": "How quickly must Kingsway Transport pay a Larkspur Hotels invoice?", "doc": "contract-kingsway-transport-larkspur-hotels.txt", "phrase": "within 14 days of invoice"}
-{"q": "What VAT rate is included on the Larkspur Hotels September invoice?", "doc": "invoice-larkspur-hotels-2026-09.md", "phrase": "VAT at 20 percent"}
-{"q": "What is the total due on Meridian Insurance invoice WG-1187?", "doc": "invoice-meridian-insurance-1187.md", "phrase": "1,457.00 GBP"}
-{"q": "What is the Harbour Health meal day rate when staying away overnight?", "doc": "policy-harbour-health-expenses.md", "phrase": "overnight: 40 GBP"}
-{"q": "How many vehicles were in the Kingsway Transport fleet at the end of the half?", "doc": "report-kingsway-transport-fleet-h1.md", "phrase": "412 to 438 vehicles"}
-{"q": "How much does enhanced damage cover cost on a Kingsway Transport booking?", "doc": "faq-kingsway-transport-shipping.md", "phrase": "0.5 percent of that value"}
+{"q": "What is the default hourly rate for a Juniper Schools consultant who is not senior?", "doc": "contract-contoso-northwind-msa.txt", "phrase": "120 USD per hour"}
+{"q": "How long does confidentiality last after the Juniper Schools agreement ends?", "doc": "contract-contoso-northwind-msa.txt", "phrase": "five (5) years"}
+{"q": "What service credits apply if Larkspur Hotels misses its availability target?", "doc": "contract-fabrikam-tailspin.txt", "phrase": "5 percent of the monthly fee"}
+{"q": "How quickly must Kingsway Transport pay a Larkspur Hotels invoice?", "doc": "contract-fabrikam-tailspin.txt", "phrase": "within 14 days of invoice"}
+{"q": "What VAT rate is included on the Larkspur Hotels September invoice?", "doc": "invoice-tailspin-2026-09.md", "phrase": "VAT at 20 percent"}
+{"q": "What is the total due on Meridian Insurance invoice WG-1187?", "doc": "invoice-woodgrove-1187.md", "phrase": "1,457.00 GBP"}
+{"q": "What is the Harbour Health meal day rate when staying away overnight?", "doc": "policy-contoso-expenses.md", "phrase": "overnight: 40 GBP"}
+{"q": "How many vehicles were in the Kingsway Transport fleet at the end of the half?", "doc": "report-fabrikam-fleet-h1.md", "phrase": "412 to 438 vehicles"}
+{"q": "How much does enhanced damage cover cost on a Kingsway Transport booking?", "doc": "faq-fabrikam-shipping.md", "phrase": "0.5 percent of that value"}
 {"q": "How many tickets did AMER open in August 2026?", "doc": "report-support-q3.csv", "phrase": "2026-08,AMER,742"}
