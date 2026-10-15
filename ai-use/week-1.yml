@@ -1,0 +1,21 @@
+# Test fellow run: this week was done end to end by an AI coding assistant driving the repo.
+hours: 1.5
+entries:
+  - when: 2026-10-15
+    tool: "Claude Code (Claude Opus 5.5), acting as a test fellow"
+    asked: "Implement the week 1 extract endpoint (cache, repair, retry, timeout, cost, input cap) from the README, stubs and tests"
+    produced: "app/api/extract.py: idempotency lookup on (document, provider, model, prompt version), complete_structured call, typed 404/502/504 errors, summed tokens and cost over every response"
+    checked: "Ran tests/weeks/test_week1.py under fake_a and fake_b, plus ruff, ruff format and mypy; read structured.py and retry.py to confirm a 400 is never retried and a repair is counted in cost"
+    kept: yes
+  - when: 2026-10-15
+    tool: "Claude Code (Claude Opus 5.5), acting as a test fellow"
+    asked: "Design get_customer and get_ticket: descriptions, id constraints, returned fields, refusals"
+    produced: "app/tools/desk.py with strict id patterns, case normalisation, refusals in words, and no seats or contact fields"
+    checked: "Ran the tool tests and scripts/tool_drill.py on the fake model; read the two wrong calls in reports/tool_drill.json (lower-case ids) and added normalisation, then re-ran (0.90 -> 1.00)"
+    kept: yes
+  - when: 2026-10-15
+    tool: "Claude Code (Claude Opus 5.5), acting as a test fellow"
+    asked: "Write the decision record, this log and the reflection"
+    produced: "decisions/week-1.md, ai-use/week-1.yml, reflections/week-1.md"
+    checked: "Ran scripts/records.py --week 1 so every evidence number matches evidence/week-1.json; the evidence is from the fake providers (no key available), which the record says"
+    kept: yes
