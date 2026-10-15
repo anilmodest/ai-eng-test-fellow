@@ -1,5 +1,5 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 section: Upgrading
 ---
 
@@ -9,14 +9,15 @@ Every setting below changed name, place or default between the versions. The las
 
 | Setting | Version 2 | Version 3 | Default v2 → v3 | Old setting in v3 |
 | --- | --- | --- | --- | --- |
-| Connection pool size | `connection_pool_size_min` | `KESTREL_CONNECTION_POOL_SIZE` | 55 → 33 minutes | warned |
-| Backup retention | `backup_retention` | `KESTREL_BACKUP_RETENTION` | 496 → 518 requests per minute | warned |
-| Password expiry | `password_expiry` | `KESTREL_PASSWORD_EXPIRY` | 114 → 38 connections | ignored |
-| Notification digest interval | `notification_digest_interval` | `KESTREL_NOTIFICATION_DIGEST_INTERVAL` | 297 → 597 characters | ignored |
-| Email send rate | `email_send_rate` | `KESTREL_EMAIL_SEND_RATE` | 2404 → 2131 items | warned |
-| Report page size | `report_page_size` | `KESTREL_REPORT_PAGE_SIZE` | 65 → 157 connections | rejected |
-| Scheduler worker count | `scheduler_worker_count` | `KESTREL_SCHEDULER_WORKER_COUNT` | 18 → 28 minutes | rejected |
-| Upload chunk size | `upload_chunk_size` | `KESTREL_UPLOAD_CHUNK_SIZE` | 104 → 97 seconds | rejected |
-| Purge delay | `purge_delay_ite` | `KESTREL_PURGE_DELAY` | 2028 → 2444 items | rejected |
-| DNS cache lifetime | `dns_cache_lifetime` | `KESTREL_DNS_CACHE_LIFETIME` | 2822 → 1959 items | warned |
-| Lock wait timeout | `lock_wait_timeout_per` | `KESTREL_LOCK_WAIT_TIMEOUT` | 3 → 27 percent | warned |
+| Connection pool size | `connection_pool_size_req` | `IRONCLAD_CONNECTION_POOL_SIZE` | 161 → 383 requests per minute | rejected |
+| Request timeout | `request_timeout` | `IRONCLAD_REQUEST_TIMEOUT` | 21 → 37 minutes | rejected |
+| Import file size limit | `import_file_size_limit` | `IRONCLAD_IMPORT_FILE_SIZE_LIMIT` | 443 → 9 megabytes | warned |
+| API rate limit | `api_rate_limit` | `IRONCLAD_API_RATE_LIMIT` | 373 → 173 megabytes | rejected |
+| Password minimum length | `password_minimum_length` | `IRONCLAD_PASSWORD_MINIMUM_LENGTH` | 97 → 125 connections | rejected |
+| Failed login lockout | `failed_login_lockout_min` | `IRONCLAD_FAILED_LOGIN_LOCKOUT` | 63 → 49 minutes | rejected |
+| Two-factor grace period | `two_factor_grace_period_con` | `IRONCLAD_TWO_FACTOR_GRACE_PERIOD` | 100 → 129 connections | rejected |
+| Job queue depth | `job_queue_depth` | `IRONCLAD_JOB_QUEUE_DEPTH` | 130 → 461 days | rejected |
+| Health check interval | `health_check_interval` | `IRONCLAD_HEALTH_CHECK_INTERVAL` | 50 → 20 minutes | warned |
+| Field length limit | `field_length_limit` | `IRONCLAD_FIELD_LENGTH_LIMIT` | 123 → 166 seconds | rejected |
+| DNS cache lifetime | `dns_cache_lifetime_con` | `IRONCLAD_DNS_CACHE_LIFETIME` | 144 → 60 connections | ignored |
+| Update deferral | `update_deferral_ite` | `IRONCLAD_UPDATE_DEFERRAL` | 692 → 2560 items | ignored |

@@ -1,19 +1,19 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 version: v2
-section: Security
+section: Operations
 ---
 
-# Idle disconnect (Kestrel v2)
+# Idle disconnect (Ironclad v2)
 
-Kestrel Data Runner is a data runner that moves records between business systems. The idle disconnect setting controls how the service behaves when that limit is reached, and it is one of the settings most often changed by administrators after go-live.
+Ironclad Endpoint Manager is a device-management product that enrols, updates and locks company devices. The idle disconnect setting controls how the service behaves when that limit is reached, and it is one of the settings most often changed by administrators after go-live.
 
 ## Where the setting lives
 
-The setting is `idle_disconnect`, in `kestrel.conf`, in the `[server]` block. It takes a whole number of items. The default is **1917 items**.
+The setting is `idle_disconnect`, in `ironclad.conf`, in the `[source]` block. It takes a whole number of percent. The default is **22 percent**.
 
 ```
-idle_disconnect = 1917
+idle_disconnect = 22
 ```
 
 ## How it works
@@ -22,34 +22,34 @@ Every request carries the idle disconnect that applied when it started. If the v
 
 ## When it takes effect
 
-The value is read when the service starts. Changing it has no effect on a running service; restart it with `kestrelctl restart` for the new value to be used.
+The value is read when the service starts. Changing it has no effect on a running service; restart it with `ironcladctl restart` for the new value to be used.
 
 ## Choosing a value
 
-Start from the default of 1917 items and change it only with a reason you can write down. Raising the idle disconnect trades resilience for capacity: more work is accepted, but a failure takes longer to notice. Lowering it does the opposite. Change it in steps of no more than a quarter, watch for a week, and record what you saw. Installations that jumped straight to the maximum of 9959 are the most common source of tickets about this setting.
+Start from the default of 22 percent and change it only with a reason you can write down. Raising the idle disconnect trades resilience for capacity: more work is accepted, but a failure takes longer to notice. Lowering it does the opposite. Change it in steps of no more than a quarter, watch for a week, and record what you saw. Installations that jumped straight to the maximum of 88 are the most common source of tickets about this setting.
 
 ## Monitoring
 
-Watch `kestrel_idle_disconnect_current` on the operations dashboard. If it sits at the configured value for long periods, the setting is the bottleneck, and raising it is reasonable. If it never comes near, the value can safely stay where it is.
+Watch `ironclad_idle_disconnect_current` on the operations dashboard. If it sits at the configured value for long periods, the setting is the bottleneck, and raising it is reasonable. If it never comes near, the value can safely stay where it is.
 
 ## Limits
 
-The lowest accepted value is 66. The highest accepted value is 9959. A value outside that range is rejected and the previous value stays in force, with `E1948: idle_disconnect out of range` in the log.
+The lowest accepted value is 2. The highest accepted value is 88. A value outside that range is rejected and the previous value stays in force, with `E1570: idle_disconnect out of range` in the log.
 
 ## Examples
 
-| Value (items) | When to use it |
+| Value (percent) | When to use it |
 | --- | --- |
-| 66 | small installations, or testing |
-| 1917 | the default; right for most installations |
-| 3834 | busy installations with spare capacity |
-| 9959 | the maximum; only with a reason written down |
+| 2 | small installations, or testing |
+| 22 | the default; right for most installations |
+| 44 | busy installations with spare capacity |
+| 88 | the maximum; only with a reason written down |
 
 ## Interactions
 
-The idle disconnect is often changed together with the session timeout (`session_timeout_cha`, default 925 characters in version 2). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
+The idle disconnect is often changed together with the audit log retention (`audit_log_retention`, default 391 days in version 2). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
 
-The idle disconnect is often changed together with the password minimum length (`password_minimum_length_req`, default 1990 requests per minute in version 2). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
+The idle disconnect is often changed together with the webhook retry count (`webhook_retry_count`, default 1558 items in version 2). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
 
 ## Version history
 
@@ -57,5 +57,5 @@ Introduced in version 2.0 as `idle_disconnect`. Unchanged through the 2.x releas
 
 ## Related
 
-- Session timeout: see the Session timeout page for version 2.
-- Password minimum length: see the Password minimum length page for version 2.
+- Audit log retention: see the Audit log retention page for version 2.
+- Webhook retry count: see the Webhook retry count page for version 2.

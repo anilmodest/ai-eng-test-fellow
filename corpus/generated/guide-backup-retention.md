@@ -1,11 +1,11 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 section: Operations
 ---
 
 # Operating the backup retention
 
-Kestrel Data Runner is a data runner that moves records between business systems. The backup retention setting controls how the service behaves when that limit is reached, and it is one of the settings most often changed by administrators after go-live.
+This page describes the backup retention setting in Ironclad Endpoint Manager, a device-management product that enrols, updates and locks company devices. Most installations never change it; the ones that do usually change it after their first busy period, when the default turns out to be too tight or too loose.
 
 ## How it works
 
@@ -13,21 +13,21 @@ Every request carries the backup retention that applied when it started. If the 
 
 ## Choosing a value
 
-Start from the default of 518 requests per minute and change it only with a reason you can write down. Raising the backup retention trades resilience for capacity: more work is accepted, but a failure takes longer to notice. Lowering it does the opposite. Change it in steps of no more than a quarter, watch for a week, and record what you saw. Installations that jumped straight to the maximum of 5059 are the most common source of tickets about this setting.
+Start from the default of 559 characters and change it only with a reason you can write down. Raising the backup retention trades resilience for capacity: more work is accepted, but a failure takes longer to notice. Lowering it does the opposite. Change it in steps of no more than a quarter, watch for a week, and record what you saw. Installations that jumped straight to the maximum of 3329 are the most common source of tickets about this setting.
 
 ## Monitoring
 
-Watch `kestrel_backup_retention_current` on the operations dashboard. If it sits at the configured value for long periods, the setting is the bottleneck, and raising it is reasonable. If it never comes near, the value can safely stay where it is.
+Watch `ironclad_backup_retention_current` on the operations dashboard. If it sits at the configured value for long periods, the setting is the bottleneck, and raising it is reasonable. If it never comes near, the value can safely stay where it is.
 
 ## Version differences in one table
 
 | | Version 2 | Version 3 |
 | --- | --- | --- |
-| Setting | `backup_retention` | `KESTREL_BACKUP_RETENTION` |
-| Default | 496 requests per minute | 518 requests per minute |
-| Range | 26–5504 | 110–5059 |
-| Takes effect | restart | restart |
+| Setting | `backup_retention` | `IRONCLAD_BACKUP_RETENTION` |
+| Default | 809 characters | 559 characters |
+| Range | 64–3178 | 60–3329 |
+| Takes effect | restart | next job |
 
 ## A worked change
 
-An administrator lowered the backup retention to the minimum while testing and forgot to restore it. Failures tripled overnight. The activity log named the setting on every failure, which is how support found it in minutes rather than days.
+A customer with 400 seats saw the limit hit every afternoon. They raised the backup retention by a quarter, watched the limit-hit metric for a week, saw it fall by two thirds, and stopped there. They wrote the reason into their change log, which is what made the next upgrade painless.

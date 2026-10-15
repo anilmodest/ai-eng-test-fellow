@@ -1,5 +1,5 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 section: FAQ
 ---
 
@@ -9,19 +9,19 @@ The questions below come from real tickets, lightly edited. Check which version 
 
 **What is the default webhook retry count?**
 
-In version 2 it is 12 percent; in version 3 it is 18 percent.
+In version 2 it is 1558 items; in version 3 it is 2365 items.
 
 **Do I need to restart after changing it?**
 
-Version 2: yes. Version 3: yes.
+Version 2: yes. Version 3: no.
 
 **What happens if I set it too high?**
 
-The value is rejected and the previous one stays in force. The maximum is 97 in version 2 and 86 in version 3.
+The value is rejected and the previous one stays in force. The maximum is 9567 in version 2 and 9276 in version 3.
 
 **We upgraded and the setting seems to have reset. Why?**
 
-Version 3 changed the setting's name from `webhook_retry_count` to `KESTREL_WEBHOOK_RETRY_COUNT` in release 3.6. See the known issue for this setting.
+Version 3 changed the setting's name from `webhook_retry_count` to `IRONCLAD_WEBHOOK_RETRY_COUNT` in release 3.2. See the known issue for this setting.
 
 **Can it be set per customer account?**
 

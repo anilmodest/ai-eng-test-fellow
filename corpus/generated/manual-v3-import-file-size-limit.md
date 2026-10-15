@@ -1,24 +1,24 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 version: v3
-section: Configuration
+section: Integrations
 ---
 
-# Import file size limit (Kestrel v3)
+# Import file size limit (Ironclad v3)
 
-Kestrel Data Runner is a data runner that moves records between business systems. The import file size limit setting controls how the service behaves when that limit is reached, and it is one of the settings most often changed by administrators after go-live.
+Ironclad Endpoint Manager is a device-management product that enrols, updates and locks company devices. The import file size limit setting controls how the service behaves when that limit is reached, and it is one of the settings most often changed by administrators after go-live.
 
 ## Where the setting lives
 
-The setting is `KESTREL_IMPORT_FILE_SIZE_LIMIT`, as the environment variable. It takes a whole number of days. The default is **74 days**.
+The setting is `IRONCLAD_IMPORT_FILE_SIZE_LIMIT`, as the environment variable. It takes a whole number of megabytes. The default is **9 megabytes**.
 
 ```
-export KESTREL_IMPORT_FILE_SIZE_LIMIT=74
+export IRONCLAD_IMPORT_FILE_SIZE_LIMIT=9
 ```
 
 ## Upgrading from version 2
 
-`import_file_size_limit_day`, the version 2 setting, is still read in version 3 for compatibility, with a warning in the startup log, and `KESTREL_IMPORT_FILE_SIZE_LIMIT` takes precedence when both are set. Support for the old name ends in a future release.
+`import_file_size_limit`, the version 2 setting, is still read in version 3 for compatibility, with a warning in the startup log, and `IRONCLAD_IMPORT_FILE_SIZE_LIMIT` takes precedence when both are set. Support for the old name ends in a future release.
 
 ## How it works
 
@@ -30,36 +30,36 @@ The value is read at the start of each job. A job that is already running keeps 
 
 ## Choosing a value
 
-There is no single right value. Small installations rarely need more than the default of 74 days. Large ones usually settle between the default and twice the default. Values near the minimum of 24 are meant for testing and make failures more frequent, not less. Whatever you choose, set it in one place only: two conflicting values are the cause of most surprises.
+There is no single right value. Small installations rarely need more than the default of 9 megabytes. Large ones usually settle between the default and twice the default. Values near the minimum of 5 are meant for testing and make failures more frequent, not less. Whatever you choose, set it in one place only: two conflicting values are the cause of most surprises.
 
 ## Monitoring
 
-Watch `kestrel_import_file_size_limit_current` on the operations dashboard. If it sits at the configured value for long periods, the setting is the bottleneck, and raising it is reasonable. If it never comes near, the value can safely stay where it is.
+Watch `ironclad_import_file_size_limit_current` on the operations dashboard. If it sits at the configured value for long periods, the setting is the bottleneck, and raising it is reasonable. If it never comes near, the value can safely stay where it is.
 
 ## Limits
 
-The lowest accepted value is 24. The highest accepted value is 3495. A value outside that range is rejected and the previous value stays in force, with `E1478: KESTREL_IMPORT_FILE_SIZE_LIMIT out of range` in the log.
+The lowest accepted value is 5. The highest accepted value is 1565. A value outside that range is rejected and the previous value stays in force, with `E1436: IRONCLAD_IMPORT_FILE_SIZE_LIMIT out of range` in the log.
 
 ## Examples
 
-| Value (days) | When to use it |
+| Value (megabytes) | When to use it |
 | --- | --- |
-| 24 | small installations, or testing |
-| 74 | the default; right for most installations |
-| 148 | busy installations with spare capacity |
-| 3495 | the maximum; only with a reason written down |
+| 5 | small installations, or testing |
+| 9 | the default; right for most installations |
+| 18 | busy installations with spare capacity |
+| 1565 | the maximum; only with a reason written down |
 
 ## Interactions
 
-The import file size limit is often changed together with the backup schedule interval (`KESTREL_BACKUP_SCHEDULE_INTERVAL`, default 45 minutes in version 3). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
+The import file size limit is often changed together with the connection pool size (`IRONCLAD_CONNECTION_POOL_SIZE`, default 383 requests per minute in version 3). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
 
-The import file size limit is often changed together with the two-factor grace period (`KESTREL_TWO_FACTOR_GRACE_PERIOD`, default 122 connections in version 3). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
+The import file size limit is often changed together with the request timeout (`IRONCLAD_REQUEST_TIMEOUT`, default 37 minutes in version 3). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
 
 ## Version history
 
-Renamed to `KESTREL_IMPORT_FILE_SIZE_LIMIT` and given a new default of 74 days in release 3.2. Before that release, version 3 still used the version 2 name.
+Renamed to `IRONCLAD_IMPORT_FILE_SIZE_LIMIT` and given a new default of 9 megabytes in release 3.1. Before that release, version 3 still used the version 2 name.
 
 ## Related
 
-- Backup schedule interval: see the Backup schedule interval page for version 3.
-- Two-factor grace period: see the Two-factor grace period page for version 3.
+- Connection pool size: see the Connection pool size page for version 3.
+- Request timeout: see the Request timeout page for version 3.

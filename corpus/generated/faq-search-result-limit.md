@@ -1,5 +1,5 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 section: FAQ
 ---
 
@@ -9,19 +9,19 @@ Answers to the questions the support desk is asked most about this setting. Wher
 
 **What is the default search result limit?**
 
-In version 2 it is 394 megabytes; in version 3 it is 480 megabytes.
+In version 2 it is 27 percent; in version 3 it is 17 percent.
 
 **Do I need to restart after changing it?**
 
-Version 2: no. Version 3: no.
+Version 2: yes. Version 3: yes.
 
 **What happens if I set it too high?**
 
-The value is rejected and the previous one stays in force. The maximum is 1745 in version 2 and 1693 in version 3.
+The value is rejected and the previous one stays in force. The maximum is 82 in version 2 and 80 in version 3.
 
 **We upgraded and the setting seems to have reset. Why?**
 
-Version 3 changed the setting's name from `search_result_limit` to `KESTREL_SEARCH_RESULT_LIMIT` in release 3.8. See the known issue for this setting.
+Version 3 changed the setting's name from `search_result_limit` to `IRONCLAD_SEARCH_RESULT_LIMIT` in release 3.6. See the known issue for this setting.
 
 **Can it be set per customer account?**
 

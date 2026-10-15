@@ -1,11 +1,11 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 section: Operations
 ---
 
 # Operating the health check interval
 
-Kestrel Data Runner is a data runner that moves records between business systems. The health check interval setting controls how the service behaves when that limit is reached, and it is one of the settings most often changed by administrators after go-live.
+Ironclad Endpoint Manager is a device-management product that enrols, updates and locks company devices. The health check interval setting controls how the service behaves when that limit is reached, and it is one of the settings most often changed by administrators after go-live.
 
 ## How it works
 
@@ -13,20 +13,20 @@ Every request carries the health check interval that applied when it started. If
 
 ## Choosing a value
 
-There is no single right value. Small installations rarely need more than the default of 141 days. Large ones usually settle between the default and twice the default. Values near the minimum of 66 are meant for testing and make failures more frequent, not less. Whatever you choose, set it in one place only: two conflicting values are the cause of most surprises.
+There is no single right value. Small installations rarely need more than the default of 20 minutes. Large ones usually settle between the default and twice the default. Values near the minimum of 4 are meant for testing and make failures more frequent, not less. Whatever you choose, set it in one place only: two conflicting values are the cause of most surprises.
 
 ## Monitoring
 
-The service exports the metric `kestrel_health_check_interval_limit_hits_total`. A steady rise means the limit is doing its job; a sudden jump after a change means the new value is too tight. Alert on the rate, not on the total.
+The service exports the metric `ironclad_health_check_interval_limit_hits_total`. A steady rise means the limit is doing its job; a sudden jump after a change means the new value is too tight. Alert on the rate, not on the total.
 
 ## Version differences in one table
 
 | | Version 2 | Version 3 |
 | --- | --- | --- |
-| Setting | `health_check_interval` | `KESTREL_HEALTH_CHECK_INTERVAL` |
-| Default | 716 days | 141 days |
-| Range | 41–3245 | 66–2915 |
-| Takes effect | restart | immediately |
+| Setting | `health_check_interval` | `IRONCLAD_HEALTH_CHECK_INTERVAL` |
+| Default | 50 minutes | 20 minutes |
+| Range | 1–239 | 4–181 |
+| Takes effect | restart | next job |
 
 ## A worked change
 

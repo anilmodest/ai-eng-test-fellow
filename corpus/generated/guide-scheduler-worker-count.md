@@ -1,11 +1,11 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 section: Operations
 ---
 
 # Operating the scheduler worker count
 
-This page describes the scheduler worker count setting in Kestrel Data Runner, a data runner that moves records between business systems. Most installations never change it; the ones that do usually change it after their first busy period, when the default turns out to be too tight or too loose.
+In Ironclad Endpoint Manager, the scheduler worker count is a single value measured in megabytes. It applies to the whole installation rather than to one customer account, which is why it lives in system configuration and not in account settings.
 
 ## How it works
 
@@ -13,20 +13,20 @@ The scheduler worker count is enforced by the component that does the work, not 
 
 ## Choosing a value
 
-There is no single right value. Small installations rarely need more than the default of 28 minutes. Large ones usually settle between the default and twice the default. Values near the minimum of 2 are meant for testing and make failures more frequent, not less. Whatever you choose, set it in one place only: two conflicting values are the cause of most surprises.
+There is no single right value. Small installations rarely need more than the default of 10 megabytes. Large ones usually settle between the default and twice the default. Values near the minimum of 1 are meant for testing and make failures more frequent, not less. Whatever you choose, set it in one place only: two conflicting values are the cause of most surprises.
 
 ## Monitoring
 
-Watch `kestrel_scheduler_worker_count_current` on the operations dashboard. If it sits at the configured value for long periods, the setting is the bottleneck, and raising it is reasonable. If it never comes near, the value can safely stay where it is.
+The service exports the metric `ironclad_scheduler_worker_count_limit_hits_total`. A steady rise means the limit is doing its job; a sudden jump after a change means the new value is too tight. Alert on the rate, not on the total.
 
 ## Version differences in one table
 
 | | Version 2 | Version 3 |
 | --- | --- | --- |
-| Setting | `scheduler_worker_count` | `KESTREL_SCHEDULER_WORKER_COUNT` |
-| Default | 18 minutes | 28 minutes |
-| Range | 1–209 | 2–238 |
-| Takes effect | restart | restart |
+| Setting | `scheduler_worker_count` | `IRONCLAD_SCHEDULER_WORKER_COUNT` |
+| Default | 510 megabytes | 10 megabytes |
+| Range | 33–1742 | 1–1891 |
+| Takes effect | next job | immediately |
 
 ## A worked change
 

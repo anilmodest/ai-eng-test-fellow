@@ -1,4 +1,4 @@
-# Fabrikam Logistics - Customer FAQ
+# Kingsway Transport Logistics - Customer FAQ
 
 ## How do I book a collection?
 
@@ -27,5 +27,5 @@ it by SMS to 60777 for the latest scan.
 
 ## Who do I contact about an invoice?
 
-Email accounts@fabrikam.example with the invoice number. Queries raised within 14 days of the
+Email accounts@kingsway-transport.example with the invoice number. Queries raised within 14 days of the
 invoice date are resolved before payment is due.

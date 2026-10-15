@@ -1,35 +1,35 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 version: v3
 section: Troubleshooting
 ---
 
-# Troubleshooting: archive threshold (Kestrel v3)
+# Troubleshooting: archive threshold (Ironclad v3)
 
-Problems with the archive threshold are almost always configuration, not defects. Work through the checks below before opening a ticket.
+Start here when the archive threshold does not behave as configured. Most reports turn out to be one of three causes, listed in the order to check them.
 
 ## Symptoms
 
 - The service uses a different archive threshold from the one you set.
-- The log shows `E1107: KESTREL_ARCHIVE_THRESHOLD out of range`.
+- The log shows `E1797: IRONCLAD_ARCHIVE_THRESHOLD out of range`.
 - The value changed in configuration, but behaviour did not change.
 
 ## Check 1: is the value in range?
 
-The accepted range is 5 to 235 minutes. Out of range, the value is rejected with `E1107: KESTREL_ARCHIVE_THRESHOLD out of range` and the previous value stays in force. Run `kestrelctl config show KESTREL_ARCHIVE_THRESHOLD` to see the value in use.
+The accepted range is 4 to 466 connections. Out of range, the value is rejected with `E1797: IRONCLAD_ARCHIVE_THRESHOLD out of range` and the previous value stays in force. Run `ironcladctl config show IRONCLAD_ARCHIVE_THRESHOLD` to see the value in use.
 
 ## Check 2: has it taken effect?
 
-A change applies from the next job onwards. Jobs already running finish with the value they started with.
+The value is read once, at startup. A running service keeps the old value until it is restarted with `ironcladctl restart`.
 
 ## Check 3: is the old setting still there?
 
-Installations upgraded from version 2 often still carry `archive_threshold`. In version 3 it is warned. The setting that counts is `KESTREL_ARCHIVE_THRESHOLD`, and its default is 21 minutes.
+Installations upgraded from version 2 often still carry `archive_threshold`. In version 3 it is ignored. The setting that counts is `IRONCLAD_ARCHIVE_THRESHOLD`, and its default is 27 connections.
 
 ## What the metrics show
 
-The service exports the metric `kestrel_archive_threshold_limit_hits_total`. A steady rise means the limit is doing its job; a sudden jump after a change means the new value is too tight. Alert on the rate, not on the total.
+Watch `ironclad_archive_threshold_current` on the operations dashboard. If it sits at the configured value for long periods, the setting is the bottleneck, and raising it is reasonable. If it never comes near, the value can safely stay where it is.
 
 ## If none of these explains it
 
-Collect the output of `kestrelctl config show --all` and the last hour of the service log, and open a ticket with the support desk. Say which version you run.
+Collect the output of `ironcladctl config show --all` and the last hour of the service log, and open a ticket with the support desk. Say which version you run.

@@ -1,26 +1,29 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 version: v3
 section: Release notes
 ---
 
-# Kestrel 3.4 release notes
+# Ironclad 3.4 release notes
 
-Released 1 May 2026.
+Released 18 May 2026.
 
 ## Changes
 
-- **Audit log retention**: now set with `KESTREL_AUDIT_LOG_RETENTION`; default changed from 22 to 129 connections. The version 2 setting `audit_log_retention` is warned.
-- **Webhook delivery timeout**: now set with `KESTREL_WEBHOOK_DELIVERY_TIMEOUT`; default changed from 25 to 3 percent. The version 2 setting `webhook_delivery_timeout_per` is warned.
-- **Refresh token lifetime**: now set with `KESTREL_REFRESH_TOKEN_LIFETIME`; default changed from 3 to 15 percent. The version 2 setting `refresh_token_lifetime` is rejected.
-- **Idle disconnect**: now set with `KESTREL_IDLE_DISCONNECT`; default changed from 1917 to 2804 items. The version 2 setting `idle_disconnect` is warned.
-- **Maintenance window length**: now set with `KESTREL_MAINTENANCE_WINDOW_LENGTH`; default changed from 104 to 87 connections. The version 2 setting `maintenance_window_length_con` is rejected.
-- Two-factor grace period: the error `E1693: KESTREL_TWO_FACTOR_GRACE_PERIOD out of range` now names the accepted range (8 to 466 connections).
-- Session timeout: the error `E1321: KESTREL_SESSION_TIMEOUT out of range` now names the accepted range (13 to 3905 characters).
-- Transform memory limit: the error `E1915: KESTREL_TRANSFORM_MEMORY_LIMIT out of range` now names the accepted range (10 to 400 connections).
+- **Session timeout**: now set with `IRONCLAD_SESSION_TIMEOUT`; default changed from 42 to 34 minutes. The version 2 setting `session_timeout_min` is rejected.
+- **Refresh token lifetime**: now set with `IRONCLAD_REFRESH_TOKEN_LIFETIME`; default changed from 69 to 102 seconds. The version 2 setting `refresh_token_lifetime` is rejected.
+- **Archive threshold**: now set with `IRONCLAD_ARCHIVE_THRESHOLD`; default changed from 41 to 27 connections. The version 2 setting `archive_threshold` is ignored.
+- **Sync interval**: now set with `IRONCLAD_SYNC_INTERVAL`; default changed from 48 to 38 seconds. The version 2 setting `sync_interval` is ignored.
+- **TLS handshake timeout**: now set with `IRONCLAD_TLS_HANDSHAKE_TIMEOUT`; default changed from 67 to 63 seconds. The version 2 setting `tls_handshake_timeout` is warned.
+- **Batch commit size**: now set with `IRONCLAD_BATCH_COMMIT_SIZE`; default changed from 669 to 1382 requests per minute. The version 2 setting `batch_commit_size` is ignored.
+- Webhook retry count: the error `E1811: IRONCLAD_WEBHOOK_RETRY_COUNT out of range` now names the accepted range (87 to 9276 items).
+- Report page size: the error `E1600: IRONCLAD_REPORT_PAGE_SIZE out of range` now names the accepted range (2 to 97 percent).
+- Pagination cursor lifetime: the error `E1627: IRONCLAD_PAGINATION_CURSOR_LIFETIME out of range` now names the accepted range (1 to 93 percent).
 
 ## Fixes
 
-- Fixed a case where api rate limit was not applied to the first job after a restart.
-- Fixed a case where dead-letter retention was not applied to the first job after a configuration reload.
-- Fixed a case where dead-letter retention was not applied to the first job after a backup restore.
+- Fixed a case where request timeout was not applied to the first job after a failover.
+- Fixed a case where metrics flush interval was not applied to the first job after a configuration reload.
+- Fixed a case where concurrent session limit was not applied to the first job after a configuration reload.
+- Fixed a case where token lifetime was not applied to the first job after a backup restore.
+- Fixed a case where batch commit size was not applied to the first job after a backup restore.

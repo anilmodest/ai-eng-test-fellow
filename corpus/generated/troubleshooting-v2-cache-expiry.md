@@ -1,22 +1,22 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 version: v2
 section: Troubleshooting
 ---
 
-# Troubleshooting: cache expiry (Kestrel v2)
+# Troubleshooting: cache expiry (Ironclad v2)
 
-Problems with the cache expiry are almost always configuration, not defects. Work through the checks below before opening a ticket.
+Start here when the cache expiry does not behave as configured. Most reports turn out to be one of three causes, listed in the order to check them.
 
 ## Symptoms
 
 - The service uses a different cache expiry from the one you set.
-- The log shows `E1104: cache_expiry out of range`.
+- The log shows `E1719: cache_expiry out of range`.
 - The value changed in configuration, but behaviour did not change.
 
 ## Check 1: is the value in range?
 
-The accepted range is 55 to 3364 days. Out of range, the value is rejected with `E1104: cache_expiry out of range` and the previous value stays in force. Run `kestrelctl config show cache_expiry` to see the value in use.
+The accepted range is 139 to 8716 items. Out of range, the value is rejected with `E1719: cache_expiry out of range` and the previous value stays in force. Run `ironcladctl config show cache_expiry` to see the value in use.
 
 ## Check 2: has it taken effect?
 
@@ -24,12 +24,12 @@ The value is read at the start of each job. A job that is already running keeps 
 
 ## Check 3: is it set in the right place?
 
-In version 2 the setting lives in `kestrel.conf`, in the `[network]` block. A value set anywhere else is not read.
+In version 2 the setting lives in `ironclad.conf`, in the `[security]` block. A value set anywhere else is not read.
 
 ## What the metrics show
 
-The service exports the metric `kestrel_cache_expiry_limit_hits_total`. A steady rise means the limit is doing its job; a sudden jump after a change means the new value is too tight. Alert on the rate, not on the total.
+Watch `ironclad_cache_expiry_current` on the operations dashboard. If it sits at the configured value for long periods, the setting is the bottleneck, and raising it is reasonable. If it never comes near, the value can safely stay where it is.
 
 ## If none of these explains it
 
-Collect the output of `kestrelctl config show --all` and the last hour of the service log, and open a ticket with the support desk. Say which version you run.
+Collect the output of `ironcladctl config show --all` and the last hour of the service log, and open a ticket with the support desk. Say which version you run.

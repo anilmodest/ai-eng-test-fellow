@@ -1,7 +1,7 @@
 SERVICE AGREEMENT
 
-This Service Agreement (the "Agreement") is made on 15 August 2026 between Fabrikam Logistics Inc.
-("Client") and Tailspin Analytics Ltd ("Provider").
+This Service Agreement (the "Agreement") is made on 15 August 2026 between Kingsway Transport Logistics Inc.
+("Client") and Larkspur Hotels Analytics Ltd ("Provider").
 
 1. Services. Provider will design, build and operate a document classification service for
 Client's freight paperwork, as described in Schedule A.
@@ -24,5 +24,5 @@ preceding six (6) months.
 
 7. Governing law. England and Wales.
 
-Signed for Fabrikam Logistics Inc.: R. Okafor, Chief Operating Officer
-Signed for Tailspin Analytics Ltd: M. Lindqvist, Managing Director
+Signed for Kingsway Transport Logistics Inc.: R. Okafor, Chief Operating Officer
+Signed for Larkspur Hotels Analytics Ltd: M. Lindqvist, Managing Director

@@ -1,26 +1,28 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 version: v3
-section: Security
+section: Configuration
 ---
 
-# Session timeout (Kestrel v3)
+# Session timeout (Ironclad v3)
 
-In Kestrel Data Runner, the session timeout is a single value measured in characters. It applies to the whole installation rather than to one customer account, which is why it lives in system configuration and not in account settings.
+In Ironclad Endpoint Manager, the session timeout is a single value measured in minutes. It applies to the whole installation rather than to one customer account, which is why it lives in system configuration and not in account settings.
 
 ## Where the setting lives
 
-The setting is `KESTREL_SESSION_TIMEOUT`, in the admin console, under Settings > Configuration. It takes a whole number of characters. The default is **812 characters**.
+The setting is `IRONCLAD_SESSION_TIMEOUT`, as the environment variable. It takes a whole number of minutes. The default is **34 minutes**.
 
-The console shows the current value and the default side by side. The same value can be set from the command line with `kestrelctl config set KESTREL_SESSION_TIMEOUT 812`.
+```
+export IRONCLAD_SESSION_TIMEOUT=34
+```
 
 ## Upgrading from version 2
 
-`session_timeout_cha`, the version 2 setting, is rejected. If it is still present the service refuses to start and logs `E1321: unknown setting session_timeout_cha`. Remove it before upgrading.
+`session_timeout_min`, the version 2 setting, is rejected. If it is still present the service refuses to start and logs `E1851: unknown setting session_timeout_min`. Remove it before upgrading.
 
 ## How it works
 
-Internally, the service checks the session timeout every time the limit could apply, not on a timer. When the limit is reached the service finishes the step it is on, records an event in the activity log, and only then applies the limit. A value of 812 characters therefore means 'at least 812', never 'exactly', and on a heavily loaded installation the difference can be noticeable. The activity log entry names the setting, so an administrator can always tell which limit was hit.
+Every request carries the session timeout that applied when it started. If the value changes while a request is in progress, that request keeps its original limit, and only new requests see the new one. This keeps behaviour predictable during a change, at the cost of a short period in which old and new limits are both in force.
 
 ## When it takes effect
 
@@ -28,36 +30,36 @@ The value is read at the start of each job. A job that is already running keeps 
 
 ## Choosing a value
 
-There is no single right value. Small installations rarely need more than the default of 812 characters. Large ones usually settle between the default and twice the default. Values near the minimum of 13 are meant for testing and make failures more frequent, not less. Whatever you choose, set it in one place only: two conflicting values are the cause of most surprises.
+There is no single right value. Small installations rarely need more than the default of 34 minutes. Large ones usually settle between the default and twice the default. Values near the minimum of 3 are meant for testing and make failures more frequent, not less. Whatever you choose, set it in one place only: two conflicting values are the cause of most surprises.
 
 ## Monitoring
 
-Watch `kestrel_session_timeout_current` on the operations dashboard. If it sits at the configured value for long periods, the setting is the bottleneck, and raising it is reasonable. If it never comes near, the value can safely stay where it is.
+Watch `ironclad_session_timeout_current` on the operations dashboard. If it sits at the configured value for long periods, the setting is the bottleneck, and raising it is reasonable. If it never comes near, the value can safely stay where it is.
 
 ## Limits
 
-The lowest accepted value is 13. The highest accepted value is 3905. A value outside that range is rejected and the previous value stays in force, with `E1321: KESTREL_SESSION_TIMEOUT out of range` in the log.
+The lowest accepted value is 3. The highest accepted value is 209. A value outside that range is rejected and the previous value stays in force, with `E1851: IRONCLAD_SESSION_TIMEOUT out of range` in the log.
 
 ## Examples
 
-| Value (characters) | When to use it |
+| Value (minutes) | When to use it |
 | --- | --- |
-| 13 | small installations, or testing |
-| 812 | the default; right for most installations |
-| 1624 | busy installations with spare capacity |
-| 3905 | the maximum; only with a reason written down |
+| 3 | small installations, or testing |
+| 34 | the default; right for most installations |
+| 68 | busy installations with spare capacity |
+| 209 | the maximum; only with a reason written down |
 
 ## Interactions
 
-The session timeout is often changed together with the password minimum length (`KESTREL_PASSWORD_MINIMUM_LENGTH`, default 674 requests per minute in version 3). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
+The session timeout is often changed together with the export batch size (`IRONCLAD_EXPORT_BATCH_SIZE`, default 343 requests per minute in version 3). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
 
-The session timeout is often changed together with the cache expiry (`KESTREL_CACHE_EXPIRY`, default 1063 days in version 3). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
+The session timeout is often changed together with the search result limit (`IRONCLAD_SEARCH_RESULT_LIMIT`, default 17 percent in version 3). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
 
 ## Version history
 
-Renamed to `KESTREL_SESSION_TIMEOUT` and given a new default of 812 characters in release 3.8. Before that release, version 3 still used the version 2 name.
+Renamed to `IRONCLAD_SESSION_TIMEOUT` and given a new default of 34 minutes in release 3.4. Before that release, version 3 still used the version 2 name.
 
 ## Related
 
-- Password minimum length: see the Password minimum length page for version 3.
-- Cache expiry: see the Cache expiry page for version 3.
+- Export batch size: see the Export batch size page for version 3.
+- Search result limit: see the Search result limit page for version 3.

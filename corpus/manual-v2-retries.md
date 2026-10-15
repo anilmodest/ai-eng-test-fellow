@@ -1,16 +1,16 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 version: v2
 section: Configuration
 ---
 
-# Retries (Kestrel v2)
+# Retries (Ironclad v2)
 
-When a connection attempt or a transfer fails, Kestrel retries it before marking the run as failed.
+When a connection attempt or a transfer fails, Ironclad retries it before marking the run as failed.
 
 ## Settings
 
-`retry_count` in `kestrel.conf` sets how many retries follow the first attempt. The default is **3**. The interval between retries is fixed at **5 seconds** and cannot be configured.
+`retry_count` in `ironclad.conf` sets how many retries follow the first attempt. The default is **3**. The interval between retries is fixed at **5 seconds** and cannot be configured.
 
 ```
 [source]

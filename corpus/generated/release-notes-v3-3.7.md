@@ -1,25 +1,27 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 version: v3
 section: Release notes
 ---
 
-# Kestrel 3.7 release notes
+# Ironclad 3.7 release notes
 
-Released 14 August 2026.
+Released 10 August 2026.
 
 ## Changes
 
-- **Cache expiry**: now set with `KESTREL_CACHE_EXPIRY`; default changed from 596 to 1063 days. The version 2 setting `cache_expiry` is rejected.
-- **Upload chunk size**: now set with `KESTREL_UPLOAD_CHUNK_SIZE`; default changed from 104 to 97 seconds. The version 2 setting `upload_chunk_size` is rejected.
-- Job queue depth: the error `E1867: KESTREL_JOB_QUEUE_DEPTH out of range` now names the accepted range (2 to 239 minutes).
-- Batch commit size: the error `E1520: KESTREL_BATCH_COMMIT_SIZE out of range` now names the accepted range (53 to 5795 requests per minute).
-- Concurrent session limit: the error `E1306: KESTREL_CONCURRENT_SESSION_LIMIT out of range` now names the accepted range (1 to 90 percent).
+- **Connection pool size**: now set with `IRONCLAD_CONNECTION_POOL_SIZE`; default changed from 161 to 383 requests per minute. The version 2 setting `connection_pool_size_req` is rejected.
+- **Two-factor grace period**: now set with `IRONCLAD_TWO_FACTOR_GRACE_PERIOD`; default changed from 100 to 129 connections. The version 2 setting `two_factor_grace_period_con` is rejected.
+- **Report page size**: now set with `IRONCLAD_REPORT_PAGE_SIZE`; default changed from 5 to 29 percent. The version 2 setting `report_page_size` is warned.
+- **Pagination cursor lifetime**: now set with `IRONCLAD_PAGINATION_CURSOR_LIFETIME`; default changed from 8 to 10 percent. The version 2 setting `pagination_cursor_lifetime` is ignored.
+- Webhook retry count: the error `E1811: IRONCLAD_WEBHOOK_RETRY_COUNT out of range` now names the accepted range (87 to 9276 items).
+- Audit log retention: the error `E1829: IRONCLAD_AUDIT_LOG_RETENTION out of range` now names the accepted range (1 to 3336 days).
+- Health check interval: the error `E1631: IRONCLAD_HEALTH_CHECK_INTERVAL out of range` now names the accepted range (4 to 181 minutes).
 
 ## Fixes
 
-- Fixed a case where report page size was not applied to the first job after a restart.
-- Fixed a case where webhook retry count was not applied to the first job after a backup restore.
-- Fixed a case where audit log retention was not applied to the first job after a restart.
-- Fixed a case where idle disconnect was not applied to the first job after a restart.
-- Fixed a case where sync interval was not applied to the first job after a configuration reload.
+- Fixed a case where cache expiry was not applied to the first job after a failover.
+- Fixed a case where password minimum length was not applied to the first job after a restart.
+- Fixed a case where request timeout was not applied to the first job after a backup restore.
+- Fixed a case where connection pool size was not applied to the first job after a backup restore.
+- Fixed a case where job queue depth was not applied to the first job after a failover.

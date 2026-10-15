@@ -1,19 +1,19 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 version: v2
-section: Security
+section: Configuration
 ---
 
-# TLS handshake timeout (Kestrel v2)
+# TLS handshake timeout (Ironclad v2)
 
-In Kestrel Data Runner, the tls handshake timeout is a single value measured in hours. It applies to the whole installation rather than to one customer account, which is why it lives in system configuration and not in account settings.
+This page describes the tls handshake timeout setting in Ironclad Endpoint Manager, a device-management product that enrols, updates and locks company devices. Most installations never change it; the ones that do usually change it after their first busy period, when the default turns out to be too tight or too loose.
 
 ## Where the setting lives
 
-The setting is `tls_handshake_timeout_hou`, in `kestrel.conf`, in the `[storage]` block. It takes a whole number of hours. The default is **47 hours**.
+The setting is `tls_handshake_timeout`, in `ironclad.conf`, in the `[jobs]` block. It takes a whole number of seconds. The default is **67 seconds**.
 
 ```
-tls_handshake_timeout_hou = 47
+tls_handshake_timeout = 67
 ```
 
 ## How it works
@@ -22,40 +22,40 @@ The tls handshake timeout is enforced by the component that does the work, not b
 
 ## When it takes effect
 
-The value is read when the service starts. Changing it has no effect on a running service; restart it with `kestrelctl restart` for the new value to be used.
+A change applies from the next job onwards. Jobs already running finish with the value they started with.
 
 ## Choosing a value
 
-Start from the default of 47 hours and change it only with a reason you can write down. Raising the tls handshake timeout trades resilience for capacity: more work is accepted, but a failure takes longer to notice. Lowering it does the opposite. Change it in steps of no more than a quarter, watch for a week, and record what you saw. Installations that jumped straight to the maximum of 146 are the most common source of tickets about this setting.
+Start from the default of 67 seconds and change it only with a reason you can write down. Raising the tls handshake timeout trades resilience for capacity: more work is accepted, but a failure takes longer to notice. Lowering it does the opposite. Change it in steps of no more than a quarter, watch for a week, and record what you saw. Installations that jumped straight to the maximum of 497 are the most common source of tickets about this setting.
 
 ## Monitoring
 
-Watch `kestrel_tls_handshake_timeout_current` on the operations dashboard. If it sits at the configured value for long periods, the setting is the bottleneck, and raising it is reasonable. If it never comes near, the value can safely stay where it is.
+Watch `ironclad_tls_handshake_timeout_current` on the operations dashboard. If it sits at the configured value for long periods, the setting is the bottleneck, and raising it is reasonable. If it never comes near, the value can safely stay where it is.
 
 ## Limits
 
-The lowest accepted value is 1. The highest accepted value is 146. A value outside that range is rejected and the previous value stays in force, with `E1336: tls_handshake_timeout_hou out of range` in the log.
+The lowest accepted value is 3. The highest accepted value is 497. A value outside that range is rejected and the previous value stays in force, with `E1286: tls_handshake_timeout out of range` in the log.
 
 ## Examples
 
-| Value (hours) | When to use it |
+| Value (seconds) | When to use it |
 | --- | --- |
-| 1 | small installations, or testing |
-| 47 | the default; right for most installations |
-| 94 | busy installations with spare capacity |
-| 146 | the maximum; only with a reason written down |
+| 3 | small installations, or testing |
+| 67 | the default; right for most installations |
+| 134 | busy installations with spare capacity |
+| 497 | the maximum; only with a reason written down |
 
 ## Interactions
 
-The tls handshake timeout is often changed together with the session timeout (`session_timeout_cha`, default 925 characters in version 2). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
+The tls handshake timeout is often changed together with the session timeout (`session_timeout_min`, default 42 minutes in version 2). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
 
-The tls handshake timeout is often changed together with the password minimum length (`password_minimum_length_req`, default 1990 requests per minute in version 2). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
+The tls handshake timeout is often changed together with the export batch size (`export_batch_size`, default 1036 requests per minute in version 2). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
 
 ## Version history
 
-Introduced in version 2.0 as `tls_handshake_timeout_hou`. Unchanged through the 2.x releases apart from clearer error messages.
+Introduced in version 2.0 as `tls_handshake_timeout`. Unchanged through the 2.x releases apart from clearer error messages.
 
 ## Related
 
 - Session timeout: see the Session timeout page for version 2.
-- Password minimum length: see the Password minimum length page for version 2.
+- Export batch size: see the Export batch size page for version 2.

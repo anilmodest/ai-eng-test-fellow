@@ -1,35 +1,35 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 version: v3
 section: Troubleshooting
 ---
 
-# Troubleshooting: health check interval (Kestrel v3)
+# Troubleshooting: health check interval (Ironclad v3)
 
-Problems with the health check interval are almost always configuration, not defects. Work through the checks below before opening a ticket.
+Start here when the health check interval does not behave as configured. Most reports turn out to be one of three causes, listed in the order to check them.
 
 ## Symptoms
 
 - The service uses a different health check interval from the one you set.
-- The log shows `E1773: KESTREL_HEALTH_CHECK_INTERVAL out of range`.
+- The log shows `E1631: IRONCLAD_HEALTH_CHECK_INTERVAL out of range`.
 - The value changed in configuration, but behaviour did not change.
 
 ## Check 1: is the value in range?
 
-The accepted range is 66 to 2915 days. Out of range, the value is rejected with `E1773: KESTREL_HEALTH_CHECK_INTERVAL out of range` and the previous value stays in force. Run `kestrelctl config show KESTREL_HEALTH_CHECK_INTERVAL` to see the value in use.
+The accepted range is 4 to 181 minutes. Out of range, the value is rejected with `E1631: IRONCLAD_HEALTH_CHECK_INTERVAL out of range` and the previous value stays in force. Run `ironcladctl config show IRONCLAD_HEALTH_CHECK_INTERVAL` to see the value in use.
 
 ## Check 2: has it taken effect?
 
-Changes take effect immediately: the service watches the setting and reloads it without a restart.
+The value is read at the start of each job. A job that is already running keeps the value it started with; the next job uses the new one. No restart is needed.
 
 ## Check 3: is the old setting still there?
 
-Installations upgraded from version 2 often still carry `health_check_interval`. In version 3 it is ignored. The setting that counts is `KESTREL_HEALTH_CHECK_INTERVAL`, and its default is 141 days.
+Installations upgraded from version 2 often still carry `health_check_interval`. In version 3 it is warned. The setting that counts is `IRONCLAD_HEALTH_CHECK_INTERVAL`, and its default is 20 minutes.
 
 ## What the metrics show
 
-Watch `kestrel_health_check_interval_current` on the operations dashboard. If it sits at the configured value for long periods, the setting is the bottleneck, and raising it is reasonable. If it never comes near, the value can safely stay where it is.
+The service exports the metric `ironclad_health_check_interval_limit_hits_total`. A steady rise means the limit is doing its job; a sudden jump after a change means the new value is too tight. Alert on the rate, not on the total.
 
 ## If none of these explains it
 
-Collect the output of `kestrelctl config show --all` and the last hour of the service log, and open a ticket with the support desk. Say which version you run.
+Collect the output of `ironcladctl config show --all` and the last hour of the service log, and open a ticket with the support desk. Say which version you run.

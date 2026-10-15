@@ -1,16 +1,16 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 version: v2
 section: Operations
 ---
 
-# Log retention (Kestrel v2)
+# Log retention (Ironclad v2)
 
-Kestrel keeps run logs on the runner's own disk.
+Ironclad keeps run logs on the runner's own disk.
 
 ## How long logs are kept
 
-`log_retention_days` in `kestrel.conf` sets the number of days. The default is **14 days**. Logs older than that are deleted by a sweep that runs at startup and then once a day.
+`log_retention_days` in `ironclad.conf` sets the number of days. The default is **14 days**. Logs older than that are deleted by a sweep that runs at startup and then once a day.
 
 ```
 [runner]
@@ -19,7 +19,7 @@ log_retention_days = 14
 
 ## Where logs are written
 
-`/var/log/kestrel/<run-id>.log`, one file per run, plain text.
+`/var/log/ironclad/<run-id>.log`, one file per run, plain text.
 
 ## Limits
 

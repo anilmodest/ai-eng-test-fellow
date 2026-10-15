@@ -1,5 +1,5 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 section: FAQ
 ---
 
@@ -9,19 +9,19 @@ Answers to the questions the support desk is asked most about this setting. Wher
 
 **What is the default request timeout?**
 
-In version 2 it is 2 hours; in version 3 it is 7 hours.
+In version 2 it is 21 minutes; in version 3 it is 37 minutes.
 
 **Do I need to restart after changing it?**
 
-Version 2: no. Version 3: yes.
+Version 2: yes. Version 3: no.
 
 **What happens if I set it too high?**
 
-The value is rejected and the previous one stays in force. The maximum is 151 in version 2 and 139 in version 3.
+The value is rejected and the previous one stays in force. The maximum is 239 in version 2 and 237 in version 3.
 
 **We upgraded and the setting seems to have reset. Why?**
 
-Version 3 changed the setting's name from `request_timeout` to `KESTREL_REQUEST_TIMEOUT` in release 3.0. See the known issue for this setting.
+Version 3 changed the setting's name from `request_timeout` to `IRONCLAD_REQUEST_TIMEOUT` in release 3.8. See the known issue for this setting.
 
 **Can it be set per customer account?**
 

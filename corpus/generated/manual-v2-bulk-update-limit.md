@@ -1,19 +1,19 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 version: v2
-section: Operations
+section: Data
 ---
 
-# Bulk update limit (Kestrel v2)
+# Bulk update limit (Ironclad v2)
 
-This page describes the bulk update limit setting in Kestrel Data Runner, a data runner that moves records between business systems. Most installations never change it; the ones that do usually change it after their first busy period, when the default turns out to be too tight or too loose.
+In Ironclad Endpoint Manager, the bulk update limit is a single value measured in items. It applies to the whole installation rather than to one customer account, which is why it lives in system configuration and not in account settings.
 
 ## Where the setting lives
 
-The setting is `bulk_update_limit`, in `kestrel.conf`, in the `[server]` block. It takes a whole number of hours. The default is **42 hours**.
+The setting is `bulk_update_limit`, in `ironclad.conf`, in the `[server]` block. It takes a whole number of items. The default is **2897 items**.
 
 ```
-bulk_update_limit = 42
+bulk_update_limit = 2897
 ```
 
 ## How it works
@@ -22,34 +22,34 @@ The bulk update limit is enforced by the component that does the work, not by a 
 
 ## When it takes effect
 
-The value is read when the service starts. Changing it has no effect on a running service; restart it with `kestrelctl restart` for the new value to be used.
+The value is read once, at startup. A running service keeps the old value until it is restarted with `ironcladctl restart`.
 
 ## Choosing a value
 
-There is no single right value. Small installations rarely need more than the default of 42 hours. Large ones usually settle between the default and twice the default. Values near the minimum of 4 are meant for testing and make failures more frequent, not less. Whatever you choose, set it in one place only: two conflicting values are the cause of most surprises.
+Start from the default of 2897 items and change it only with a reason you can write down. Raising the bulk update limit trades resilience for capacity: more work is accepted, but a failure takes longer to notice. Lowering it does the opposite. Change it in steps of no more than a quarter, watch for a week, and record what you saw. Installations that jumped straight to the maximum of 9526 are the most common source of tickets about this setting.
 
 ## Monitoring
 
-Watch `kestrel_bulk_update_limit_current` on the operations dashboard. If it sits at the configured value for long periods, the setting is the bottleneck, and raising it is reasonable. If it never comes near, the value can safely stay where it is.
+The service exports the metric `ironclad_bulk_update_limit_limit_hits_total`. A steady rise means the limit is doing its job; a sudden jump after a change means the new value is too tight. Alert on the rate, not on the total.
 
 ## Limits
 
-The lowest accepted value is 4. The highest accepted value is 164. A value outside that range is rejected and the previous value stays in force, with `E1816: bulk_update_limit out of range` in the log.
+The lowest accepted value is 184. The highest accepted value is 9526. A value outside that range is rejected and the previous value stays in force, with `E1846: bulk_update_limit out of range` in the log.
 
 ## Examples
 
-| Value (hours) | When to use it |
+| Value (items) | When to use it |
 | --- | --- |
-| 4 | small installations, or testing |
-| 42 | the default; right for most installations |
-| 84 | busy installations with spare capacity |
-| 164 | the maximum; only with a reason written down |
+| 184 | small installations, or testing |
+| 2897 | the default; right for most installations |
+| 5794 | busy installations with spare capacity |
+| 9526 | the maximum; only with a reason written down |
 
 ## Interactions
 
-The bulk update limit is often changed together with the export batch size (`export_batch_size_sec`, default 146 seconds in version 2). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
+The bulk update limit is often changed together with the backup schedule interval (`backup_schedule_interval`, default 67 megabytes in version 2). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
 
-The bulk update limit is often changed together with the api rate limit (`api_rate_limit`, default 161 items in version 2). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
+The bulk update limit is often changed together with the trace sampling rate (`trace_sampling_rate`, default 134 seconds in version 2). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
 
 ## Version history
 
@@ -57,5 +57,5 @@ Introduced in version 2.0 as `bulk_update_limit`. Unchanged through the 2.x rele
 
 ## Related
 
-- Export batch size: see the Export batch size page for version 2.
-- API rate limit: see the API rate limit page for version 2.
+- Backup schedule interval: see the Backup schedule interval page for version 2.
+- Trace sampling rate: see the Trace sampling rate page for version 2.

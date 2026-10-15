@@ -1,5 +1,5 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 version: v2
 section: API reference
 ---
@@ -8,34 +8,38 @@ section: API reference
 
 Read or change a setting over HTTP. All calls need an administrator token. Base path `/api/v2/settings`.
 
-## Session timeout
+## Webhook delivery timeout
 
-`GET /api/v2/settings/session_timeout_cha` returns `{"value": 925}` on a new installation. `PUT` with a value outside 60–3908 returns 422 and the message `E1321: session_timeout_cha out of range`.
+`GET /api/v2/settings/webhook_delivery_timeout` returns `{"value": 435}` on a new installation. `PUT` with a value outside 36–1769 returns 422 and the message `E1253: webhook_delivery_timeout out of range`.
 
-## Password minimum length
+## Backup retention
 
-`GET /api/v2/settings/password_minimum_length_req` returns `{"value": 1990}` on a new installation. `PUT` with a value outside 96–5905 returns 422 and the message `E1362: password_minimum_length_req out of range`.
+`GET /api/v2/settings/backup_retention` returns `{"value": 809}` on a new installation. `PUT` with a value outside 64–3178 returns 422 and the message `E1522: backup_retention out of range`.
+
+## Password expiry
+
+`GET /api/v2/settings/password_expiry_con` returns `{"value": 92}` on a new installation. `PUT` with a value outside 7–432 returns 422 and the message `E1549: password_expiry_con out of range`.
+
+## Email send rate
+
+`GET /api/v2/settings/email_send_rate` returns `{"value": 249}` on a new installation. `PUT` with a value outside 40–3244 returns 422 and the message `E1624: email_send_rate out of range`.
 
 ## Cache expiry
 
-`GET /api/v2/settings/cache_expiry` returns `{"value": 596}` on a new installation. `PUT` with a value outside 55–3364 returns 422 and the message `E1104: cache_expiry out of range`.
+`GET /api/v2/settings/cache_expiry` returns `{"value": 300}` on a new installation. `PUT` with a value outside 139–8716 returns 422 and the message `E1719: cache_expiry out of range`.
 
-## Search result limit
+## Scheduler worker count
 
-`GET /api/v2/settings/search_result_limit` returns `{"value": 394}` on a new installation. `PUT` with a value outside 28–1745 returns 422 and the message `E1693: search_result_limit out of range`.
+`GET /api/v2/settings/scheduler_worker_count` returns `{"value": 510}` on a new installation. `PUT` with a value outside 33–1742 returns 422 and the message `E1613: scheduler_worker_count out of range`.
 
-## Idle disconnect
+## Token lifetime
 
-`GET /api/v2/settings/idle_disconnect` returns `{"value": 1917}` on a new installation. `PUT` with a value outside 66–9959 returns 422 and the message `E1948: idle_disconnect out of range`.
+`GET /api/v2/settings/token_lifetime_ite` returns `{"value": 1517}` on a new installation. `PUT` with a value outside 182–8406 returns 422 and the message `E1744: token_lifetime_ite out of range`.
 
-## Trace sampling rate
+## Concurrent session limit
 
-`GET /api/v2/settings/trace_sampling_rate_min` returns `{"value": 10}` on a new installation. `PUT` with a value outside 5–219 returns 422 and the message `E1262: trace_sampling_rate_min out of range`.
+`GET /api/v2/settings/concurrent_session_limit` returns `{"value": 136}` on a new installation. `PUT` with a value outside 5–549 returns 422 and the message `E1647: concurrent_session_limit out of range`.
 
-## TLS handshake timeout
+## Check-in interval
 
-`GET /api/v2/settings/tls_handshake_timeout_hou` returns `{"value": 47}` on a new installation. `PUT` with a value outside 1–146 returns 422 and the message `E1336: tls_handshake_timeout_hou out of range`.
-
-## Batch commit size
-
-`GET /api/v2/settings/batch_commit_size` returns `{"value": 1045}` on a new installation. `PUT` with a value outside 31–5436 returns 422 and the message `E1520: batch_commit_size out of range`.
+`GET /api/v2/settings/check_in_interval` returns `{"value": 12}` on a new installation. `PUT` with a value outside 3–237 returns 422 and the message `E1394: check_in_interval out of range`.

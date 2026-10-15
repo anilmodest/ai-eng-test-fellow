@@ -1,12 +1,12 @@
 {"request": "Which version of the product is customer C-1004 running?", "tool": "get_customer", "value": "C-1004"}
 {"request": "What plan is C-1007 on?", "tool": "get_customer", "value": "C-1007"}
-{"request": "Is Tailspin Freight (C-1002) on version 2 or 3?", "tool": "get_customer", "value": "C-1002"}
+{"request": "Is Larkspur Hotels Freight (C-1002) on version 2 or 3?", "tool": "get_customer", "value": "C-1002"}
 {"request": "Before I answer C-1005, I need to know which release they have.", "tool": "get_customer", "value": "C-1005"}
 {"request": "Which account does customer C-1009 belong to?", "tool": "get_customer", "value": "C-1009"}
 {"request": "c-1003 asked about timeouts; what are they on?", "tool": "get_customer", "value": "1003"}
 {"request": "Look up the subscription tier for C-1010.", "tool": "get_customer", "value": "C-1010"}
 {"request": "Does C-1006 have the enterprise plan?", "tool": "get_customer", "value": "C-1006"}
-{"request": "Find out what Kestrel release customer C-1001 uses so I search the right manual.", "tool": "get_customer", "value": "C-1001"}
+{"request": "Find out what Ironclad release customer C-1001 uses so I search the right manual.", "tool": "get_customer", "value": "C-1001"}
 {"request": "Customer C-1008 wants to know if a feature applies to them. What version do they have?", "tool": "get_customer", "value": "C-1008"}
 {"request": "What is the status of ticket T-2010?", "tool": "get_ticket", "value": "T-2010"}
 {"request": "Summarise T-2033 for me.", "tool": "get_ticket", "value": "T-2033"}

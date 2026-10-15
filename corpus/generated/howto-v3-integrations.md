@@ -1,89 +1,96 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 version: v3
 section: Integrations
 ---
 
-# Integrations guide (Kestrel v3)
+# Integrations guide (Ironclad v3)
 
-This guide covers every integrations setting in version 3 of Kestrel Data Runner. Read it before changing more than one setting at once: several interact.
+This guide covers every integrations setting in version 3 of Ironclad Endpoint Manager. Read it before changing more than one setting at once: several interact.
 
 | Setting | Name | Default | Range | Takes effect |
 | --- | --- | --- | --- | --- |
-| Connection pool size | `KESTREL_CONNECTION_POOL_SIZE` | 33 minutes | 1–230 | next job |
-| Backup retention | `KESTREL_BACKUP_RETENTION` | 518 requests per minute | 110–5059 | restart |
-| Password expiry | `KESTREL_PASSWORD_EXPIRY` | 38 connections | 3–420 | immediately |
-| Notification digest interval | `KESTREL_NOTIFICATION_DIGEST_INTERVAL` | 597 characters | 20–3846 | immediately |
-| Email send rate | `KESTREL_EMAIL_SEND_RATE` | 2131 items | 50–8921 | immediately |
-| Report page size | `KESTREL_REPORT_PAGE_SIZE` | 157 connections | 10–499 | next job |
-| Scheduler worker count | `KESTREL_SCHEDULER_WORKER_COUNT` | 28 minutes | 2–238 | restart |
-| Upload chunk size | `KESTREL_UPLOAD_CHUNK_SIZE` | 97 seconds | 11–507 | next job |
-| Purge delay | `KESTREL_PURGE_DELAY` | 2444 items | 128–8289 | immediately |
-| DNS cache lifetime | `KESTREL_DNS_CACHE_LIFETIME` | 1959 items | 79–9472 | immediately |
-| Lock wait timeout | `KESTREL_LOCK_WAIT_TIMEOUT` | 27 percent | 2–88 | immediately |
+| Connection pool size | `IRONCLAD_CONNECTION_POOL_SIZE` | 383 requests per minute | 40–4583 | next job |
+| Request timeout | `IRONCLAD_REQUEST_TIMEOUT` | 37 minutes | 4–237 | immediately |
+| Import file size limit | `IRONCLAD_IMPORT_FILE_SIZE_LIMIT` | 9 megabytes | 5–1565 | next job |
+| API rate limit | `IRONCLAD_API_RATE_LIMIT` | 173 megabytes | 32–1539 | next job |
+| Password minimum length | `IRONCLAD_PASSWORD_MINIMUM_LENGTH` | 125 connections | 7–441 | immediately |
+| Failed login lockout | `IRONCLAD_FAILED_LOGIN_LOCKOUT` | 49 minutes | 1–203 | immediately |
+| Two-factor grace period | `IRONCLAD_TWO_FACTOR_GRACE_PERIOD` | 129 connections | 3–464 | immediately |
+| Job queue depth | `IRONCLAD_JOB_QUEUE_DEPTH` | 461 days | 56–2909 | next job |
+| Health check interval | `IRONCLAD_HEALTH_CHECK_INTERVAL` | 20 minutes | 4–181 | next job |
+| Field length limit | `IRONCLAD_FIELD_LENGTH_LIMIT` | 166 seconds | 11–486 | next job |
+| DNS cache lifetime | `IRONCLAD_DNS_CACHE_LIFETIME` | 60 connections | 7–500 | restart |
+| Update deferral | `IRONCLAD_UPDATE_DEFERRAL` | 2560 items | 159–8640 | immediately |
 
 ## Connection pool size
 
-In Kestrel Data Runner, the connection pool size is a single value measured in minutes. It applies to the whole installation rather than to one customer account, which is why it lives in system configuration and not in account settings.
+Ironclad Endpoint Manager is a device-management product that enrols, updates and locks company devices. The connection pool size setting controls how the service behaves when that limit is reached, and it is one of the settings most often changed by administrators after go-live.
 
-A change applies from the next job onwards. Jobs already running finish with the value they started with.
+The value is read at the start of each job. A job that is already running keeps the value it started with; the next job uses the new one. No restart is needed.
 
-## Backup retention
+## Request timeout
 
-In Kestrel Data Runner, the backup retention is a single value measured in requests per minute. It applies to the whole installation rather than to one customer account, which is why it lives in system configuration and not in account settings.
-
-The value is read once, at startup. A running service keeps the old value until it is restarted with `kestrelctl restart`.
-
-## Password expiry
-
-This page describes the password expiry setting in Kestrel Data Runner, a data runner that moves records between business systems. Most installations never change it; the ones that do usually change it after their first busy period, when the default turns out to be too tight or too loose.
+Ironclad Endpoint Manager is a device-management product that enrols, updates and locks company devices. The request timeout setting controls how the service behaves when that limit is reached, and it is one of the settings most often changed by administrators after go-live.
 
 Changes take effect immediately: the service watches the setting and reloads it without a restart.
 
-## Notification digest interval
+## Import file size limit
 
-In Kestrel Data Runner, the notification digest interval is a single value measured in characters. It applies to the whole installation rather than to one customer account, which is why it lives in system configuration and not in account settings.
+In Ironclad Endpoint Manager, the import file size limit is a single value measured in megabytes. It applies to the whole installation rather than to one customer account, which is why it lives in system configuration and not in account settings.
 
-Changes take effect immediately: the service watches the setting and reloads it without a restart.
+The value is read at the start of each job. A job that is already running keeps the value it started with; the next job uses the new one. No restart is needed.
 
-## Email send rate
+## API rate limit
 
-Kestrel Data Runner is a data runner that moves records between business systems. The email send rate setting controls how the service behaves when that limit is reached, and it is one of the settings most often changed by administrators after go-live.
+Ironclad Endpoint Manager is a device-management product that enrols, updates and locks company devices. The api rate limit setting controls how the service behaves when that limit is reached, and it is one of the settings most often changed by administrators after go-live.
+
+The value is read at the start of each job. A job that is already running keeps the value it started with; the next job uses the new one. No restart is needed.
+
+## Password minimum length
+
+This page describes the password minimum length setting in Ironclad Endpoint Manager, a device-management product that enrols, updates and locks company devices. Most installations never change it; the ones that do usually change it after their first busy period, when the default turns out to be too tight or too loose.
 
 The value is reloaded within a few seconds of being changed. No restart is needed, and work already in progress picks up the new value on its next step.
 
-## Report page size
+## Failed login lockout
 
-Kestrel Data Runner is a data runner that moves records between business systems. The report page size setting controls how the service behaves when that limit is reached, and it is one of the settings most often changed by administrators after go-live.
-
-A change applies from the next job onwards. Jobs already running finish with the value they started with.
-
-## Scheduler worker count
-
-In Kestrel Data Runner, the scheduler worker count is a single value measured in minutes. It applies to the whole installation rather than to one customer account, which is why it lives in system configuration and not in account settings.
-
-The value is read once, at startup. A running service keeps the old value until it is restarted with `kestrelctl restart`.
-
-## Upload chunk size
-
-Kestrel Data Runner is a data runner that moves records between business systems. The upload chunk size setting controls how the service behaves when that limit is reached, and it is one of the settings most often changed by administrators after go-live.
-
-A change applies from the next job onwards. Jobs already running finish with the value they started with.
-
-## Purge delay
-
-Kestrel Data Runner is a data runner that moves records between business systems. The purge delay setting controls how the service behaves when that limit is reached, and it is one of the settings most often changed by administrators after go-live.
+This page describes the failed login lockout setting in Ironclad Endpoint Manager, a device-management product that enrols, updates and locks company devices. Most installations never change it; the ones that do usually change it after their first busy period, when the default turns out to be too tight or too loose.
 
 Changes take effect immediately: the service watches the setting and reloads it without a restart.
+
+## Two-factor grace period
+
+Ironclad Endpoint Manager is a device-management product that enrols, updates and locks company devices. The two-factor grace period setting controls how the service behaves when that limit is reached, and it is one of the settings most often changed by administrators after go-live.
+
+Changes take effect immediately: the service watches the setting and reloads it without a restart.
+
+## Job queue depth
+
+Ironclad Endpoint Manager is a device-management product that enrols, updates and locks company devices. The job queue depth setting controls how the service behaves when that limit is reached, and it is one of the settings most often changed by administrators after go-live.
+
+A change applies from the next job onwards. Jobs already running finish with the value they started with.
+
+## Health check interval
+
+This page describes the health check interval setting in Ironclad Endpoint Manager, a device-management product that enrols, updates and locks company devices. Most installations never change it; the ones that do usually change it after their first busy period, when the default turns out to be too tight or too loose.
+
+A change applies from the next job onwards. Jobs already running finish with the value they started with.
+
+## Field length limit
+
+Ironclad Endpoint Manager is a device-management product that enrols, updates and locks company devices. The field length limit setting controls how the service behaves when that limit is reached, and it is one of the settings most often changed by administrators after go-live.
+
+The value is read at the start of each job. A job that is already running keeps the value it started with; the next job uses the new one. No restart is needed.
 
 ## DNS cache lifetime
 
-In Kestrel Data Runner, the dns cache lifetime is a single value measured in items. It applies to the whole installation rather than to one customer account, which is why it lives in system configuration and not in account settings.
+Ironclad Endpoint Manager is a device-management product that enrols, updates and locks company devices. The dns cache lifetime setting controls how the service behaves when that limit is reached, and it is one of the settings most often changed by administrators after go-live.
 
-Changes take effect immediately: the service watches the setting and reloads it without a restart.
+The value is read once, at startup. A running service keeps the old value until it is restarted with `ironcladctl restart`.
 
-## Lock wait timeout
+## Update deferral
 
-In Kestrel Data Runner, the lock wait timeout is a single value measured in percent. It applies to the whole installation rather than to one customer account, which is why it lives in system configuration and not in account settings.
+Ironclad Endpoint Manager is a device-management product that enrols, updates and locks company devices. The update deferral setting controls how the service behaves when that limit is reached, and it is one of the settings most often changed by administrators after go-live.
 
 Changes take effect immediately: the service watches the setting and reloads it without a restart.

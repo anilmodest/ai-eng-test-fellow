@@ -1,23 +1,21 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 version: v2
 section: Release notes
 ---
 
-# Kestrel 2.6 release notes
+# Ironclad 2.6 release notes
 
-Released 8 July 2024.
+Released 19 July 2024.
 
 ## Changes
 
-- Attachment size limit: the error `E1894: attachment_size_limit out of range` now names the accepted range (23 to 3641 days).
-- Scheduler worker count: the error `E1929: scheduler_worker_count out of range` now names the accepted range (1 to 209 minutes).
-- Transform memory limit: the error `E1915: transform_memory_limit out of range` now names the accepted range (6 to 394 connections).
+- Bulk update limit: the error `E1846: bulk_update_limit out of range` now names the accepted range (184 to 9526 items).
+- Field length limit: the error `E1954: field_length_limit out of range` now names the accepted range (9 to 479 seconds).
+- Password expiry: the error `E1549: password_expiry_con out of range` now names the accepted range (7 to 432 connections).
 
 ## Fixes
 
-- Fixed a case where health check interval was not applied to the first job after a restart.
-- Fixed a case where export batch size was not applied to the first job after a backup restore.
-- Fixed a case where batch commit size was not applied to the first job after a backup restore.
-- Fixed a case where upload chunk size was not applied to the first job after a restart.
-- Fixed a case where webhook retry count was not applied to the first job after a failover.
+- Fixed a case where backup schedule interval was not applied to the first job after a failover.
+- Fixed a case where upload chunk size was not applied to the first job after a failover.
+- Fixed a case where job queue depth was not applied to the first job after a failover.

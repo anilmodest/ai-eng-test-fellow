@@ -1,5 +1,5 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 section: Upgrading
 ---
 
@@ -9,10 +9,15 @@ Every setting below changed name, place or default between the versions. The las
 
 | Setting | Version 2 | Version 3 | Default v2 → v3 | Old setting in v3 |
 | --- | --- | --- | --- | --- |
-| Import file size limit | `import_file_size_limit_day` | `KESTREL_IMPORT_FILE_SIZE_LIMIT` | 66 → 74 days | warned |
-| Backup schedule interval | `backup_schedule_interval` | `KESTREL_BACKUP_SCHEDULE_INTERVAL` | 66 → 45 minutes | rejected |
-| Two-factor grace period | `two_factor_grace_period` | `KESTREL_TWO_FACTOR_GRACE_PERIOD` | 68 → 122 connections | warned |
-| Health check interval | `health_check_interval` | `KESTREL_HEALTH_CHECK_INTERVAL` | 716 → 141 days | ignored |
-| Archive threshold | `archive_threshold` | `KESTREL_ARCHIVE_THRESHOLD` | 32 → 21 minutes | warned |
-| Concurrent session limit | `concurrent_session_limit_per` | `KESTREL_CONCURRENT_SESSION_LIMIT` | 26 → 16 percent | ignored |
-| Field length limit | `field_length_limit` | `KESTREL_FIELD_LENGTH_LIMIT` | 3 → 22 percent | rejected |
+| Session timeout | `session_timeout_min` | `IRONCLAD_SESSION_TIMEOUT` | 42 → 34 minutes | rejected |
+| Export batch size | `export_batch_size` | `IRONCLAD_EXPORT_BATCH_SIZE` | 1036 → 343 requests per minute | ignored |
+| Search result limit | `search_result_limit` | `IRONCLAD_SEARCH_RESULT_LIMIT` | 27 → 17 percent | ignored |
+| Report page size | `report_page_size` | `IRONCLAD_REPORT_PAGE_SIZE` | 5 → 29 percent | warned |
+| Upload chunk size | `upload_chunk_size` | `IRONCLAD_UPLOAD_CHUNK_SIZE` | 145 → 36 seconds | ignored |
+| Metrics flush interval | `metrics_flush_interval` | `IRONCLAD_METRICS_FLUSH_INTERVAL` | 305 → 583 characters | ignored |
+| Attachment size limit | `attachment_size_limit` | `IRONCLAD_ATTACHMENT_SIZE_LIMIT` | 508 → 469 days | ignored |
+| Purge delay | `purge_delay` | `IRONCLAD_PURGE_DELAY` | 475 → 284 megabytes | ignored |
+| Maintenance window length | `maintenance_window_length_min` | `IRONCLAD_MAINTENANCE_WINDOW_LENGTH` | 31 → 20 minutes | warned |
+| TLS handshake timeout | `tls_handshake_timeout` | `IRONCLAD_TLS_HANDSHAKE_TIMEOUT` | 67 → 63 seconds | warned |
+| Batch commit size | `batch_commit_size` | `IRONCLAD_BATCH_COMMIT_SIZE` | 669 → 1382 requests per minute | ignored |
+| Remote wipe delay | `remote_wipe_delay` | `IRONCLAD_REMOTE_WIPE_DELAY` | 143 → 126 connections | ignored |

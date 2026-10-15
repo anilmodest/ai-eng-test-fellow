@@ -1,12 +1,12 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 version: v2
 section: Operations
 ---
 
-# Scheduling runs (Kestrel v2)
+# Scheduling runs (Ironclad v2)
 
-A schedule tells Kestrel when to start a run without anyone asking for it.
+A schedule tells Ironclad when to start a run without anyone asking for it.
 
 ## How schedules are written
 

@@ -1,35 +1,35 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 version: v2
 section: Troubleshooting
 ---
 
-# Troubleshooting: connection pool size (Kestrel v2)
+# Troubleshooting: connection pool size (Ironclad v2)
 
-Problems with the connection pool size are almost always configuration, not defects. Work through the checks below before opening a ticket.
+Start here when the connection pool size does not behave as configured. Most reports turn out to be one of three causes, listed in the order to check them.
 
 ## Symptoms
 
 - The service uses a different connection pool size from the one you set.
-- The log shows `E1194: connection_pool_size_min out of range`.
+- The log shows `E1438: connection_pool_size_req out of range`.
 - The value changed in configuration, but behaviour did not change.
 
 ## Check 1: is the value in range?
 
-The accepted range is 1 to 193 minutes. Out of range, the value is rejected with `E1194: connection_pool_size_min out of range` and the previous value stays in force. Run `kestrelctl config show connection_pool_size_min` to see the value in use.
+The accepted range is 89 to 4721 requests per minute. Out of range, the value is rejected with `E1438: connection_pool_size_req out of range` and the previous value stays in force. Run `ironcladctl config show connection_pool_size_req` to see the value in use.
 
 ## Check 2: has it taken effect?
 
-A change applies from the next job onwards. Jobs already running finish with the value they started with.
+The value is read when the service starts. Changing it has no effect on a running service; restart it with `ironcladctl restart` for the new value to be used.
 
 ## Check 3: is it set in the right place?
 
-In version 2 the setting lives in `kestrel.conf`, in the `[network]` block. A value set anywhere else is not read.
+In version 2 the setting lives in `ironclad.conf`, in the `[source]` block. A value set anywhere else is not read.
 
 ## What the metrics show
 
-Watch `kestrel_connection_pool_size_current` on the operations dashboard. If it sits at the configured value for long periods, the setting is the bottleneck, and raising it is reasonable. If it never comes near, the value can safely stay where it is.
+The service exports the metric `ironclad_connection_pool_size_limit_hits_total`. A steady rise means the limit is doing its job; a sudden jump after a change means the new value is too tight. Alert on the rate, not on the total.
 
 ## If none of these explains it
 
-Collect the output of `kestrelctl config show --all` and the last hour of the service log, and open a ticket with the support desk. Say which version you run.
+Collect the output of `ironcladctl config show --all` and the last hour of the service log, and open a ticket with the support desk. Say which version you run.

@@ -1,11 +1,11 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 section: Operations
 ---
 
 # Operating the dns cache lifetime
 
-Kestrel Data Runner is a data runner that moves records between business systems. The dns cache lifetime setting controls how the service behaves when that limit is reached, and it is one of the settings most often changed by administrators after go-live.
+Ironclad Endpoint Manager is a device-management product that enrols, updates and locks company devices. The dns cache lifetime setting controls how the service behaves when that limit is reached, and it is one of the settings most often changed by administrators after go-live.
 
 ## How it works
 
@@ -13,20 +13,20 @@ The dns cache lifetime is enforced by the component that does the work, not by a
 
 ## Choosing a value
 
-There is no single right value. Small installations rarely need more than the default of 1959 items. Large ones usually settle between the default and twice the default. Values near the minimum of 79 are meant for testing and make failures more frequent, not less. Whatever you choose, set it in one place only: two conflicting values are the cause of most surprises.
+Start from the default of 60 connections and change it only with a reason you can write down. Raising the dns cache lifetime trades resilience for capacity: more work is accepted, but a failure takes longer to notice. Lowering it does the opposite. Change it in steps of no more than a quarter, watch for a week, and record what you saw. Installations that jumped straight to the maximum of 500 are the most common source of tickets about this setting.
 
 ## Monitoring
 
-Watch `kestrel_dns_cache_lifetime_current` on the operations dashboard. If it sits at the configured value for long periods, the setting is the bottleneck, and raising it is reasonable. If it never comes near, the value can safely stay where it is.
+Watch `ironclad_dns_cache_lifetime_current` on the operations dashboard. If it sits at the configured value for long periods, the setting is the bottleneck, and raising it is reasonable. If it never comes near, the value can safely stay where it is.
 
 ## Version differences in one table
 
 | | Version 2 | Version 3 |
 | --- | --- | --- |
-| Setting | `dns_cache_lifetime` | `KESTREL_DNS_CACHE_LIFETIME` |
-| Default | 2822 items | 1959 items |
-| Range | 88–8583 | 79–9472 |
-| Takes effect | restart | immediately |
+| Setting | `dns_cache_lifetime_con` | `IRONCLAD_DNS_CACHE_LIFETIME` |
+| Default | 144 connections | 60 connections |
+| Range | 7–430 | 7–500 |
+| Takes effect | restart | restart |
 
 ## A worked change
 

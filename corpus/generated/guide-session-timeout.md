@@ -1,32 +1,32 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 section: Operations
 ---
 
 # Operating the session timeout
 
-In Kestrel Data Runner, the session timeout is a single value measured in characters. It applies to the whole installation rather than to one customer account, which is why it lives in system configuration and not in account settings.
+In Ironclad Endpoint Manager, the session timeout is a single value measured in minutes. It applies to the whole installation rather than to one customer account, which is why it lives in system configuration and not in account settings.
 
 ## How it works
 
-Internally, the service checks the session timeout every time the limit could apply, not on a timer. When the limit is reached the service finishes the step it is on, records an event in the activity log, and only then applies the limit. A value of 812 characters therefore means 'at least 812', never 'exactly', and on a heavily loaded installation the difference can be noticeable. The activity log entry names the setting, so an administrator can always tell which limit was hit.
+The session timeout is enforced by the component that does the work, not by a central scheduler. Each worker reads the value it was given and applies it independently, which is why two workers can briefly disagree after a change. For most installations this never matters; where it does, the troubleshooting page for this setting explains how to confirm that every worker has picked up the new value.
 
 ## Choosing a value
 
-There is no single right value. Small installations rarely need more than the default of 812 characters. Large ones usually settle between the default and twice the default. Values near the minimum of 13 are meant for testing and make failures more frequent, not less. Whatever you choose, set it in one place only: two conflicting values are the cause of most surprises.
+Start from the default of 34 minutes and change it only with a reason you can write down. Raising the session timeout trades resilience for capacity: more work is accepted, but a failure takes longer to notice. Lowering it does the opposite. Change it in steps of no more than a quarter, watch for a week, and record what you saw. Installations that jumped straight to the maximum of 209 are the most common source of tickets about this setting.
 
 ## Monitoring
 
-Watch `kestrel_session_timeout_current` on the operations dashboard. If it sits at the configured value for long periods, the setting is the bottleneck, and raising it is reasonable. If it never comes near, the value can safely stay where it is.
+Watch `ironclad_session_timeout_current` on the operations dashboard. If it sits at the configured value for long periods, the setting is the bottleneck, and raising it is reasonable. If it never comes near, the value can safely stay where it is.
 
 ## Version differences in one table
 
 | | Version 2 | Version 3 |
 | --- | --- | --- |
-| Setting | `session_timeout_cha` | `KESTREL_SESSION_TIMEOUT` |
-| Default | 925 characters | 812 characters |
-| Range | 60–3908 | 13–3905 |
-| Takes effect | next job | next job |
+| Setting | `session_timeout_min` | `IRONCLAD_SESSION_TIMEOUT` |
+| Default | 42 minutes | 34 minutes |
+| Range | 2–188 | 3–209 |
+| Takes effect | restart | next job |
 
 ## A worked change
 

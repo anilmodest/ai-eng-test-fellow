@@ -1,7 +1,7 @@
 # INVOICE TA-2026-09
 
-**From:** Tailspin Analytics Ltd, Unit 4, Riverside Business Park, Leeds LS10 1AB
-**To:** Fabrikam Logistics Inc., 1 Dockside Way, Felixstowe IP11 3SY
+**From:** Larkspur Hotels Analytics Ltd, Unit 4, Riverside Business Park, Leeds LS10 1AB
+**To:** Kingsway Transport Logistics Inc., 1 Dockside Way, Felixstowe IP11 3SY
 **Date issued:** 1 September 2026
 **Due:** 15 September 2026 (14 days, per clause 3 of the Service Agreement)
 

@@ -1,55 +1,55 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 version: v2
-section: Configuration
+section: Integrations
 ---
 
-# Health check interval (Kestrel v2)
+# Health check interval (Ironclad v2)
 
-This page describes the health check interval setting in Kestrel Data Runner, a data runner that moves records between business systems. Most installations never change it; the ones that do usually change it after their first busy period, when the default turns out to be too tight or too loose.
+In Ironclad Endpoint Manager, the health check interval is a single value measured in minutes. It applies to the whole installation rather than to one customer account, which is why it lives in system configuration and not in account settings.
 
 ## Where the setting lives
 
-The setting is `health_check_interval`, in `kestrel.conf`, in the `[network]` block. It takes a whole number of days. The default is **716 days**.
+The setting is `health_check_interval`, in `ironclad.conf`, in the `[security]` block. It takes a whole number of minutes. The default is **50 minutes**.
 
 ```
-health_check_interval = 716
+health_check_interval = 50
 ```
 
 ## How it works
 
-The health check interval is enforced by the component that does the work, not by a central scheduler. Each worker reads the value it was given and applies it independently, which is why two workers can briefly disagree after a change. For most installations this never matters; where it does, the troubleshooting page for this setting explains how to confirm that every worker has picked up the new value.
+Every request carries the health check interval that applied when it started. If the value changes while a request is in progress, that request keeps its original limit, and only new requests see the new one. This keeps behaviour predictable during a change, at the cost of a short period in which old and new limits are both in force.
 
 ## When it takes effect
 
-The value is read once, at startup. A running service keeps the old value until it is restarted with `kestrelctl restart`.
+The value is read once, at startup. A running service keeps the old value until it is restarted with `ironcladctl restart`.
 
 ## Choosing a value
 
-Start from the default of 716 days and change it only with a reason you can write down. Raising the health check interval trades resilience for capacity: more work is accepted, but a failure takes longer to notice. Lowering it does the opposite. Change it in steps of no more than a quarter, watch for a week, and record what you saw. Installations that jumped straight to the maximum of 3245 are the most common source of tickets about this setting.
+There is no single right value. Small installations rarely need more than the default of 50 minutes. Large ones usually settle between the default and twice the default. Values near the minimum of 1 are meant for testing and make failures more frequent, not less. Whatever you choose, set it in one place only: two conflicting values are the cause of most surprises.
 
 ## Monitoring
 
-Watch `kestrel_health_check_interval_current` on the operations dashboard. If it sits at the configured value for long periods, the setting is the bottleneck, and raising it is reasonable. If it never comes near, the value can safely stay where it is.
+Watch `ironclad_health_check_interval_current` on the operations dashboard. If it sits at the configured value for long periods, the setting is the bottleneck, and raising it is reasonable. If it never comes near, the value can safely stay where it is.
 
 ## Limits
 
-The lowest accepted value is 41. The highest accepted value is 3245. A value outside that range is rejected and the previous value stays in force, with `E1773: health_check_interval out of range` in the log.
+The lowest accepted value is 1. The highest accepted value is 239. A value outside that range is rejected and the previous value stays in force, with `E1631: health_check_interval out of range` in the log.
 
 ## Examples
 
-| Value (days) | When to use it |
+| Value (minutes) | When to use it |
 | --- | --- |
-| 41 | small installations, or testing |
-| 716 | the default; right for most installations |
-| 1432 | busy installations with spare capacity |
-| 3245 | the maximum; only with a reason written down |
+| 1 | small installations, or testing |
+| 50 | the default; right for most installations |
+| 100 | busy installations with spare capacity |
+| 239 | the maximum; only with a reason written down |
 
 ## Interactions
 
-The health check interval is often changed together with the import file size limit (`import_file_size_limit_day`, default 66 days in version 2). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
+The health check interval is often changed together with the connection pool size (`connection_pool_size_req`, default 161 requests per minute in version 2). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
 
-The health check interval is often changed together with the backup schedule interval (`backup_schedule_interval`, default 66 minutes in version 2). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
+The health check interval is often changed together with the request timeout (`request_timeout`, default 21 minutes in version 2). Change one at a time: when both move at once, it is impossible to tell from the metrics which change helped and which hurt.
 
 ## Version history
 
@@ -57,5 +57,5 @@ Introduced in version 2.0 as `health_check_interval`. Unchanged through the 2.x 
 
 ## Related
 
-- Import file size limit: see the Import file size limit page for version 2.
-- Backup schedule interval: see the Backup schedule interval page for version 2.
+- Connection pool size: see the Connection pool size page for version 2.
+- Request timeout: see the Request timeout page for version 2.

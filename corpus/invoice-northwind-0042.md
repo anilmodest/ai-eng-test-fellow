@@ -1,7 +1,7 @@
 # INVOICE INV-2026-0042
 
-**From:** Northwind Traders Ltd, 12 Harbour Road, Bristol BS1 4QA
-**To:** Contoso Pharmaceuticals, 88 Science Park, Cambridge CB4 0WS
+**From:** Juniper Schools Traders Ltd, 12 Harbour Road, Bristol BS1 4QA
+**To:** Harbour Health Pharmaceuticals, 88 Science Park, Cambridge CB4 0WS
 **Date issued:** 1 September 2026
 **Due:** 1 October 2026 (net 30)
 

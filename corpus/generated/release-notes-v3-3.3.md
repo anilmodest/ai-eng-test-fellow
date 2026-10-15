@@ -1,25 +1,27 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 version: v3
 section: Release notes
 ---
 
-# Kestrel 3.3 release notes
+# Ironclad 3.3 release notes
 
-Released 13 April 2026.
+Released 19 April 2026.
 
 ## Changes
 
-- **Password minimum length**: now set with `KESTREL_PASSWORD_MINIMUM_LENGTH`; default changed from 1990 to 674 requests per minute. The version 2 setting `password_minimum_length_req` is warned.
-- **Job queue depth**: now set with `KESTREL_JOB_QUEUE_DEPTH`; default changed from 4 to 79 minutes. The version 2 setting `job_queue_depth` is warned.
-- **DNS cache lifetime**: now set with `KESTREL_DNS_CACHE_LIFETIME`; default changed from 2822 to 1959 items. The version 2 setting `dns_cache_lifetime` is warned.
-- Audit log retention: the error `E1710: KESTREL_AUDIT_LOG_RETENTION out of range` now names the accepted range (2 to 458 connections).
-- Transform memory limit: the error `E1915: KESTREL_TRANSFORM_MEMORY_LIMIT out of range` now names the accepted range (10 to 400 connections).
-- Purge delay: the error `E1623: KESTREL_PURGE_DELAY out of range` now names the accepted range (128 to 8289 items).
+- **Attachment size limit**: now set with `IRONCLAD_ATTACHMENT_SIZE_LIMIT`; default changed from 508 to 469 days. The version 2 setting `attachment_size_limit` is ignored.
+- **Lock wait timeout**: now set with `IRONCLAD_LOCK_WAIT_TIMEOUT`; default changed from 22 to 33 minutes. The version 2 setting `lock_wait_timeout` is ignored.
+- **Temporary file lifetime**: now set with `IRONCLAD_TEMPORARY_FILE_LIFETIME`; default changed from 622 to 2623 items. The version 2 setting `temporary_file_lifetime` is warned.
+- **Remote wipe delay**: now set with `IRONCLAD_REMOTE_WIPE_DELAY`; default changed from 143 to 126 connections. The version 2 setting `remote_wipe_delay` is ignored.
+- DNS cache lifetime: the error `E1800: IRONCLAD_DNS_CACHE_LIFETIME out of range` now names the accepted range (7 to 500 connections).
+- Webhook delivery timeout: the error `E1253: IRONCLAD_WEBHOOK_DELIVERY_TIMEOUT out of range` now names the accepted range (9 to 1592 megabytes).
+- Report page size: the error `E1600: IRONCLAD_REPORT_PAGE_SIZE out of range` now names the accepted range (2 to 97 percent).
 
 ## Fixes
 
-- Fixed a case where backup schedule interval was not applied to the first job after a backup restore.
-- Fixed a case where two-factor grace period was not applied to the first job after a restart.
-- Fixed a case where scheduler worker count was not applied to the first job after a backup restore.
-- Fixed a case where failed login lockout was not applied to the first job after a failover.
+- Fixed a case where dns cache lifetime was not applied to the first job after a backup restore.
+- Fixed a case where failed login lockout was not applied to the first job after a configuration reload.
+- Fixed a case where tls handshake timeout was not applied to the first job after a configuration reload.
+- Fixed a case where notification digest interval was not applied to the first job after a backup restore.
+- Fixed a case where sync interval was not applied to the first job after a backup restore.

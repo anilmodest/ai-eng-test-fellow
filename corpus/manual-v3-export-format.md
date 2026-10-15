@@ -1,16 +1,16 @@
 ---
-product: Kestrel Data Runner
+product: Ironclad Endpoint Manager
 version: v3
 section: Data
 ---
 
-# Export format (Kestrel v3)
+# Export format (Ironclad v3)
 
 An export writes the result of a run to a file.
 
 ## Formats
 
-CSV or NDJSON, chosen with `KESTREL_EXPORT_FORMAT`, which defaults to `csv`. The CSV separator is a comma and cannot be changed.
+CSV or NDJSON, chosen with `IRONCLAD_EXPORT_FORMAT`, which defaults to `csv`. The CSV separator is a comma and cannot be changed.
 
 ## Encoding
 
