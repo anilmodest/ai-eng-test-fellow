@@ -45,4 +45,4 @@ def applicable_versions(version: str) -> set[str]:
 
     Return the labels as they are stored.
     """
-    raise NotImplementedError("Week 2: build me (weeks/2/README.md, exercise 4)")
+    return {version, ANY_VERSION}

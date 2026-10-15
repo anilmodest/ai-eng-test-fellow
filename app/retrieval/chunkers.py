@@ -64,10 +64,38 @@ def by_heading(text: str, max_chars: int = 1200) -> list[str]:
     to paragraphs, each still prefixed with the heading so it keeps its context.
 
     A document with no headings behaves like by_paragraph.
-
-    Week 2 exercise: this placeholder ignores headings entirely. See weeks/2/README.md.
     """
-    return by_paragraph(text, max_chars=max_chars)
+    text = re.sub(r"\A---\n.*?\n---\n", "", text.strip().replace("\r\n", "\n"), flags=re.S)
+    lines = text.splitlines()
+    if not any(_HEADING.match(line) for line in lines):
+        return by_paragraph(text, max_chars=max_chars)
+    sections: list[tuple[str, list[str]]] = []
+    heading = ""
+    body: list[str] = []
+    for line in lines:
+        if _HEADING.match(line):
+            if heading or any(b.strip() for b in body):
+                sections.append((heading, body))
+            heading, body = line.strip(), []
+        else:
+            body.append(line)
+    if heading or any(b.strip() for b in body):
+        sections.append((heading, body))
+
+    chunks: list[str] = []
+    for heading, body_lines in sections:
+        content = "\n".join(body_lines).strip()
+        whole = f"{heading}\n{content}".strip() if heading else content
+        if not whole:
+            continue
+        if len(whole) <= max_chars:
+            chunks.append(whole)
+            continue
+        # Oversized: paragraphs, each still prefixed with its heading so it keeps its context.
+        budget = max(100, max_chars - len(heading) - 1)
+        for piece in by_paragraph(content, max_chars=budget):
+            chunks.append(f"{heading}\n{piece}" if heading else piece)
+    return chunks
 
 
 _HEADING = re.compile(r"^(#{1,6})\s+(\S.*)$")

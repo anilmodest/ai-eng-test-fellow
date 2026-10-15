@@ -18,7 +18,9 @@ The version filter is applied before either ranking (app/retrieval/store.py), so
 bring a version 2 chunk back for a version 3 question.
 """
 
+import math
 import re
+from collections import Counter
 
 _TOKEN = re.compile(r"[a-z0-9_]+")
 
@@ -39,7 +41,25 @@ def bm25_scores(
         part    = idf(t) * tf * (k1 + 1) / (tf + k1 * (1 - b + b * len(doc) / avgdl))
     and a document's score is the sum of its parts.
     """
-    raise NotImplementedError("Week 2: bm25_scores (weeks/2/README.md)")
+    docs = [tokenize(d) for d in documents]
+    n_docs = len(docs)
+    if n_docs == 0:
+        return []
+    avgdl = sum(len(d) for d in docs) / n_docs or 1.0
+    terms = set(tokenize(query))
+    df = {t: sum(1 for d in docs if t in d) for t in terms}
+    scores: list[float] = []
+    for d in docs:
+        tf = Counter(d)
+        score = 0.0
+        for t in terms:
+            f = tf.get(t, 0)
+            if not f:
+                continue
+            idf = math.log(1 + (n_docs - df[t] + 0.5) / (df[t] + 0.5))
+            score += idf * f * (k1 + 1) / (f + k1 * (1 - b + b * len(d) / avgdl))
+        scores.append(score)
+    return scores
 
 
 def reciprocal_rank_fusion(rankings: list[list[int]], *, k: int = 60) -> list[tuple[int, float]]:
@@ -48,4 +68,9 @@ def reciprocal_rank_fusion(rankings: list[list[int]], *, k: int = 60) -> list[tu
     An id's score is the sum, over every ranking it appears in, of 1 / (k + rank), rank from 1. An
     id missing from a ranking gets nothing from it. Ties keep the order the ids were first seen.
     """
-    raise NotImplementedError("Week 2: reciprocal_rank_fusion (weeks/2/README.md)")
+    scores: dict[int, float] = {}
+    for ranking in rankings:
+        for rank, doc_id in enumerate(ranking, 1):
+            scores[doc_id] = scores.get(doc_id, 0.0) + 1.0 / (k + rank)
+    # sorted() is stable and dicts keep insertion order, so ties stay in first-seen order.
+    return sorted(scores.items(), key=lambda item: -item[1])
