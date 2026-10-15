@@ -1,0 +1,56 @@
+{
+  "programme": "ai-eng-track",
+  "route": "start",
+  "source_sha": "dd6d7a8534ff0d026e1e4c2fc18d72e7ed15b220",
+  "template_version": "2026-10-15.dd6d7a8",
+  "week_files": {
+    "1": [
+      "app/api/extract.py",
+      "app/llm/cost.py",
+      "app/llm/retry.py",
+      "app/llm/structured.py",
+      "app/tools/desk.py",
+      "weeks/1/routes/start.md",
+      "weeks/1/routes/worked_example.py",
+      "weeks/1/routes/worked_example_tool.py"
+    ],
+    "2": [
+      "app/retrieval/chunkers.py",
+      "app/retrieval/context.py",
+      "app/retrieval/hybrid.py",
+      "app/retrieval/metrics.py",
+      "app/retrieval/versions.py",
+      "app/tools/search.py",
+      "weeks/2/routes/start.md",
+      "weeks/2/routes/worked_example.py"
+    ],
+    "3": [
+      "app/api/ask.py",
+      "app/eval/judge.py",
+      "app/llm/prompts/judge_v1.md",
+      "weeks/3/routes/start.md",
+      "weeks/3/routes/worked_example.py"
+    ],
+    "4": [
+      "app/agents/agent.py",
+      "app/mcp_server.py",
+      "app/tools/actions.py",
+      "app/tools/analysis.py",
+      "weeks/4/routes/start.md",
+      "weeks/4/routes/worked_example.py"
+    ],
+    "5": [
+      "app/agents/routing.py",
+      "app/guard.py",
+      "app/privacy.py",
+      "app/trace.py",
+      "weeks/5/routes/start.md",
+      "weeks/5/routes/worked_example.py"
+    ],
+    "6": [
+      "scripts/smoke.py",
+      "weeks/6/routes/start.md",
+      "weeks/6/routes/worked_example.py"
+    ]
+  }
+}

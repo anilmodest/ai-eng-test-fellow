@@ -1,0 +1,132 @@
+name: release
+# Build the service, prove it works, publish it, and (optionally) deploy it.
+#
+# The default target needs no account beyond GitHub: the image goes to this repository's own
+# container registry, so anyone can run exactly what you shipped:
+#
+#     docker run -p 7860:7860 ghcr.io/<you>/ai-eng-track:v1.0.0
+#
+# A package published from a public repository is public, so anyone can pull it with no account
+# and no login. Nothing to configure.
+#
+# Optional clickable URL: set the repository secret RENDER_DEPLOY_HOOK (Render -> your service ->
+# Settings -> Deploy Hook) and the variable LIVE_URL. The job then triggers that deploy and runs
+# the smoke test against the live service too.
+#
+# Rollback: Actions -> this workflow -> Run workflow -> ref = an earlier tag or commit. The image
+# it publishes carries that commit's build_info.py, so /health tells you the rollback took.
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: "Tag, branch or commit to release (rollback = an earlier tag)"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  release:
+    # Not on the programme's template repositories (variable IS_TEMPLATE=true): only on yours.
+    if: vars.IS_TEMPLATE != 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.ref || github.ref }}
+          fetch-depth: 0
+
+      - name: Work out what we are releasing
+        id: v
+        run: |
+          SHA=$(git rev-parse --short HEAD)
+          VERSION=$(git describe --tags --exact-match 2>/dev/null || git describe --tags 2>/dev/null || echo "$SHA")
+          IMAGE=ghcr.io/$(echo "${GITHUB_REPOSITORY}" | tr '[:upper:]' '[:lower:]')
+          echo "sha=$SHA" >> "$GITHUB_OUTPUT"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "image=$IMAGE" >> "$GITHUB_OUTPUT"
+          echo "Releasing $VERSION ($SHA) as $IMAGE"
+
+      - name: Stamp the commit into the service, so /health can prove which build is running
+        run: |
+          cat > app/build_info.py <<PY
+          """Written by the release workflow. Do not edit: it says which commit this build is."""
+
+          APP_VERSION = "${{ steps.v.outputs.version }}"
+          GIT_SHA = "${{ steps.v.outputs.sha }}"
+          BUILT_AT = "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          PY
+
+      - name: Build the image
+        run: |
+          docker build --build-arg SOURCE="https://github.com/${{ github.repository }}" \
+            -t "${{ steps.v.outputs.image }}:${{ steps.v.outputs.sha }}" .
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+      - run: uv sync
+
+      - name: Smoke test the built image before publishing it
+        env:
+          MODEL_PROVIDER: fake_a
+        run: |
+          docker run -d --rm --name candidate -p 7860:7860 \
+            -e MODEL_PROVIDER=fake_a -e EMBED_PROVIDER=hash -e CHUNK_STRATEGY=paragraph \
+            "${{ steps.v.outputs.image }}:${{ steps.v.outputs.sha }}"
+          for i in $(seq 1 30); do
+            curl -sf http://127.0.0.1:7860/health >/dev/null && break || sleep 2
+          done
+          uv run python scripts/smoke.py http://127.0.0.1:7860 --expect-sha "${{ steps.v.outputs.sha }}"
+          CODE=$?
+          docker logs candidate | tail -20
+          docker stop candidate >/dev/null
+          exit $CODE
+
+      - name: Publish to the registry
+        run: |
+          echo "${{ github.token }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
+          IMAGE="${{ steps.v.outputs.image }}"
+          docker tag "$IMAGE:${{ steps.v.outputs.sha }}" "$IMAGE:${{ steps.v.outputs.version }}"
+          docker push "$IMAGE:${{ steps.v.outputs.sha }}"
+          docker push "$IMAGE:${{ steps.v.outputs.version }}"
+          if [ "${{ github.event.inputs.ref }}" = "" ] && [ "${{ github.ref }}" = "refs/heads/main" ]; then
+            docker tag "$IMAGE:${{ steps.v.outputs.sha }}" "$IMAGE:latest"
+            docker push "$IMAGE:latest"
+          fi
+          echo "### Released \`${{ steps.v.outputs.version }}\`" >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          echo "docker run -p 7860:7860 $IMAGE:${{ steps.v.outputs.version }}" >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+
+      # The two steps below are no-ops until you set them up. The check is inside the script on
+      # purpose: `secrets` is not a context you may use in a step's `if`, and a workflow that
+      # tries to fails to parse, which shows up as a run with no jobs at all.
+      - name: Deploy to Render, if you set one up
+        env:
+          HOOK: ${{ secrets.RENDER_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$HOOK" ]; then
+            echo "No RENDER_DEPLOY_HOOK secret: skipping. The published image is the release."
+            exit 0
+          fi
+          curl -fsS -X POST "$HOOK" >/dev/null
+          echo "Deploy triggered; Render builds from this repository's Dockerfile"
+
+      - name: Smoke test the live service, if there is one
+        env:
+          LIVE_URL: ${{ vars.LIVE_URL }}
+        run: |
+          if [ -z "$LIVE_URL" ]; then
+            echo "No LIVE_URL variable: skipping. The candidate image was smoke-tested above."
+            exit 0
+          fi
+          for i in $(seq 1 40); do
+            curl -sf "$LIVE_URL/health" >/dev/null && break || sleep 15
+          done
+          uv run python scripts/smoke.py "$LIVE_URL" --expect-sha "${{ steps.v.outputs.sha }}"

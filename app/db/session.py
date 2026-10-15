@@ -1,0 +1,40 @@
+from collections.abc import Iterator
+from pathlib import Path
+
+from sqlalchemy import Engine
+from sqlmodel import Session, SQLModel, create_engine
+
+from app.settings import get_settings
+
+_engine: Engine | None = None
+
+
+def get_engine() -> Engine:
+    global _engine
+    if _engine is None:
+        url = get_settings().database_url
+        if url.startswith("sqlite:///") and not url.endswith(":memory:"):
+            Path(url.removeprefix("sqlite:///")).parent.mkdir(parents=True, exist_ok=True)
+        _engine = create_engine(url, connect_args={"check_same_thread": False})
+        # Imported for the side effect: every table must be registered before create_all runs.
+        import app.llm.masking  # noqa: F401
+        import app.retrieval.store  # noqa: F401
+        import app.support
+        import app.trace  # noqa: F401
+
+        SQLModel.metadata.create_all(_engine)
+        # The desk's customers and tickets are there from week 0, before anything reads them.
+        with Session(_engine) as session:
+            app.support.load_support(session)
+    return _engine
+
+
+def reset_engine() -> None:
+    """Tests call this after changing DATABASE_URL."""
+    global _engine
+    _engine = None
+
+
+def get_session() -> Iterator[Session]:
+    with Session(get_engine()) as session:
+        yield session

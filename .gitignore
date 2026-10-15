@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+data/*.db
+reports/*.json
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+build/
+site/*.html
+site/prs.json
+site/hidden.json
+site/preview.png
+site/progress.csv
+site/progress.json

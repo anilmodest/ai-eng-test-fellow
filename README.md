@@ -1,0 +1,170 @@
+# ai-eng-track
+
+One small service that grows, week by week, into an AI product you can defend in an interview.
+Six weeks, eleven areas, one repo: yours.
+
+A software company supports versions 2 and 3 of its product. The two manuals are worded almost
+identically and differ in substance, so an answer from the wrong one is worse than no answer.
+You build the assistant that gets it right, cites its source, and says when it does not know.
+The brief is `weeks/0/BRIEF.md`; what it must do is `weeks/0/REQUIREMENTS.md`; what is expected
+of you, including the rule on AI tools, is [`RULES.md`](RULES.md).
+
+**New here? Read [`docs/start-here.md`](docs/start-here.md) first: Track 3 in ten minutes.** The
+[glossary](docs/glossary.md) has every term in one sentence, and
+[worked examples](docs/worked-examples.md) show how to read the numbers in weeks 2 and 3.
+
+## Start here (three clicks, nothing to install)
+
+1. You made this repo from the template your route's link pointed to. Good: `.route` says which
+   route that is, and it is the only route in here.
+2. **Code → Codespaces → Create codespace on main**. Wait about 90 seconds.
+3. `weeks/0/README.md` opens by itself. Follow it.
+
+Everything is installed for you. The first check already ran. If you see `Ready.` in the
+terminal, you are ready.
+
+## The only commands you need
+
+| Command | What it does |
+| --- | --- |
+| `make next` | **Lost? Start here.** The week you are on, the file to open, and the first thing that is not working |
+| `make run` | Start the API on port 8000 (docs at `/docs`) |
+| `make check WEEK=1` | This week's gate: lint, types, tests, once per fake provider. Writes `reports/week-1.json` |
+| `make live-check` | Call the real provider from `.env` with the sample documents |
+| `make hub` | Your hub page built from what is on your screen right now, at port 8001: every week's checks, measurements and pull requests |
+| `make fmt` | Format and auto-fix lint |
+
+Per-week measurement scripts (evidence for the session, not gates unless the week says so):
+`scripts/retrieval_eval.py` (Week 2), `scripts/eval.py` (Week 3, a gate from then on),
+`scripts/compare_week4.py`, `scripts/trace_report.py` and `scripts/attack.py` (Week 5, a gate),
+`scripts/smoke.py` (Week 6, runs after every deploy). Two more in Week 2 before any of that:
+`scripts/baseline.py` (does the model already know the answers? it must not) and
+`scripts/version_check.py` (what similarity alone returns when the manual exists twice).
+
+## Model access
+
+Copy `.env.example` to `.env` (Codespaces did this). The default provider is **Gemini** on Google
+AI Studio's free tier: one free key, no card, from <https://aistudio.google.com/apikey>. Put it in
+`.env` as `MODEL_API_KEY`, or better, as the Codespaces secret `GEMINI_API_KEY` so it survives
+rebuilds and is never committed. To use another provider, change two lines:
+
+```
+MODEL_PROVIDER=groq
+MODEL_API_KEY=...        # or set GROQ_API_KEY as a Codespaces secret
+```
+
+Known providers are listed in `app/llm/registry.py`. If one runs out of quota, switch. Nothing in
+the code changes. That is the point of Week 1. **Get keys from two providers before you start**:
+free tiers run out, and a dead quota should not cost you an evening.
+
+## Where the vectors live
+
+`VECTOR_STORE` picks one of three, behind a single interface: `sqlite_vec` (the default, an index
+inside the same file, with the version as its partition key), `numpy` (a plain scan, no index) and
+`qdrant` (a real vector database, local folder or hosted). Changing it changes one line of
+configuration and nothing else. [`docs/vector-stores.md`](docs/vector-stores.md) compares these
+and the hosted ones, and Week 2 asks you to measure all three.
+
+## How a week works
+
+Read → Run → Build → Check → Submit → Defend, every week, on one growing repo. The track, the
+four steps, the routes and how sessions and gates work are in [`docs/track.md`](docs/track.md)
+(also section 1, 2 and 5 of your hub page).
+
+Every week, from week 1, the same eight steps:
+
+1. `git checkout -b week-N`.
+2. Read `weeks/N/CONCEPT.md`, then `weeks/N/README.md` (the exercise).
+3. In weeks 1 to 4, run that week's `explore/` scripts. Read them; never edit them.
+4. Make the change to the service, with any assistant you like, logging it as you go in
+   `ai-use/week-N.yml` (from `AI_USE_TEMPLATE.yml`).
+5. `make check WEEK=N` until it passes, then `make evidence WEEK=N` on a real model.
+6. Write `decisions/week-N.md` from the evidence file (`DECISION_TEMPLATE.md`), and
+   `reflections/week-N.md` (`REFLECTION_TEMPLATE.md`).
+7. Open a pull request to `main`. The checks report within minutes. Merging it marks the week
+   done: within a day the programme collects your mentor's brief data from what you merged and,
+   from week 2, runs its hidden evaluation.
+8. In a session week, send the link 24 hours before the session; merge after it. Four sessions in
+   total: Discovery (week 0), Direction (end of week 1), Observation (end of week 3), Defence (end
+   of week 6).
+
+## Layout
+
+```
+app/        the service: FastAPI, SQLite, a job queue, app/llm (model layer), app/retrieval
+            (chunkers, embedders, vector stores, the version filter), app/agents, app/guard.py,
+            app/trace.py, app/mcp_server.py
+weeks/N/    CONCEPT.md, README.md (the exercise), CHECKS.md (what the gate verifies)
+explore/    small scripts you run and read, one or two per week; you never edit them
+tests/      the gate; tests/weeks/test_weekN.py is the contract for week N
+corpus/     the product manual, every topic written for both version 2 and version 3, plus the
+            business documents the same desk gets asked about. What you index, search and get
+            attacked with. Every product, setting and default in it is invented, on purpose
+eval/       golden set, retrieval queries, tasks, attacks, thresholds
+support/    the desk's customers and tickets, loaded at start; read only through app/tools
+decisions/  your decision record each week; ai-use/ your AI-use log; evidence/ your measurements
+samples/    three documents used by tests and live-check
+scripts/    check.py, live_check.py, next_step.py, and one measurement script per week
+```
+
+
+## Your hub page
+
+Every merge to `main` and every push to an open pull request rebuilds a page at `https://<your-user>.github.io/<your-repo>` from what is in the repo. `make hub`
+builds the same page from your working copy, without pushing. It is the one place to start from:
+
+- **The front page** answers one question: where are you and what is next. One line per week:
+  status, one sentence of evidence, and a link.
+- **A page per week** is where the detail lives: the concept with its diagrams, the exercise, what
+  the gate checks, that week's measurements, your pull request and its mentor comments, your own
+  words from `reflections/`, and an optional self-test whose score stays in your browser.
+- **Playground**: call your running service from the browser — upload, extract, search, ask, run a
+  task three ways, read traces.
+- **Export**: `progress.csv` and `progress.json`, one row per week — status, one headline, and the
+  link to the detail. That is what the platform imports; the numbers stay here, beside the run
+  that produced them.
+
+Nothing on it is typed in by hand. Your mentor opens it before every session.
+
+One-time switch, 10 seconds: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+Until you do, the workflow builds the page but cannot publish it, and says so.
+
+## Release: publishing something other people can run
+
+Every merge to `main`, and every `v*` tag, runs the **release** workflow: it builds the image,
+runs the smoke test against that image, and only then publishes it to this repository's own
+container registry. No account beyond GitHub, nothing to pay, nothing to configure.
+
+Anyone can then run exactly what you shipped:
+
+```
+docker run -p 7860:7860 ghcr.io/<your-user>/<your-repo>:v1.0.0
+```
+
+Nothing to configure: a package published by Actions from a public repository is public, so
+anyone can pull it without an account. (If you ever make your repository private, the package
+follows it, and you would have to set its visibility by hand.)
+
+### A clickable URL (optional)
+
+If you want a URL your mentor can open without running anything:
+
+1. Create a free account at [render.com](https://render.com) and a **Web Service** from this
+   repository (it will find the `Dockerfile`; free instance type).
+2. In the service's settings, add the environment variables `MODEL_PROVIDER=gemini` and your
+   `GEMINI_API_KEY`, and copy its **Deploy Hook** URL.
+3. In this GitHub repo: **Settings → Secrets and variables → Actions** → secret
+   `RENDER_DEPLOY_HOOK` (the hook URL) and variable `LIVE_URL` (your service's address).
+
+The release workflow then also triggers that deploy and smoke-tests the live service. Free Render
+services sleep after 15 minutes and wake on the first request; that is fine.
+
+> Hugging Face Spaces used to be the recommended target here. As of September 2026 they charge a
+> PRO subscription for Docker Spaces, so the default moved to the registry, which costs nothing
+> and makes rollback a matter of running an earlier tag.
+
+## Keeping it free
+
+Your Codespace runs on 2 cores. GitHub Free gives 120 core-hours a month, so about 60 hours here.
+Set **Settings → Codespaces → Default idle timeout** to 15 minutes and stop the Codespace when you
+finish for the day. Stuck? Ask your mentor.
