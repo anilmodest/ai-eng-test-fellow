@@ -5,13 +5,21 @@ needs to work a request (no seats, no contact details), and every refusal is a s
 can read and act on, never an exception.
 """
 
-from pydantic import BaseModel, ConfigDict, Field
+from typing import Any
+
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 from app.support import OutOfScope, customer, ticket
 from app.tools.base import ToolContext, ToolSpec, as_json
 
 CUSTOMER_ID = r"^C-\d{4}$"
 TICKET_ID = r"^T-\d{4}$"
+
+
+def _normalise(value: Any) -> Any:
+    """Ids arrive as people type them (" c-1003"); the case and outer spaces carry no meaning.
+    Anything that is not a string is left alone, so a number still fails validation."""
+    return value.strip().upper() if isinstance(value, str) else value
 
 
 class GetCustomerArgs(BaseModel):
@@ -23,6 +31,8 @@ class GetCustomerArgs(BaseModel):
         "and four digits, for example C-1004.",
     )
 
+    _norm = field_validator("customer_id", mode="before")(_normalise)
+
 
 class GetTicketArgs(BaseModel):
     model_config = ConfigDict(extra="forbid", strict=True)
@@ -32,6 +42,8 @@ class GetTicketArgs(BaseModel):
         description="The support ticket id exactly as written in the request: a capital T, a "
         "hyphen and four digits, for example T-2006.",
     )
+
+    _norm = field_validator("ticket_id", mode="before")(_normalise)
 
 
 async def get_customer(ctx: ToolContext, args: GetCustomerArgs) -> str:
