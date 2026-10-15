@@ -1,0 +1,21 @@
+# Test fellow run: this week was done end to end by an AI coding assistant driving the repo.
+hours: 2
+entries:
+  - when: 2026-10-15
+    tool: "Claude Code (Claude Opus 5.5), acting as a test fellow"
+    asked: "Implement the retrieval metrics, the heading chunker, applicable_versions, BM25 and reciprocal rank fusion from the docstrings and tests"
+    produced: "app/retrieval/metrics.py, chunkers.py (by_heading), versions.py, hybrid.py"
+    checked: "Ran tests/weeks/test_week2.py on fake_a and fake_b; checked precision divides by k, that applicable_versions keeps the 'any' label for version-free pages, and the BM25 formula against the docstring"
+    kept: yes
+  - when: 2026-10-15
+    tool: "Claude Code (Claude Opus 5.5), acting as a test fellow"
+    asked: "Design search_docs: required version, bounded k, results that carry file and version"
+    produced: "app/tools/search.py"
+    checked: "Ran the search_docs tests; confirmed v4, a missing version, an empty query, k=0 and k=500 return error: without running the search"
+    kept: yes
+  - when: 2026-10-15
+    tool: "Claude Code (Claude Opus 5.5), acting as a test fellow"
+    asked: "Run the week 2 measurements and write the decision"
+    produced: "evidence/week-2.json (fake model, hash embedder), a wrapper run of retrieval_eval.py that skips queries naming files absent from corpus/, decisions/week-2.md"
+    checked: "Found that retrieval_eval.py crashes with KeyError on this variant (eval/ names renamed files that corpus/ does not have) and that two tests hard-code the old product name Kestrel; did not edit tests, eval data or corpus. Ran records.py --week 2 to check the evidence numbers"
+    kept: partly

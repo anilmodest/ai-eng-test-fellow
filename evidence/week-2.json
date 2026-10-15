@@ -1,0 +1,1877 @@
+{
+  "week": 2,
+  "commit": "75bba2440eee625f7230e309a04e1843b02e86ad",
+  "dirty": false,
+  "provider": "fake_a",
+  "model": "fake-1",
+  "at": "2026-10-15T16:56:21+00:00",
+  "route": "start",
+  "variant": "v-e736",
+  "metrics": {
+    "baseline": {
+      "provider_mode": "fake",
+      "model_provider": "fake_a",
+      "embed_provider": "hash",
+      "max_known": 0.1,
+      "questions": 76,
+      "answered_from_training": 0.0,
+      "declined": 0.0,
+      "rows": [
+        {
+          "id": "g01",
+          "q": "How much does Harbour Health owe Juniper Schools Traders on invoice INV-2026-0042?",
+          "expect": "4,800",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g02",
+          "q": "What is Juniper Schools's default hourly rate for a senior consultant?",
+          "expect": "175 USD",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g03",
+          "q": "When is Meridian Insurance invoice WG-1187 due?",
+          "expect": "13 September 2026",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g04",
+          "q": "What rate of interest does Meridian Insurance charge on late payment?",
+          "expect": "8 percent",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g05",
+          "q": "What is the monthly fee under the Kingsway Transport and Larkspur Hotels service agreement?",
+          "expect": "6,500 GBP",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g06",
+          "q": "How much notice is required to terminate the Kingsway Transport Larkspur Hotels agreement?",
+          "expect": "sixty",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g07",
+          "q": "What availability level does Larkspur Hotels commit to?",
+          "expect": "99.5",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g08",
+          "q": "May Larkspur Hotels use Kingsway Transport's documents to train a model?",
+          "expect": "not",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g09",
+          "q": "On what dates is the Larkspur Hotels maintenance planned?",
+          "expect": "October 2026",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g10",
+          "q": "How long is the expected interruption during the Larkspur Hotels migration?",
+          "expect": "forty minutes",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g11",
+          "q": "By when should Kingsway Transport reply if the maintenance timing is difficult?",
+          "expect": "26 September",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g12",
+          "q": "Which charge on invoice WG-1187 is Harbour Health disputing?",
+          "expect": "45.00 GBP",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g13",
+          "q": "How much did Harbour Health pay Meridian Insurance on 18 September 2026?",
+          "expect": "1,412.00 GBP",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g14",
+          "q": "What does Harbour Health want instead of a credit for the damaged toner?",
+          "expect": "replacements",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g15",
+          "q": "What is the total on Larkspur Hotels invoice TA-2026-09?",
+          "expect": "7,700.00 GBP",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g16",
+          "q": "How much was the onboarding workshop on the Larkspur Hotels invoice?",
+          "expect": "1,200.00 GBP",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g17",
+          "q": "How many electric vehicles did Kingsway Transport have at the end of the first half of 2026?",
+          "expect": "57",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g18",
+          "q": "Which Kingsway Transport depot had the lowest utilisation?",
+          "expect": "Glasgow",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g19",
+          "q": "How many reportable incidents did Kingsway Transport have in the first half of 2026?",
+          "expect": "14",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g20",
+          "q": "How many chargers does Birmingham need?",
+          "expect": "30",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g21",
+          "q": "What is the London hotel cap in the Harbour Health expenses policy?",
+          "expect": "180 GBP",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g22",
+          "q": "What is the personal car mileage rate for the first 10,000 miles?",
+          "expect": "45 pence",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g23",
+          "q": "Is alcohol reimbursable under the Harbour Health expenses policy?",
+          "expect": "not",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g24",
+          "q": "How many days do Harbour Health staff have to submit an expense claim?",
+          "expect": "30 days",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g25",
+          "q": "What is the booking cut-off time for next-day collection with Kingsway Transport?",
+          "expect": "15:00",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g26",
+          "q": "How is volumetric weight calculated for a Kingsway Transport shipment?",
+          "expect": "5,000",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g27",
+          "q": "What is Kingsway Transport's standard liability per kilogram for damaged goods?",
+          "expect": "1.30 GBP",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g28",
+          "q": "What number do I text a Kingsway Transport consignment reference to?",
+          "expect": "60777",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g29",
+          "q": "What is the expedite fee for late export documents at Felixstowe?",
+          "expect": "75 GBP",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g30",
+          "q": "What insurance does Juniper Schools hold under the master services agreement?",
+          "expect": "2,000,000 GBP",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g43",
+          "q": "What is the default connection timeout in Ironclad v2?",
+          "expect": "30 seconds",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g44",
+          "q": "Where do I set the connection timeout on a v2 runner?",
+          "expect": "in the `[source]` block",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g45",
+          "q": "What is the highest connection timeout Ironclad v2 will accept?",
+          "expect": "highest accepted value is 300",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g46",
+          "q": "What is the default connection timeout in Ironclad v3?",
+          "expect": "15 seconds",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g47",
+          "q": "Where do I set the connection timeout on a v3 runner?",
+          "expect": "environment variable `IRONCLAD_CONNECT_TIMEOUT`",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g48",
+          "q": "Can I set a 2 second connection timeout on Ironclad v3, or is that too low?",
+          "expect": "lowest accepted value is 1",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g49",
+          "q": "How long does Ironclad v2 wait between retries?",
+          "expect": "5 seconds",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g50",
+          "q": "What is the default value of retry_count on a v2 runner?",
+          "expect": "retry_count = 3",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g51",
+          "q": "Does Ironclad v2 retry a run that failed because the credential was rejected?",
+          "expect": "including a rejected credential",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g52",
+          "q": "How long does Ironclad v3 wait between retries?",
+          "expect": "2 seconds",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g53",
+          "q": "What is the default number of retries on a v3 runner and which variable sets it?",
+          "expect": "IRONCLAD_RETRY_MAX=6",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g54",
+          "q": "Which failures does Ironclad v3 actually retry?",
+          "expect": "429 or 5xx",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g55",
+          "q": "Which header do I send to authenticate a Ironclad v2 API call?",
+          "expect": "X-Ironclad-Key: <your key>",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g56",
+          "q": "Do Ironclad v2 API keys expire on their own?",
+          "expect": "does not expire",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g57",
+          "q": "What error body comes back from Ironclad v2 when the key is wrong?",
+          "expect": "bad_key",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g58",
+          "q": "Which header do I send to authenticate a Ironclad v3 API call?",
+          "expect": "Authorization: Bearer",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g59",
+          "q": "Do Ironclad v3 API credentials expire on their own?",
+          "expect": "expires after 3600 seconds",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g60",
+          "q": "What error body comes back from Ironclad v3 when the token is missing or expired?",
+          "expect": "bad_token",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g61",
+          "q": "What happens in Ironclad v2 if a scheduled run is still going when the next one is due?",
+          "expect": "skipped",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g62",
+          "q": "How do I write a schedule on a Ironclad v2 runner?",
+          "expect": "five-field cron expression",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g63",
+          "q": "Can I make a Ironclad v2 schedule run at 2am local time instead of UTC?",
+          "expect": "no timezone setting",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g64",
+          "q": "What happens in Ironclad v3 if a scheduled run is still going when the next one is due?",
+          "expect": "queued",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g65",
+          "q": "How do I write a schedule on a Ironclad v3 runner?",
+          "expect": "ISO-8601 repeating interval",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g66",
+          "q": "How do I stop Ironclad v3 from running the schedules it missed while the runner was down?",
+          "expect": "IRONCLAD_SCHEDULE_CATCHUP=false",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g67",
+          "q": "How long does Ironclad v2 keep run logs?",
+          "expect": "14 days",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g68",
+          "q": "How often does the v2 log sweep run?",
+          "expect": "once a day",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g69",
+          "q": "If the v2 runner's disk dies, can I still get the run logs?",
+          "expect": "Logs are not copied anywhere else",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g70",
+          "q": "How long does Ironclad v3 keep run logs?",
+          "expect": "7 days",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g71",
+          "q": "Where does Ironclad v3 archive a closed run log?",
+          "expect": "logs/<date>/<run-id>.log.gz",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g72",
+          "q": "How long are archived Ironclad v3 logs kept in the bucket?",
+          "expect": "365 days",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g73",
+          "q": "What encoding does a Ironclad v2 export use?",
+          "expect": "with a byte-order mark",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g74",
+          "q": "Which file formats can a Ironclad v2 export be written in?",
+          "expect": "CSV only",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g75",
+          "q": "When does a Ironclad v2 export quote a field?",
+          "expect": "quoted only when it contains a comma",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g76",
+          "q": "What encoding does a Ironclad v3 export use?",
+          "expect": "without a byte-order mark",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g77",
+          "q": "Which file formats can a Ironclad v3 export be written in, and how do I choose?",
+          "expect": "IRONCLAD_EXPORT_FORMAT",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g78",
+          "q": "When does a Ironclad v3 export quote a field?",
+          "expect": "whether or not it contains a separator",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g79",
+          "q": "We upgraded to v3 and left connection_timeout_seconds in ironclad.conf. Does the runner warn us?",
+          "expect": "reads it, ignores it and starts normally",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g80",
+          "q": "Our connection failures started right after the v3 upgrade and nothing in ironclad.conf changed. What timeout is actually in use?",
+          "expect": "version 3 default of 15 seconds",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g81",
+          "q": "Since the upgrade every API call returns 401. Which error body tells me the old key scheme is gone?",
+          "expect": "scheme_removed",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g82",
+          "q": "Our scheduled runs quietly stopped after the v3 upgrade and schedules.conf is still there. Why?",
+          "expect": "never runs on a schedule",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g83",
+          "q": "Accented characters look wrong in Excel since we moved to v3 exports. What changed?",
+          "expect": "show accented characters incorrectly",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g84",
+          "q": "Is retry_count in ironclad.conf still honoured on a v3 runner?",
+          "expect": "no longer used and is ignored silently",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g85",
+          "q": "A long transfer failed on v3. Can we pick it up instead of starting again?",
+          "expect": "ironcladctl resume",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g86",
+          "q": "Our runner refuses to start after the upgrade because we kept 60 day log retention. What error is that?",
+          "expect": "E2210",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g87",
+          "q": "Two runs on the same day used to overwrite each other's export file. Why doesn't that happen on v3?",
+          "expect": "The run id in the name",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        },
+        {
+          "id": "g88",
+          "q": "On v2, why did a run that failed on a bad credential take so much longer than it needed to?",
+          "expect": "retry_count * 5",
+          "answer": "The single most important property is reliability.",
+          "knew_it": false,
+          "declined": false
+        }
+      ]
+    },
+    "context": {
+      "provider": "fake_a",
+      "model": "fake-1",
+      "questions": 20,
+      "settings": {
+        "none": {
+          "n": 20,
+          "accuracy": 0.0,
+          "citations_resolve": null,
+          "decline_rate": 1.0,
+          "tokens_in_per_question": 67,
+          "cost_per_question_usd": 9.2e-05,
+          "errors": 0
+        },
+        "wrong_version": {
+          "n": 20,
+          "accuracy": 0.05,
+          "citations_resolve": 1.0,
+          "decline_rate": 0.05,
+          "tokens_in_per_question": 290,
+          "cost_per_question_usd": 0.000432,
+          "errors": 0
+        },
+        "right_version": {
+          "n": 20,
+          "accuracy": 0.9,
+          "citations_resolve": 1.0,
+          "decline_rate": 0.0,
+          "tokens_in_per_question": 321,
+          "cost_per_question_usd": 0.000501,
+          "errors": 0
+        },
+        "too_much": {
+          "n": 20,
+          "accuracy": 0.9,
+          "citations_resolve": 1.0,
+          "decline_rate": 0.0,
+          "tokens_in_per_question": 3696,
+          "cost_per_question_usd": 0.003877,
+          "errors": 0
+        },
+        "buried": {
+          "n": 20,
+          "accuracy": 0.8,
+          "citations_resolve": 1.0,
+          "decline_rate": 0.0,
+          "tokens_in_per_question": 6978,
+          "cost_per_question_usd": 0.007178,
+          "errors": 0
+        }
+      },
+      "answers": {
+        "none": [
+          {
+            "id": "c01",
+            "passages": 0,
+            "answer": "",
+            "grounded": false,
+            "correct": false,
+            "declined": true,
+            "citations_resolve": null,
+            "tokens_in": 68,
+            "cost": 9.2e-05
+          },
+          {
+            "id": "c02",
+            "passages": 0,
+            "answer": "",
+            "grounded": false,
+            "correct": false,
+            "declined": true,
+            "citations_resolve": null,
+            "tokens_in": 70,
+            "cost": 9.4e-05
+          },
+          {
+            "id": "c03",
+            "passages": 0,
+            "answer": "",
+            "grounded": false,
+            "correct": false,
+            "declined": true,
+            "citations_resolve": null,
+            "tokens_in": 69,
+            "cost": 9.3e-05
+          },
+          {
+            "id": "c04",
+            "passages": 0,
+            "answer": "",
+            "grounded": false,
+            "correct": false,
+            "declined": true,
+            "citations_resolve": null,
+            "tokens_in": 68,
+            "cost": 9.2e-05
+          },
+          {
+            "id": "c05",
+            "passages": 0,
+            "answer": "",
+            "grounded": false,
+            "correct": false,
+            "declined": true,
+            "citations_resolve": null,
+            "tokens_in": 66,
+            "cost": 9e-05
+          },
+          {
+            "id": "c06",
+            "passages": 0,
+            "answer": "",
+            "grounded": false,
+            "correct": false,
+            "declined": true,
+            "citations_resolve": null,
+            "tokens_in": 66,
+            "cost": 9e-05
+          },
+          {
+            "id": "c07",
+            "passages": 0,
+            "answer": "",
+            "grounded": false,
+            "correct": false,
+            "declined": true,
+            "citations_resolve": null,
+            "tokens_in": 66,
+            "cost": 9e-05
+          },
+          {
+            "id": "c08",
+            "passages": 0,
+            "answer": "",
+            "grounded": false,
+            "correct": false,
+            "declined": true,
+            "citations_resolve": null,
+            "tokens_in": 69,
+            "cost": 9.3e-05
+          },
+          {
+            "id": "c09",
+            "passages": 0,
+            "answer": "",
+            "grounded": false,
+            "correct": false,
+            "declined": true,
+            "citations_resolve": null,
+            "tokens_in": 66,
+            "cost": 9e-05
+          },
+          {
+            "id": "c10",
+            "passages": 0,
+            "answer": "",
+            "grounded": false,
+            "correct": false,
+            "declined": true,
+            "citations_resolve": null,
+            "tokens_in": 68,
+            "cost": 9.2e-05
+          },
+          {
+            "id": "c11",
+            "passages": 0,
+            "answer": "",
+            "grounded": false,
+            "correct": false,
+            "declined": true,
+            "citations_resolve": null,
+            "tokens_in": 67,
+            "cost": 9.1e-05
+          },
+          {
+            "id": "c12",
+            "passages": 0,
+            "answer": "",
+            "grounded": false,
+            "correct": false,
+            "declined": true,
+            "citations_resolve": null,
+            "tokens_in": 70,
+            "cost": 9.4e-05
+          },
+          {
+            "id": "c13",
+            "passages": 0,
+            "answer": "",
+            "grounded": false,
+            "correct": false,
+            "declined": true,
+            "citations_resolve": null,
+            "tokens_in": 68,
+            "cost": 9.2e-05
+          },
+          {
+            "id": "c14",
+            "passages": 0,
+            "answer": "",
+            "grounded": false,
+            "correct": false,
+            "declined": true,
+            "citations_resolve": null,
+            "tokens_in": 71,
+            "cost": 9.5e-05
+          },
+          {
+            "id": "c15",
+            "passages": 0,
+            "answer": "",
+            "grounded": false,
+            "correct": false,
+            "declined": true,
+            "citations_resolve": null,
+            "tokens_in": 67,
+            "cost": 9.1e-05
+          },
+          {
+            "id": "c16",
+            "passages": 0,
+            "answer": "",
+            "grounded": false,
+            "correct": false,
+            "declined": true,
+            "citations_resolve": null,
+            "tokens_in": 66,
+            "cost": 9e-05
+          },
+          {
+            "id": "c17",
+            "passages": 0,
+            "answer": "",
+            "grounded": false,
+            "correct": false,
+            "declined": true,
+            "citations_resolve": null,
+            "tokens_in": 66,
+            "cost": 9e-05
+          },
+          {
+            "id": "c18",
+            "passages": 0,
+            "answer": "",
+            "grounded": false,
+            "correct": false,
+            "declined": true,
+            "citations_resolve": null,
+            "tokens_in": 65,
+            "cost": 8.9e-05
+          },
+          {
+            "id": "c19",
+            "passages": 0,
+            "answer": "",
+            "grounded": false,
+            "correct": false,
+            "declined": true,
+            "citations_resolve": null,
+            "tokens_in": 69,
+            "cost": 9.3e-05
+          },
+          {
+            "id": "c20",
+            "passages": 0,
+            "answer": "",
+            "grounded": false,
+            "correct": false,
+            "declined": true,
+            "citations_resolve": null,
+            "tokens_in": 72,
+            "cost": 9.6e-05
+          }
+        ],
+        "wrong_version": [
+          {
+            "id": "c01",
+            "passages": 5,
+            "answer": "Connection timeout (Ironclad v2) > Where the setting lives\nThe timeout is `connection_timeout_seconds` in `ironclad.conf`, in the `[source]` block. It takes a whole number of seconds. The default is **30 seconds**.\n\n```\n[source]\nconnection_timeout_seconds = 30\n```",
+            "grounded": true,
+            "correct": false,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 345,
+            "cost": 0.000505
+          },
+          {
+            "id": "c02",
+            "passages": 5,
+            "answer": "Connection timeout (Ironclad v2) > Where the setting lives\nThe timeout is `connection_timeout_seconds` in `ironclad.conf`, in the `[source]` block. It takes a whole number of seconds. The default is **30 seconds**.\n\n```\n[source]\nconnection_timeout_seconds = 30\n```",
+            "grounded": true,
+            "correct": false,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 346,
+            "cost": 0.000506
+          },
+          {
+            "id": "c03",
+            "passages": 5,
+            "answer": "Connection timeout (Ironclad v2) > Limits\nThe lowest accepted value is 5. The highest accepted value is 300. A value outside that range is rejected at startup and the runner refuses to start, with `E1104: connection_timeout_seconds out of range` in the startup log.",
+            "grounded": true,
+            "correct": false,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 346,
+            "cost": 0.000504
+          },
+          {
+            "id": "c04",
+            "passages": 5,
+            "answer": "Connection timeout (Ironclad v3) > Where the setting lives\nThe timeout is the environment variable `IRONCLAD_CONNECT_TIMEOUT`, in whole seconds. The default is **15 seconds**.\n\n```\nexport IRONCLAD_CONNECT_TIMEOUT=15\n```\n\n`connection_timeout_seconds` in `ironclad.conf` is no longer used. If it is sti",
+            "grounded": true,
+            "correct": false,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 431,
+            "cost": 0.000769
+          },
+          {
+            "id": "c05",
+            "passages": 4,
+            "answer": "Authentication (Ironclad v2)\nEvery call to the Ironclad API must identify the caller.",
+            "grounded": true,
+            "correct": false,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 251,
+            "cost": 0.000319
+          },
+          {
+            "id": "c06",
+            "passages": 4,
+            "answer": "",
+            "grounded": false,
+            "correct": false,
+            "declined": true,
+            "citations_resolve": null,
+            "tokens_in": 251,
+            "cost": 0.000275
+          },
+          {
+            "id": "c07",
+            "passages": 4,
+            "answer": "Authentication (Ironclad v3) > Failures\nThe `X-Ironclad-Key` header is no longer accepted. A request carrying it is rejected with `401` and the body `{\"error\":\"scheme_removed\"}`, which is the error to look for after an upgrade. A missing or expired token returns `401` with `{\"error\":\"bad_token\"}`.",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 353,
+            "cost": 0.000531
+          },
+          {
+            "id": "c08",
+            "passages": 4,
+            "answer": "Authentication (Ironclad v2) > Failures\nA missing or unknown key returns `401` with the body `{\"error\":\"bad_key\"}`.",
+            "grounded": true,
+            "correct": false,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 254,
+            "cost": 0.000338
+          },
+          {
+            "id": "c09",
+            "passages": 6,
+            "answer": "Export format (Ironclad v2)\nAn export writes the result of a run to a file.",
+            "grounded": true,
+            "correct": false,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 250,
+            "cost": 0.000312
+          },
+          {
+            "id": "c10",
+            "passages": 6,
+            "answer": "Export format (Ironclad v3) > Encoding\nUTF-8 **without a byte-order mark**. Spreadsheet software that relied on the mark to detect the encoding may now show accented characters incorrectly on first open.",
+            "grounded": true,
+            "correct": false,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 315,
+            "cost": 0.000441
+          },
+          {
+            "id": "c11",
+            "passages": 6,
+            "answer": "Export format (Ironclad v2) > Quoting\nA field is quoted only when it contains a comma, a quotation mark or a newline.",
+            "grounded": true,
+            "correct": false,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 252,
+            "cost": 0.000336
+          },
+          {
+            "id": "c12",
+            "passages": 4,
+            "answer": "Log retention (Ironclad v2) > How long logs are kept\n`log_retention_days` in `ironclad.conf` sets the number of days. The default is **14 days**. Logs older than that are deleted by a sweep that runs at startup and then once a day.\n\n```\n[runner]\nlog_retention_days = 14\n```",
+            "grounded": true,
+            "correct": false,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 230,
+            "cost": 0.000394
+          },
+          {
+            "id": "c13",
+            "passages": 4,
+            "answer": "Log retention (Ironclad v3) > How long logs are kept\n`IRONCLAD_LOG_RETENTION_DAYS` sets the number of days kept on disk. The default is **7 days**. Logs older than that are deleted by a sweep that runs at startup and then once an hour.\n\n```\nexport IRONCLAD_LOG_RETENTION_DAYS=7\n```",
+            "grounded": true,
+            "correct": false,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 274,
+            "cost": 0.000442
+          },
+          {
+            "id": "c14",
+            "passages": 4,
+            "answer": "Log retention (Ironclad v2) > How long logs are kept\n`log_retention_days` in `ironclad.conf` sets the number of days. The default is **14 days**. Logs older than that are deleted by a sweep that runs at startup and then once a day.\n\n```\n[runner]\nlog_retention_days = 14\n```",
+            "grounded": true,
+            "correct": false,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 232,
+            "cost": 0.000396
+          },
+          {
+            "id": "c15",
+            "passages": 4,
+            "answer": "Retries (Ironclad v2) > Settings\n`retry_count` in `ironclad.conf` sets how many retries follow the first attempt. The default is **3**. The interval between retries is fixed at **5 seconds** and cannot be configured.\n\n```\n[source]\nretry_count = 3\n```",
+            "grounded": true,
+            "correct": false,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 254,
+            "cost": 0.000406
+          },
+          {
+            "id": "c16",
+            "passages": 4,
+            "answer": "Retries (Ironclad v3) > Giving up\nAfter the last retry the run is marked `failed` and the partial output is **kept** under `runs/<run-id>/partial/`, so a long transfer can be resumed with `ironcladctl resume <run-id>`.",
+            "grounded": true,
+            "correct": false,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 321,
+            "cost": 0.000455
+          },
+          {
+            "id": "c17",
+            "passages": 4,
+            "answer": "Retries (Ironclad v2) > What is retried\nEvery failure is retried, including a rejected credential and a malformed request. A run that fails for a reason retrying cannot fix therefore takes `retry_count * 5` seconds longer than it needs to.",
+            "grounded": true,
+            "correct": false,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 253,
+            "cost": 0.000397
+          },
+          {
+            "id": "c18",
+            "passages": 4,
+            "answer": "Scheduling runs (Ironclad v2) > How schedules are written\nSchedules live in `schedules.conf`, one per line, as a five-field cron expression followed by the pipeline name.\n\n```\n0 2 * * *  nightly-export\n*/15 * * * *  inbox-poll\n```\n\nAll times are interpreted in **UTC**. There is no timezone setting; ",
+            "grounded": true,
+            "correct": false,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 264,
+            "cost": 0.000486
+          },
+          {
+            "id": "c19",
+            "passages": 4,
+            "answer": "Scheduling runs (Ironclad v3) > Overlap\nIf a scheduled run is still going when the next one is due, the next one is **queued** and starts when the first finishes. At most one run is queued; further ones are dropped with a warning.",
+            "grounded": true,
+            "correct": false,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 323,
+            "cost": 0.000463
+          },
+          {
+            "id": "c20",
+            "passages": 4,
+            "answer": "Scheduling runs (Ironclad v2) > Catching up\nRuns missed while the runner was stopped are not started when it comes back.",
+            "grounded": true,
+            "correct": false,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 272,
+            "cost": 0.000356
+          }
+        ],
+        "right_version": [
+          {
+            "id": "c01",
+            "passages": 5,
+            "answer": "Connection timeout (Ironclad v3) > Where the setting lives\nThe timeout is the environment variable `IRONCLAD_CONNECT_TIMEOUT`, in whole seconds. The default is **15 seconds**.\n\n```\nexport IRONCLAD_CONNECT_TIMEOUT=15\n```\n\n`connection_timeout_seconds` in `ironclad.conf` is no longer used. If it is sti",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 431,
+            "cost": 0.000769
+          },
+          {
+            "id": "c02",
+            "passages": 5,
+            "answer": "Connection timeout (Ironclad v3) > Where the setting lives\nThe timeout is the environment variable `IRONCLAD_CONNECT_TIMEOUT`, in whole seconds. The default is **15 seconds**.\n\n```\nexport IRONCLAD_CONNECT_TIMEOUT=15\n```\n\n`connection_timeout_seconds` in `ironclad.conf` is no longer used. If it is sti",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 433,
+            "cost": 0.000771
+          },
+          {
+            "id": "c03",
+            "passages": 5,
+            "answer": "Connection timeout (Ironclad v3) > Limits\nThe lowest accepted value is 1. The highest accepted value is 120. A value outside that range is rejected at startup and the runner refuses to start, with `E1104: IRONCLAD_CONNECT_TIMEOUT out of range` in the startup log.",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 432,
+            "cost": 0.000588
+          },
+          {
+            "id": "c04",
+            "passages": 5,
+            "answer": "Connection timeout (Ironclad v2) > Where the setting lives\nThe timeout is `connection_timeout_seconds` in `ironclad.conf`, in the `[source]` block. It takes a whole number of seconds. The default is **30 seconds**.\n\n```\n[source]\nconnection_timeout_seconds = 30\n```",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 345,
+            "cost": 0.000505
+          },
+          {
+            "id": "c05",
+            "passages": 4,
+            "answer": "Authentication (Ironclad v3)\nEvery call to the Ironclad API must identify the caller.",
+            "grounded": true,
+            "correct": false,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 353,
+            "cost": 0.000421
+          },
+          {
+            "id": "c06",
+            "passages": 4,
+            "answer": "Authentication (Ironclad v3) > How to authenticate\nExchange your client credentials for a bearer token, then send the token in the `Authorization` header on every request.\n\n```\ncurl -X POST https://api.example-ironclad.test/v3/oauth/token \\\n  -d grant_type=client_credentials -d client_id=... -d clie",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 353,
+            "cost": 0.000675
+          },
+          {
+            "id": "c07",
+            "passages": 4,
+            "answer": "Authentication (Ironclad v2) > How to authenticate\nSend your API key in the `X-Ironclad-Key` header on every request.\n\n```\ncurl -H 'X-Ironclad-Key: <your key>' https://api.example-ironclad.test/v2/runs\n```\n\nKeys are created in the console under Settings, Access. A key **does not expire** and remains",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 252,
+            "cost": 0.000464
+          },
+          {
+            "id": "c08",
+            "passages": 4,
+            "answer": "Authentication (Ironclad v3) > Failures\nThe `X-Ironclad-Key` header is no longer accepted. A request carrying it is rejected with `401` and the body `{\"error\":\"scheme_removed\"}`, which is the error to look for after an upgrade. A missing or expired token returns `401` with `{\"error\":\"bad_token\"}`.",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 356,
+            "cost": 0.000534
+          },
+          {
+            "id": "c09",
+            "passages": 6,
+            "answer": "Export format (Ironclad v3) > Formats\nCSV or NDJSON, chosen with `IRONCLAD_EXPORT_FORMAT`, which defaults to `csv`. The CSV separator is a comma and cannot be changed.",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 313,
+            "cost": 0.000421
+          },
+          {
+            "id": "c10",
+            "passages": 6,
+            "answer": "Export format (Ironclad v2) > Encoding\nUTF-8 **with a byte-order mark**, so that the file opens correctly in spreadsheet software without extra steps.",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 252,
+            "cost": 0.000352
+          },
+          {
+            "id": "c11",
+            "passages": 6,
+            "answer": "Export format (Ironclad v3) > Formats\nCSV or NDJSON, chosen with `IRONCLAD_EXPORT_FORMAT`, which defaults to `csv`. The CSV separator is a comma and cannot be changed.",
+            "grounded": true,
+            "correct": false,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 314,
+            "cost": 0.000422
+          },
+          {
+            "id": "c12",
+            "passages": 4,
+            "answer": "Log retention (Ironclad v3) > How long logs are kept\n`IRONCLAD_LOG_RETENTION_DAYS` sets the number of days kept on disk. The default is **7 days**. Logs older than that are deleted by a sweep that runs at startup and then once an hour.\n\n```\nexport IRONCLAD_LOG_RETENTION_DAYS=7\n```",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 276,
+            "cost": 0.000444
+          },
+          {
+            "id": "c13",
+            "passages": 4,
+            "answer": "Log retention (Ironclad v2) > How long logs are kept\n`log_retention_days` in `ironclad.conf` sets the number of days. The default is **14 days**. Logs older than that are deleted by a sweep that runs at startup and then once a day.\n\n```\n[runner]\nlog_retention_days = 14\n```",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 228,
+            "cost": 0.000392
+          },
+          {
+            "id": "c14",
+            "passages": 4,
+            "answer": "Log retention (Ironclad v3) > Where logs are written\n`/var/log/ironclad/<run-id>.log` as before, and each closed log is also uploaded to the export bucket under `logs/<date>/<run-id>.log.gz`, where it is kept for **365 days** regardless of the on-disk setting.",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 277,
+            "cost": 0.000431
+          },
+          {
+            "id": "c15",
+            "passages": 4,
+            "answer": "Retries (Ironclad v3) > Settings\n`IRONCLAD_RETRY_MAX` sets how many retries follow the first attempt. The default is **6**. `IRONCLAD_RETRY_POLICY` takes `exponential` or `fixed` and defaults to `exponential`, starting at **2 seconds** and doubling, capped at 60 seconds.\n\n```\nexport IRONCLAD_RETRY_M",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 322,
+            "cost": 0.000564
+          },
+          {
+            "id": "c16",
+            "passages": 4,
+            "answer": "Retries (Ironclad v2) > Settings\n`retry_count` in `ironclad.conf` sets how many retries follow the first attempt. The default is **3**. The interval between retries is fixed at **5 seconds** and cannot be configured.\n\n```\n[source]\nretry_count = 3\n```",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 253,
+            "cost": 0.000405
+          },
+          {
+            "id": "c17",
+            "passages": 4,
+            "answer": "Retries (Ironclad v3) > What is retried\nOnly failures that retrying can fix: timeouts, connection resets, and responses with status 429 or 5xx. A rejected credential or a malformed request fails the run immediately, without retrying.",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 321,
+            "cost": 0.000463
+          },
+          {
+            "id": "c18",
+            "passages": 4,
+            "answer": "Scheduling runs (Ironclad v3) > How schedules are written\nSchedules are set per pipeline in the console, or through `IRONCLAD_SCHEDULE`, as an ISO-8601 repeating interval with an explicit timezone.\n\n```\nexport IRONCLAD_SCHEDULE='R/2026-01-01T02:00:00[Europe/London]/P1D'\n```\n\nCron expressions are **n",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 318,
+            "cost": 0.000592
+          },
+          {
+            "id": "c19",
+            "passages": 4,
+            "answer": "Scheduling runs (Ironclad v2) > Overlap\nIf a scheduled run is still going when the next one is due, the next one is **skipped** and a warning is written to the log.",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 269,
+            "cost": 0.000375
+          },
+          {
+            "id": "c20",
+            "passages": 4,
+            "answer": "Scheduling runs (Ironclad v3) > Catching up\nRuns missed while the runner was stopped are started once when it comes back, unless `IRONCLAD_SCHEDULE_CATCHUP=false`.",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 325,
+            "cost": 0.000431
+          }
+        ],
+        "too_much": [
+          {
+            "id": "c01",
+            "passages": 45,
+            "answer": "Connection timeout (Ironclad v3) > Where the setting lives\nThe timeout is the environment variable `IRONCLAD_CONNECT_TIMEOUT`, in whole seconds. The default is **15 seconds**.\n\n```\nexport IRONCLAD_CONNECT_TIMEOUT=15\n```\n\n`connection_timeout_seconds` in `ironclad.conf` is no longer used. If it is sti",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 3771,
+            "cost": 0.004109
+          },
+          {
+            "id": "c02",
+            "passages": 45,
+            "answer": "Connection timeout (Ironclad v3) > Where the setting lives\nThe timeout is the environment variable `IRONCLAD_CONNECT_TIMEOUT`, in whole seconds. The default is **15 seconds**.\n\n```\nexport IRONCLAD_CONNECT_TIMEOUT=15\n```\n\n`connection_timeout_seconds` in `ironclad.conf` is no longer used. If it is sti",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 3847,
+            "cost": 0.004185
+          },
+          {
+            "id": "c03",
+            "passages": 45,
+            "answer": "Connection timeout (Ironclad v3) > Limits\nThe lowest accepted value is 1. The highest accepted value is 120. A value outside that range is rejected at startup and the runner refuses to start, with `E1104: IRONCLAD_CONNECT_TIMEOUT out of range` in the startup log.",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 4081,
+            "cost": 0.004237
+          },
+          {
+            "id": "c04",
+            "passages": 45,
+            "answer": "Connection timeout (Ironclad v2) > Where the setting lives\nThe timeout is `connection_timeout_seconds` in `ironclad.conf`, in the `[source]` block. It takes a whole number of seconds. The default is **30 seconds**.\n\n```\n[source]\nconnection_timeout_seconds = 30\n```",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 3654,
+            "cost": 0.003814
+          },
+          {
+            "id": "c05",
+            "passages": 44,
+            "answer": "Authentication (Ironclad v3)\nEvery call to the Ironclad API must identify the caller.",
+            "grounded": true,
+            "correct": false,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 4236,
+            "cost": 0.004304
+          },
+          {
+            "id": "c06",
+            "passages": 44,
+            "answer": "Authentication (Ironclad v3) > How to authenticate\nExchange your client credentials for a bearer token, then send the token in the `Authorization` header on every request.\n\n```\ncurl -X POST https://api.example-ironclad.test/v3/oauth/token \\\n  -d grant_type=client_credentials -d client_id=... -d clie",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 3703,
+            "cost": 0.004025
+          },
+          {
+            "id": "c07",
+            "passages": 44,
+            "answer": "Authentication (Ironclad v2) > How to authenticate\nSend your API key in the `X-Ironclad-Key` header on every request.\n\n```\ncurl -H 'X-Ironclad-Key: <your key>' https://api.example-ironclad.test/v2/runs\n```\n\nKeys are created in the console under Settings, Access. A key **does not expire** and remains",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 3384,
+            "cost": 0.003596
+          },
+          {
+            "id": "c08",
+            "passages": 44,
+            "answer": "Authentication (Ironclad v3) > Failures\nThe `X-Ironclad-Key` header is no longer accepted. A request carrying it is rejected with `401` and the body `{\"error\":\"scheme_removed\"}`, which is the error to look for after an upgrade. A missing or expired token returns `401` with `{\"error\":\"bad_token\"}`.",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 3539,
+            "cost": 0.003717
+          },
+          {
+            "id": "c09",
+            "passages": 46,
+            "answer": "Export format (Ironclad v3) > Formats\nCSV or NDJSON, chosen with `IRONCLAD_EXPORT_FORMAT`, which defaults to `csv`. The CSV separator is a comma and cannot be changed.",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 3565,
+            "cost": 0.003673
+          },
+          {
+            "id": "c10",
+            "passages": 46,
+            "answer": "Export format (Ironclad v2) > Encoding\nUTF-8 **with a byte-order mark**, so that the file opens correctly in spreadsheet software without extra steps.",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 3628,
+            "cost": 0.003728
+          },
+          {
+            "id": "c11",
+            "passages": 46,
+            "answer": "Export format (Ironclad v3) > Formats\nCSV or NDJSON, chosen with `IRONCLAD_EXPORT_FORMAT`, which defaults to `csv`. The CSV separator is a comma and cannot be changed.",
+            "grounded": true,
+            "correct": false,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 3436,
+            "cost": 0.003544
+          },
+          {
+            "id": "c12",
+            "passages": 44,
+            "answer": "Log retention (Ironclad v3) > How long logs are kept\n`IRONCLAD_LOG_RETENTION_DAYS` sets the number of days kept on disk. The default is **7 days**. Logs older than that are deleted by a sweep that runs at startup and then once an hour.\n\n```\nexport IRONCLAD_LOG_RETENTION_DAYS=7\n```",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 3678,
+            "cost": 0.003846
+          },
+          {
+            "id": "c13",
+            "passages": 44,
+            "answer": "Log retention (Ironclad v2) > How long logs are kept\n`log_retention_days` in `ironclad.conf` sets the number of days. The default is **14 days**. Logs older than that are deleted by a sweep that runs at startup and then once a day.\n\n```\n[runner]\nlog_retention_days = 14\n```",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 3253,
+            "cost": 0.003417
+          },
+          {
+            "id": "c14",
+            "passages": 44,
+            "answer": "Log retention (Ironclad v3) > Where logs are written\n`/var/log/ironclad/<run-id>.log` as before, and each closed log is also uploaded to the export bucket under `logs/<date>/<run-id>.log.gz`, where it is kept for **365 days** regardless of the on-disk setting.",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 3204,
+            "cost": 0.003358
+          },
+          {
+            "id": "c15",
+            "passages": 44,
+            "answer": "Retries (Ironclad v3) > Settings\n`IRONCLAD_RETRY_MAX` sets how many retries follow the first attempt. The default is **6**. `IRONCLAD_RETRY_POLICY` takes `exponential` or `fixed` and defaults to `exponential`, starting at **2 seconds** and doubling, capped at 60 seconds.\n\n```\nexport IRONCLAD_RETRY_M",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 3404,
+            "cost": 0.003646
+          },
+          {
+            "id": "c16",
+            "passages": 44,
+            "answer": "Retries (Ironclad v2) > Settings\n`retry_count` in `ironclad.conf` sets how many retries follow the first attempt. The default is **3**. The interval between retries is fixed at **5 seconds** and cannot be configured.\n\n```\n[source]\nretry_count = 3\n```",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 3901,
+            "cost": 0.004053
+          },
+          {
+            "id": "c17",
+            "passages": 44,
+            "answer": "Retries (Ironclad v3) > What is retried\nOnly failures that retrying can fix: timeouts, connection resets, and responses with status 429 or 5xx. A rejected credential or a malformed request fails the run immediately, without retrying.",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 3843,
+            "cost": 0.003985
+          },
+          {
+            "id": "c18",
+            "passages": 44,
+            "answer": "Scheduling runs (Ironclad v3) > How schedules are written\nSchedules are set per pipeline in the console, or through `IRONCLAD_SCHEDULE`, as an ISO-8601 repeating interval with an explicit timezone.\n\n```\nexport IRONCLAD_SCHEDULE='R/2026-01-01T02:00:00[Europe/London]/P1D'\n```\n\nCron expressions are **n",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 3734,
+            "cost": 0.004008
+          },
+          {
+            "id": "c19",
+            "passages": 44,
+            "answer": "Scheduling runs (Ironclad v2) > Overlap\nIf a scheduled run is still going when the next one is due, the next one is **skipped** and a warning is written to the log.",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 3951,
+            "cost": 0.004057
+          },
+          {
+            "id": "c20",
+            "passages": 44,
+            "answer": "Scheduling runs (Ironclad v3) > Catching up\nRuns missed while the runner was stopped are started once when it comes back, unless `IRONCLAD_SCHEDULE_CATCHUP=false`.",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 4125,
+            "cost": 0.004231
+          }
+        ],
+        "buried": [
+          {
+            "id": "c01",
+            "passages": 85,
+            "answer": "Connection timeout (Ironclad v3) > Where the setting lives\nThe timeout is the environment variable `IRONCLAD_CONNECT_TIMEOUT`, in whole seconds. The default is **15 seconds**.\n\n```\nexport IRONCLAD_CONNECT_TIMEOUT=15\n```\n\n`connection_timeout_seconds` in `ironclad.conf` is no longer used. If it is sti",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 6694,
+            "cost": 0.007032
+          },
+          {
+            "id": "c02",
+            "passages": 85,
+            "answer": "Connection timeout (Ironclad v3) > Where the setting lives\nThe timeout is the environment variable `IRONCLAD_CONNECT_TIMEOUT`, in whole seconds. The default is **15 seconds**.\n\n```\nexport IRONCLAD_CONNECT_TIMEOUT=15\n```\n\n`connection_timeout_seconds` in `ironclad.conf` is no longer used. If it is sti",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 7212,
+            "cost": 0.00755
+          },
+          {
+            "id": "c03",
+            "passages": 85,
+            "answer": "Connection timeout (Ironclad v3) > Limits\nThe lowest accepted value is 1. The highest accepted value is 120. A value outside that range is rejected at startup and the runner refuses to start, with `E1104: IRONCLAD_CONNECT_TIMEOUT out of range` in the startup log.",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 7522,
+            "cost": 0.007678
+          },
+          {
+            "id": "c04",
+            "passages": 85,
+            "answer": "Integrations guide (Ironclad v2)\nThis guide covers every integrations setting in version 2 of Ironclad Endpoint Manager. Read it before changing more than one setting at once: several interact.\n\n| Setting | Name | Default | Range | Takes effect |\n| --- | --- | --- | --- | --- |\n| Connection pool siz",
+            "grounded": true,
+            "correct": false,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 6891,
+            "cost": 0.007593
+          },
+          {
+            "id": "c05",
+            "passages": 84,
+            "answer": "Authentication (Ironclad v3)\nEvery call to the Ironclad API must identify the caller.",
+            "grounded": true,
+            "correct": false,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 7200,
+            "cost": 0.007268
+          },
+          {
+            "id": "c06",
+            "passages": 84,
+            "answer": "Token lifetime (Ironclad v2) > Monitoring\nWatch `ironclad_token_lifetime_current` on the operations dashboard. If it sits at the configured value for long periods, the setting is the bottleneck, and raising it is reasonable. If it never comes near, the value can safely stay where it is.",
+            "grounded": true,
+            "correct": false,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 6860,
+            "cost": 0.007028
+          },
+          {
+            "id": "c07",
+            "passages": 84,
+            "answer": "Authentication (Ironclad v2) > How to authenticate\nSend your API key in the `X-Ironclad-Key` header on every request.\n\n```\ncurl -H 'X-Ironclad-Key: <your key>' https://api.example-ironclad.test/v2/runs\n```\n\nKeys are created in the console under Settings, Access. A key **does not expire** and remains",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 6714,
+            "cost": 0.006928
+          },
+          {
+            "id": "c08",
+            "passages": 84,
+            "answer": "Authentication (Ironclad v3) > Failures\nThe `X-Ironclad-Key` header is no longer accepted. A request carrying it is rejected with `401` and the body `{\"error\":\"scheme_removed\"}`, which is the error to look for after an upgrade. A missing or expired token returns `401` with `{\"error\":\"bad_token\"}`.",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 6820,
+            "cost": 0.006998
+          },
+          {
+            "id": "c09",
+            "passages": 86,
+            "answer": "Export format (Ironclad v3) > Formats\nCSV or NDJSON, chosen with `IRONCLAD_EXPORT_FORMAT`, which defaults to `csv`. The CSV separator is a comma and cannot be changed.",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 6973,
+            "cost": 0.007081
+          },
+          {
+            "id": "c10",
+            "passages": 86,
+            "answer": "Export format (Ironclad v2) > Encoding\nUTF-8 **with a byte-order mark**, so that the file opens correctly in spreadsheet software without extra steps.",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 6731,
+            "cost": 0.006831
+          },
+          {
+            "id": "c11",
+            "passages": 86,
+            "answer": "Export format (Ironclad v3) > Formats\nCSV or NDJSON, chosen with `IRONCLAD_EXPORT_FORMAT`, which defaults to `csv`. The CSV separator is a comma and cannot be changed.",
+            "grounded": true,
+            "correct": false,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 6800,
+            "cost": 0.006908
+          },
+          {
+            "id": "c12",
+            "passages": 84,
+            "answer": "Log retention (Ironclad v3) > How long logs are kept\n`IRONCLAD_LOG_RETENTION_DAYS` sets the number of days kept on disk. The default is **7 days**. Logs older than that are deleted by a sweep that runs at startup and then once an hour.\n\n```\nexport IRONCLAD_LOG_RETENTION_DAYS=7\n```",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 7029,
+            "cost": 0.007197
+          },
+          {
+            "id": "c13",
+            "passages": 84,
+            "answer": "Log retention (Ironclad v2) > How long logs are kept\n`log_retention_days` in `ironclad.conf` sets the number of days. The default is **14 days**. Logs older than that are deleted by a sweep that runs at startup and then once a day.\n\n```\n[runner]\nlog_retention_days = 14\n```",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 6666,
+            "cost": 0.00683
+          },
+          {
+            "id": "c14",
+            "passages": 84,
+            "answer": "Log retention (Ironclad v3) > Where logs are written\n`/var/log/ironclad/<run-id>.log` as before, and each closed log is also uploaded to the export bucket under `logs/<date>/<run-id>.log.gz`, where it is kept for **365 days** regardless of the on-disk setting.",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 6281,
+            "cost": 0.006437
+          },
+          {
+            "id": "c15",
+            "passages": 84,
+            "answer": "Retries (Ironclad v3) > Settings\n`IRONCLAD_RETRY_MAX` sets how many retries follow the first attempt. The default is **6**. `IRONCLAD_RETRY_POLICY` takes `exponential` or `fixed` and defaults to `exponential`, starting at **2 seconds** and doubling, capped at 60 seconds.\n\n```\nexport IRONCLAD_RETRY_M",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 6650,
+            "cost": 0.006892
+          },
+          {
+            "id": "c16",
+            "passages": 84,
+            "answer": "Retries (Ironclad v2) > Settings\n`retry_count` in `ironclad.conf` sets how many retries follow the first attempt. The default is **3**. The interval between retries is fixed at **5 seconds** and cannot be configured.\n\n```\n[source]\nretry_count = 3\n```",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 7534,
+            "cost": 0.007686
+          },
+          {
+            "id": "c17",
+            "passages": 84,
+            "answer": "Retries (Ironclad v3) > What is retried\nOnly failures that retrying can fix: timeouts, connection resets, and responses with status 429 or 5xx. A rejected credential or a malformed request fails the run immediately, without retrying.",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 7278,
+            "cost": 0.00742
+          },
+          {
+            "id": "c18",
+            "passages": 84,
+            "answer": "Scheduling runs (Ironclad v3) > How schedules are written\nSchedules are set per pipeline in the console, or through `IRONCLAD_SCHEDULE`, as an ISO-8601 repeating interval with an explicit timezone.\n\n```\nexport IRONCLAD_SCHEDULE='R/2026-01-01T02:00:00[Europe/London]/P1D'\n```\n\nCron expressions are **n",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 7155,
+            "cost": 0.007429
+          },
+          {
+            "id": "c19",
+            "passages": 84,
+            "answer": "Scheduling runs (Ironclad v2) > Overlap\nIf a scheduled run is still going when the next one is due, the next one is **skipped** and a warning is written to the log.",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 7190,
+            "cost": 0.007298
+          },
+          {
+            "id": "c20",
+            "passages": 84,
+            "answer": "Scheduling runs (Ironclad v3) > Catching up\nRuns missed while the runner was stopped are started once when it comes back, unless `IRONCLAD_SCHEDULE_CATCHUP=false`.",
+            "grounded": true,
+            "correct": true,
+            "declined": false,
+            "citations_resolve": true,
+            "tokens_in": 7366,
+            "cost": 0.007472
+          }
+        ]
+      }
+    },
+    "retrieval": {
+      "provider_mode": "fake",
+      "model_provider": "fake_a",
+      "embed_provider": "hash",
+      "embedder": "hash",
+      "k": 5,
+      "configs": {
+        "paragraph+dense": {
+          "strategy": "paragraph",
+          "mode": "dense",
+          "chunks": 1349,
+          "precision_at_k": 0.16363636363636364,
+          "recall_at_k": 0.8181818181818182,
+          "mrr": 0.6818181818181818,
+          "hit_rate": 0.8181818181818182,
+          "version_trap": 0.45,
+          "context_tokens": 858,
+          "p95_ms": 56.7
+        },
+        "paragraph+hybrid": {
+          "strategy": "paragraph",
+          "mode": "hybrid",
+          "chunks": 1349,
+          "precision_at_k": 0.18181818181818182,
+          "recall_at_k": 0.9090909090909091,
+          "mrr": 0.7765151515151515,
+          "hit_rate": 0.9090909090909091,
+          "version_trap": 0.45,
+          "context_tokens": 818,
+          "p95_ms": 117.3
+        },
+        "heading+dense": {
+          "strategy": "heading",
+          "mode": "dense",
+          "chunks": 2629,
+          "precision_at_k": 0.1272727272727273,
+          "recall_at_k": 0.6363636363636364,
+          "mrr": 0.4356060606060606,
+          "hit_rate": 0.6363636363636364,
+          "version_trap": 0.6,
+          "context_tokens": 386,
+          "p95_ms": 118.4
+        },
+        "heading+hybrid": {
+          "strategy": "heading",
+          "mode": "hybrid",
+          "chunks": 2629,
+          "precision_at_k": 0.16363636363636364,
+          "recall_at_k": 0.8181818181818182,
+          "mrr": 0.4992424242424242,
+          "hit_rate": 0.8181818181818182,
+          "version_trap": 0.35,
+          "context_tokens": 357,
+          "p95_ms": 246.4
+        },
+        "section+dense": {
+          "strategy": "section",
+          "mode": "dense",
+          "chunks": 2627,
+          "precision_at_k": 0.14545454545454548,
+          "recall_at_k": 0.7272727272727273,
+          "mrr": 0.5984848484848485,
+          "hit_rate": 0.7272727272727273,
+          "version_trap": 0.55,
+          "context_tokens": 325,
+          "p95_ms": 84.7
+        },
+        "section+hybrid": {
+          "strategy": "section",
+          "mode": "hybrid",
+          "chunks": 2627,
+          "precision_at_k": 0.18181818181818182,
+          "recall_at_k": 0.9090909090909091,
+          "mrr": 0.6909090909090909,
+          "hit_rate": 0.9090909090909091,
+          "version_trap": 0.3,
+          "context_tokens": 382,
+          "p95_ms": 157.4
+        }
+      },
+      "_note": "Run through a wrapper that skips the 38 of 60 queries whose expected document is not in corpus/ (the v-e736 variant renamed them in eval/ only); 22 queries, hash embedder, fake model."
+    }
+  }
+}
